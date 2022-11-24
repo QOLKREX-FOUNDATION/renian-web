@@ -23,7 +23,7 @@ export const Vaccines = ({ pets, type = "WAR" }) => {
 		<div
 			className={classes.timeline}
 			style={{
-				background: "#eee",
+				background: "#ddd",
 				fontSize: "12px",
 				borderRadius: "5px",
 				padding: "10px 5px 10px 5px",
