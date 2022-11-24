@@ -1,0 +1,38 @@
+@use "/src/styles/base/breakpoints" as breakpoints;
+@use "/src/styles/base/colors" as colors;
+@use "/src/styles/base/utilities" as utilities;
+@use "/src/styles/base/typography" as typography;
+@use "/src/styles/base/positions" as positions;
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: positions.$z-modal;
+  &__background {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  &__container {
+    @include utilities.renian-flexbox-param(flex, center, center);
+    width: 100vw;
+    height: 100vh;
+  }
+  &__content {
+    @include utilities.renian-flexbox-param(flex, center, center);
+    flex-direction: column;
+    gap: 0.6rem;
+    & > h3 {
+      font-size: 18px;
+      font-family: typography.$roboto30;
+      color: colors.$gray50;
+      text-shadow: 1px 1px colors.$black;
+    }
+  }
+}

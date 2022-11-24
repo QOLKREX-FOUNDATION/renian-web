@@ -1,0 +1,13 @@
+[
+	{
+		"en-Us": "DOG",
+		"es-Es": "PERRO",
+        "value": "DOG"
+	},
+	{
+		"en-Us": "CAT",
+		"es-Es": "GATO",
+        "value": "CAT"
+
+	}
+]

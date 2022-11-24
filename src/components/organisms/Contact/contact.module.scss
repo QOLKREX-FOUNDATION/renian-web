@@ -1,0 +1,145 @@
+@use "/src/styles/base/breakpoints" as breakpoints;
+@use "/src/styles/base/colors" as colors;
+@use "/src/styles/base/utilities" as utilities;
+@use "/src/styles/base/typography" as typography;
+@use "/src/styles/base/positions" as positions;
+
+.contact {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: colors.$tertiary;
+  padding: 5rem 0;
+  &__container {
+    width: 100%;
+    height: 100%;
+    @include utilities.renian-grid-param(grid, 0.7fr 1.3fr, auto, 4rem);
+    @include breakpoints.medium {
+      display: flex;
+    }
+  }
+  &__form {
+    width: 100%;
+    max-width: 30rem;
+    color: colors.$gray70;
+    @include breakpoints.xl-large {
+      max-width: 25rem;
+    }
+    @include breakpoints.medium {
+      max-width: none;
+    }
+    & > h4 {
+      font-size: 20px;
+      font-family: typography.$roboto20;
+      text-align: center;
+      @include breakpoints.xl-large {
+        font-size: 18px;
+      }
+    }
+    & > h1 {
+      color: colors.$black;
+      font-size: 32px;
+      font-family: typography.$quicksand50;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      @include breakpoints.xl-large {
+        font-size: 26px;
+      }
+      & > span {
+        text-transform: uppercase;
+      }
+    }
+    & > div {
+      margin-top: 3rem;
+      & > form {
+        & > div {
+          @include utilities.renian-flexbox-param(flex, auto, flex-start);
+          flex-direction: column;
+          width: 100%;
+          height: 6rem;
+          @include breakpoints.xl-large {
+            height: 4.5rem;
+          }
+          & > span {
+            font-size: 14px;
+            font-family: typography.$roboto20;
+            margin: 0 0 0.4rem 0.4rem;
+            @include breakpoints.xl-large {
+              font-size: 13px;
+            }
+          }
+          & > input {
+            outline: none;
+            border: 1px solid colors.$gray30;
+            border-radius: 5px;
+            font-family: typography.$roboto10;
+            font-size: 16px;
+            padding: 0.5rem 1rem;
+            color: colors.$gray60;
+            background: rgb(249, 248, 248);
+            &:focus {
+              font-family: typography.$roboto30;
+              border-color: colors.$primary;
+            }
+            @include breakpoints.xl-large {
+              font-size: 10px;
+              padding: 0.4rem 0.7rem;
+            }
+          }
+          & > textarea {
+            outline: none;
+            border: 1px solid colors.$gray30;
+            border-radius: 5px;
+            font-family: typography.$roboto10;
+            font-size: 16px;
+            padding: 0.5rem 1rem;
+            color: colors.$gray60;
+            resize: none;
+            background: rgb(249, 248, 248);
+            &:focus {
+              border: 1px solid colors.$primary;
+              font-family: typography.$roboto30;
+            }
+            @include breakpoints.xl-large {
+              font-size: 10px;
+            }
+          }
+          & > small {
+            margin-left: 5px;
+            color: colors.$error;
+            font-size: 11px;
+            font-family: typography.$roboto30;
+            @include breakpoints.xl-large {
+              font-size: 9px;
+            }
+          }
+        }
+      }
+    }
+    &Textarea {
+      height: 15rem !important;
+      @include breakpoints.xl-large {
+        height: 12rem !important;
+      }
+      & > textarea {
+        height: 10rem;
+        @include breakpoints.xl-large {
+          height: 8rem;
+        }
+      }
+    }
+    &Button {
+      max-width: 15rem;
+      margin: 0 auto;
+    }
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    @include utilities.renian-flexbox-param(flex, center, flex-end);
+    text-align: start;
+    @include breakpoints.medium {
+      display: none;
+    }
+  }
+}

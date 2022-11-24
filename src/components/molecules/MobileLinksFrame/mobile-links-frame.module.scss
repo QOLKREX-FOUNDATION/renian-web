@@ -1,0 +1,36 @@
+@use "/src/styles/base/breakpoints" as breakpoints;
+@use "/src/styles/base/colors" as colors;
+@use "/src/styles/base/utilities" as utilities;
+@use "/src/styles/base/typography" as typography;
+@use "/src/styles/base/positions" as positions;
+
+.mobile {
+  position: fixed;
+  z-index: positions.$z-header;
+  background: colors.$white;
+  width: 100%;
+  min-height: 100vh;
+  top: -100%;
+  transition: 1s;
+  @include utilities.renian-flexbox-param(flex, center, center);
+  & > section {
+    @include utilities.renian-flexbox-param(flex, center, center);
+    flex-direction: column;
+    margin-bottom: 5rem;
+    gap: 1rem;
+    & > div {
+      width: 100%;
+      padding: 0.5rem 0;
+      & > p {
+        font-family: typography.$quicksand50;
+        font-size: 30px;
+        text-align: center;
+        cursor: pointer;
+        @include utilities.renian-flexbox-param(flex, center, center);
+        & > a {
+          color: colors.$gray80;
+        }
+      }
+    }
+  }
+}
