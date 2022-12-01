@@ -50,6 +50,42 @@
 		"value": "ALASKAN MALAMUTE"
 	},
 	{
+		"en-Us": "MAL-SHI",
+		"es-Es": "MAL-SHI",
+		"value": "MAL-SHI"
+	},
+	{
+		"en-Us": "CHORKIE",
+		"es-Es": "CHORKIE",
+		"value": "CHORKIE"
+	},
+	{
+		"en-Us": "TOY POODLE",
+		"es-Es": "TOY POODLE",
+		"value": "TOY POODLE"
+	},
+	{
+		"en-Us": "YORKIE POO",
+		"es-Es": "YORKIE POO",
+		"value": "YORKIE POO"
+	},
+	{
+		"en-Us": "POODLE TOY",
+		"es-Es": "POODLE TOY",
+		"value": "POODLE TOY"
+	},
+	{
+		"en-Us": "MALTIPOO",
+		"es-Es": "MALTIPOO",
+		"value": "MALTIPOO"
+	},
+	{
+		"en-Us": "MALTIPOO",
+		"es-Es": "MALTIPOO",
+		"value": "MALTIPOO"
+	},
+
+	{
 		"en-Us": "ALPINE DACHSBRACKE",
 		"es-Es": "DACHSBRACKE ALPINO",
 		"value": "ALPINE DACHSBRACKE"
@@ -2146,7 +2182,7 @@
 	},
 	{
 		"en-Us": "TOY BULLDOG",
-		"es-Es": "BULLDOG DE JUGUETE",
+		"es-Es": "TOY BULLDOG",
 		"value": "TOY BULLDOG"
 	},
 	{

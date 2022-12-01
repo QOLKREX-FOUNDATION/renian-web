@@ -1,5 +1,5 @@
 import { Centers } from "..";
 
-export const CentersView = () => {
-  return <Centers />;
+export const CentersView = ({ centers }) => {
+	return <Centers centers={centers} />;
 };

@@ -1,44 +1,46 @@
 .button {
-	align-items: center;
-	border-radius: 5px;
-	color: #fff;
-	cursor: pointer;
-	display: flex;
-	font-weight: bold;
-	overflow: hidden;
-	padding: 5px 10px;
-	position: relative;
-	text-align: center;
-	text-decoration: none;
-	text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
-	text-transform: uppercase;
-	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1) 0s;
+    align-items: center;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-weight: bold;
+    overflow: hidden;
+    padding: 5px 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1) 0s;
     background-color: #87bbfe;
     border: 0;
     gap: .2rem;
 }
+
 .button:hover {
-	text-shadow: nthree;
+    text-shadow: nthree;
 }
 
 .button:hover:before {
-	left: 0%;
-	right: auto;
-	width: 100%;
+    left: 0%;
+    right: auto;
+    width: 100%;
 }
 
 .button:before {
-	border-radius: 1rem;
-	display: block;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	height: 100%;
-	width: 0px;
-	z-index: -1;
-	content: "";
-	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1) 0s;
+    border-radius: 1rem;
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    width: 0px;
+    z-index: -1;
+    content: "";
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1) 0s;
 }
+
 .timeline {
     display: flex;
     flex-direction: column;
@@ -97,6 +99,7 @@
     font-weight: 600;
     color: #9251ac;
     letter-spacing: 1.5;
+    padding-bottom: .2rem;
 }
 
 .timeline__event__content {
@@ -262,6 +265,14 @@
     position: relative;
     transition: 1s background;
     overflow: hidden;
+}
+
+.illnessDiv {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    margin-bottom: .2rem;
+
 }
 
 .illness:hover {

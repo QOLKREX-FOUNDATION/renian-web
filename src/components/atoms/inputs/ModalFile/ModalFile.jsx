@@ -32,15 +32,15 @@ export const ModalFile = ({
 			</label>
 
 			{typeof watch(property) ==="object" &&  !!watch(property)[0]?.name && (
-				<div style={{ color: "green", textAlign: "center" }}>
+				<p style={{ color: "green", textAlign: "center" }}>
 					<small>{watch(property)[0]?.name} - Imagen Cargada</small>
-				</div>
+				</p>
 			)}
 
 			{error[property] && (
-				<div style={{ color: "red", textAlign: "center" }}>
+				<p style={{ color: "red", textAlign: "center" }}>
 					<small>{error[property]?.message}</small>
-				</div>
+				</p>
 			)}
 		</>
 	);

@@ -127,8 +127,8 @@ export const AdopterRegister = ({
 					<ModalCheckbox
 						onClick={() => setHaveAddress(!haveAddress)}
 						show={haveAddress}
+						label="¿Tienes una dirección pública de Ethereum?"
 					/>
-					<p>¿Tienes una dirección pública de Ethereum?</p>
 				</div>
 				{haveAddress && (
 					<div>
@@ -274,11 +274,9 @@ export const AdopterRegister = ({
 							setAdopter("status", !shareInformation);
 						}}
 						show={shareInformation}
+						label="Acepto compartir mi información personal en búsquedas en la
+						plataforma"
 					/>
-					<p>
-						Acepto compartir mi información personal en búsquedas en la
-						plataforma
-					</p>
 				</div>
 			</div>
 			<div

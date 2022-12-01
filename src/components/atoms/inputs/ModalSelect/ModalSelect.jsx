@@ -7,6 +7,7 @@ export const ModalSelect = ({
 	options = [],
 	onChange = null,
 	value = {},
+	isMulti
 }) => {
 	const customStyles = {
 		menuList: (base) => ({
@@ -34,7 +35,7 @@ export const ModalSelect = ({
 			...base,
 			fontFamily: "Quicksand-Regular",
 			fontSize: 14,
-			height: 12,
+			// height: 12,
 		}),
 	};
 	return (
@@ -47,6 +48,7 @@ export const ModalSelect = ({
 				options={options}
 				value={value}
 				styles={customStyles}
+				isMulti={isMulti}
 				theme={(theme) => ({
 					...theme,
 					colors: {

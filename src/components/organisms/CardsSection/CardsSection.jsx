@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import {
 	MainContainer,
@@ -53,7 +54,7 @@ export const CardsSection = () => {
 									<p>Revisa los datos de cualquier mascota</p>
 									<CardsButton
 										name="aquí"
-										onClick={() => router.push("/consult")}
+										onClick={() => router.push("/consulta")}
 									/>
 								</div>
 							</div>
@@ -103,7 +104,7 @@ export const CardsSection = () => {
 								<div className={classes.cards__cardDetail}>
 									<p>Conoce nuestros centros de registro en todo el Perú</p>
 									<a
-										href="http://www.renian.org/centros/?fbclid=IwAR0jU8TfLuQn9rwcHWfV4cyPVCfnpBmRrd-O53guouFtXdBQnSfakHpTFFM"
+										href="http://www.renian.pe/centros"
 										target="_blank"
 										rel="noreferrer noopener"
 									>

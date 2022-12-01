@@ -1,4 +1,4 @@
-export const URL_RENIAN = "https://renian.pe";
+export const URL_RENIAN = "https://renian.org/srm";
 export const URL_RENIAN_NOTICES = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/@@renian.pe/feed/";
 
 export const URL_MAINET = "https://firulaixcoin.finance/";

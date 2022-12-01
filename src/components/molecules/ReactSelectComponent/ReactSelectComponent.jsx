@@ -5,23 +5,22 @@ export const ReactSelectComponent = ({
 	property = "",
 	required = false,
 	options = [],
-	value = null,
 	values = {},
 	message = "Campo requerido",
 	watch = {},
+	value =  options.filter((v) => v.value === watch(property)),
 	setValue = {},
 	error = {},
+	onChange = (target) => setValue(property, target.value),
 	isMulti = false,
 }) => {
 	return (
 		<div style={{ display: "flex", flexDirection: "column" }}>
 			<ModalSelect
 				name={name}
-				value={
-					value ? value : options.filter((v) => v.value === watch(property))
-				}
+				value={value}
 				options={options}
-				onChange={(target) => setValue(property, target.value)}
+				onChange={onChange}
 				isMulti={isMulti}
 				required={required}
 			/>

@@ -8,7 +8,6 @@ export * from "./atoms/inputs/Modalnput/ModalInput";
 export * from "./atoms/inputs/ModalSelect/ModalSelect";
 export * from "./atoms/inputs/ModalCheckbox/ModalCheckbox";
 export * from "./atoms/inputs/ModalFile/ModalFile";
-export * from "./atoms/MapCenters/MapCenters";
 export * from "./atoms/BannerRegister/BannerRegister";
 export * from "./atoms/ErrorMessage/ErrorMessage";
 export * from "./atoms/Preloader/Preloader";

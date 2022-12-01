@@ -34,29 +34,45 @@ export const ContentMongoPet = ({ dataPet }) => {
 	useEffect(() => {
 		if (dataPet.type === "RENIAN") {
 			const temp = [];
-			const illness = [];
 			const marca = "";
 			dataPet?.vaccines.map((vaccine) => {
+				const illness = [];
 				if (vaccine.parvovirus > 0) {
-					marca = marcas[vaccine.parvovirus];
-				} else if (vaccine.distemper > 0) {
-					marca = marcas[vaccine.distemper];
-				} else if (vaccine.hepatitis > 0) {
-					marca = marcas[vaccine.hepatitis];
-				} else if (vaccine.leptospira > 0) {
-					marca = marcas[vaccine.leptospira];
-				} else if (vaccine.parainfluenza > 0) {
-					marca = marcas[vaccine.parainfluenza];
-				} else if (vaccine.rabia > 0) {
-					marca = marcas[vaccine.rabia];
-				} else if (vaccine.rinotraqueitis > 0) {
-					marca = marcas[vaccine.rinotraqueitis];
-				} else if (vaccine.panleucopenia > 0) {
-					marca = marcas[vaccine.panleucopenia];
-				} else if (vaccine.calicivirus > 0) {
-					marca = marcas[vaccine.calicivirus];
+					// illness.push(marcas[vaccine.parvovirus]);
+					illness.push("Parvovirus")
 				}
-
+				if (vaccine.distemper > 0) {
+					// illness.push(marcas[vaccine.distemper]);
+					illness.push("Distemper")
+				}
+				if (vaccine.hepatitis > 0) {
+					// illness.push(marcas[vaccine.hepatitis]);
+					illness.push("Hepatitis")
+				}
+				if (vaccine.leptospira > 0) {
+					// illness.push(marcas[vaccine.leptospira]);
+					illness.push("Leptospira")
+				}
+				if (vaccine.parainfluenza > 0) {
+					// illness.push(marcas[vaccine.parainfluenza]);
+					illness.push("Parainfluenza")
+				}
+				if (vaccine.rabia > 0) {
+					// illness.push(marcas[vaccine.rabia]);
+					illness.push("Rabia")
+				}
+				if (vaccine.rinotraqueitis > 0) {
+					// illness.push(marcas[vaccine.rinotraqueitis]);
+					illness.push("Rinotraqueitis")
+				}
+				if (vaccine.panleucopenia > 0) {
+					// illness.push(marcas[vaccine.panleucopenia]);
+					illness.push("Panleucopenia")
+				}
+				if (vaccine.calicivirus > 0) {
+					// illness.push(marcas[vaccine.calicivirus]);
+					illness.push("Calicivirus")
+				}
 				temp.push({
 					type: vaccine.tipo_visita === "vacuna" ? "VACCINES" : "DEWORMING",
 					product: vaccine.clase_desp ? vaccine.clase_desp : marca,
@@ -68,16 +84,23 @@ export const ContentMongoPet = ({ dataPet }) => {
 				});
 			});
 
+			console.log(temp);
 			setVaccines({
 				name: dataPet.pet.usuario_empresa,
 				date: stringToDate(dataPet.pet.usuario_empresa_sector),
 				chipDate: dataPet.pet.usuario_registrado,
 				vaccines: temp,
 			});
+		} else {
+			setVaccines(dataPet.pet);
 		}
 	}, [dataPet?.vaccines]);
 
-	const [src, setSrc] = useState(dataPet.pet.chip ?`https://firu.alejandroaguilar.dev/public/images/image/${dataPet?.pet.chip}.jpg`: `${URL_RENIAN}/images/petimg/${dataPet?.pet.usuario_foto}.jpg`);
+	const [src, setSrc] = useState(
+		dataPet.pet.chip
+			? `https://firu.alejandroaguilar.dev/public/images/image/${dataPet?.pet.chip}.jpg`
+			: `${URL_RENIAN}/petimg/${dataPet?.pet.usuario_foto}`
+	);
 
 	return (
 		<>
@@ -109,8 +132,7 @@ export const ContentMongoPet = ({ dataPet }) => {
 											height={70}
 											href="image-dog"
 											alt="image-dog"
-											onError={() => setSrc('/img/img-nofound.png')}
-
+											onError={() => setSrc("/img/img-nofound.png")}
 										/>
 									)}
 								</div>

@@ -7,7 +7,6 @@ export const usePetState = (dataPet = false, dataPetWeb3 = false) => {
 
   useEffect(() => {
     if (!dataPetWeb3) {
-      console.log(dataPet);
       if (dataPet.pet.status != undefined) {
         setState(dataPet.pet.status);
       } else if (dataPet.pet.usuario_status != undefined) {

@@ -127,19 +127,17 @@ export const Vaccines = ({ pets, type = "WAR" }) => {
 							{value.type === "DEWORMING" && (
 								<>
 									Desparasitación
-									{value.product}
+									{` ${value.product}`}
 								</>
 							)}
 							{value.type !== "VACCINES" &&
 								value.type !== "DEWORMING" &&
 								value.name}
 						</div>
-						<p
-							className={`${classes.text} divCenter divItemCenter`}
-							style={{ width: "50%", gap: "1rem", flexWrap: "wrap" }}
-						>
-							{value.type === "VACCINES" || value.type === "DEWORMING"
-								? listVaccines.map((illness, index) => (
+						<p className={`${classes.text} divCenter divItemCenter`}>
+							{value.type === "VACCINES" || value.type === "DEWORMING" ? (
+								<div className={classes.illnessDiv}>
+									{listVaccines.map((illness, index) => (
 										<>
 											{value.illness[illness.value] && (
 												<div
@@ -155,15 +153,33 @@ export const Vaccines = ({ pets, type = "WAR" }) => {
 												</div>
 											)}
 										</>
-								  ))
-								: value.text}
+									))}
+
+									{type === "RENIAN" &&
+										value.illness.map((illness, index) => (
+											<div
+												key={index}
+												className={classes.illness}
+												style={{
+													fontStyle: "italic",
+													padding: "10px 20px 10px 10px",
+													boxShadow: "1px 1 px 3px #555",
+												}}
+											>
+												{illness}
+											</div>
+										))}
+								</div>
+							) : (
+								value.text
+							)}
 						</p>
 						{(value.type === "VACCINES" || value.type === "DEWORMING") && (
 							<a
 								href={
 									type === "WAR"
 										? `${IPFS}${value.image}`
-										: `${URL_RENIAN}/images/vacimg/${value.image}`
+										: `${URL_RENIAN}/vacimg/${value.image}`
 								}
 								target="_blank"
 								rel="noreferrer noopener"

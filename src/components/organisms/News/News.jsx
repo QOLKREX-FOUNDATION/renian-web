@@ -1,7 +1,5 @@
 import Image from "next/image";
 import classes from "./news.module.scss";
-import { useEffect, useRef, useState } from "react";
-import useHover from "@react-hook/hover";
 import Zoom from "react-reveal/Zoom";
 import { MainContainer } from "../../";
 import "swiper/css";
@@ -9,7 +7,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper";
-import mediumArticles from "../../../utils/mediumArticles.json";
+import parse from "html-react-parser";
+import { useMemo } from "react";
 
 export const News = ({ news }) => {
 	return (
@@ -33,6 +32,8 @@ export const News = ({ news }) => {
 };
 
 const Carousel = ({ news }) => {
+	const items = useMemo(() => news.items, [news]);
+
 	return (
 		<>
 			<main className={`${classes.carousel}`}>
@@ -55,7 +56,7 @@ const Carousel = ({ news }) => {
 					}}
 					modules={[Autoplay, Navigation, Pagination]}
 				>
-					{news?.items.map((article, index) => {
+					{items?.map((article, index) => {
 						return (
 							<SwiperSlide key={index}>
 								<div className={classes.news__slide}>
@@ -79,10 +80,17 @@ const Carousel = ({ news }) => {
 												<h6>{article.author}</h6>
 												<h3>{article.title}</h3>
 												<div
-													style={{ height: "5rem", marginBottom:"1rem", overflow:"hidden" }}
-													dangerouslySetInnerHTML={{ __html: article.content }}
-												></div>
-												...
+													style={{
+														fontSize: "1rem",
+														height: "7rem",
+														marginBottom: ".5rem",
+														overflow: "hidden",
+													}}
+													// dangerouslySetInnerHTML={{ __html: article?.content }}
+												>
+													{article?.content && parse(article?.content)}
+													...
+												</div>
 											</div>
 										</div>
 									</a>

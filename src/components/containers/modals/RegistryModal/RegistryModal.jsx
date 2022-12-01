@@ -17,6 +17,12 @@ export const RegistryModal = ({ setOpenRegistryModal, width = "80rem" }) => {
 	const { handlePreloader } = useContext(PreloaderContext);
 	const [nextSection, setNextSection] = useState(false);
 
+	const [check, setCheck] = useState({
+		pet: false,
+		chip: false,
+		search: false,
+	});
+
 	const {
 		register: adopterValues,
 		handleSubmit: handleAdopter,
@@ -42,38 +48,47 @@ export const RegistryModal = ({ setOpenRegistryModal, width = "80rem" }) => {
 	});
 
 	const onSubmit = () => {
-		handlePreloader(true);
-		const adopter = getAdopter();
-		const pet = getPet();
-		const form = new FormData();
+		if (!check.pet || !check.chip || !check.search) {
+			toast.warning("Debe aceptar las declaraciones para continuar", {
+				theme: "colored",
+			});
+		} else {
+			handlePreloader(true);
+			const adopter = getAdopter();
+			const pet = getPet();
+			const form = new FormData();
 
-		form.append("adopter", JSON.stringify(adopter));
-		form.append("pet", JSON.stringify(pet));
-		form.append("frontal", adopter.frontal[0]);
-		form.append("reverso", adopter.reverso[0]);
-		form.append("image", pet.image[0]);
+			form.append("adopter", JSON.stringify(adopter));
+			form.append("pet", JSON.stringify(pet));
+			form.append("frontal", adopter.frontal[0]);
+			form.append("reverso", adopter.reverso[0]);
+			form.append("image", pet.image[0]);
+			if (pet.pedigree) {
+				form.append("pedigree", pet.pedigree[0]);
+			}
 
-		mailApi
-			.post("/", form)
-			.then(({data}) => {
-				if (data.ok) {
-					toast.success("Enviado Correctamente, Te avisaremos por interno", {
-						theme: "colored",
-					});
-					setOpenRegistryModal(false);
-				} else {
+			mailApi
+				.post("/", form)
+				.then(({ data }) => {
+					if (data.ok) {
+						toast.success("Enviado Correctamente, Te avisaremos por interno", {
+							theme: "colored",
+						});
+						setOpenRegistryModal(false);
+					} else {
+						toast.error("No se pudo enviar correctamente, intento de nuevo", {
+							theme: "colored",
+						});
+					}
+					handlePreloader(false);
+				})
+				.catch((e) => {
 					toast.error("No se pudo enviar correctamente, intento de nuevo", {
 						theme: "colored",
 					});
-				}
-				handlePreloader(false);
-			})
-			.catch((e) => {
-				toast.error("No se pudo enviar correctamente, intento de nuevo", {
-					theme: "colored",
+					handlePreloader(false);
 				});
-				handlePreloader(false);
-			});
+		}
 	};
 
 	return (
@@ -145,6 +160,8 @@ export const RegistryModal = ({ setOpenRegistryModal, width = "80rem" }) => {
 												watchPet={watchPet}
 												setPet={setPet}
 												errorsPet={errorsPet}
+												check={check}
+												setCheck={setCheck}
 											/>
 											<Buttons
 												nextSection={nextSection}

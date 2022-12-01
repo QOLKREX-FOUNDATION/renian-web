@@ -15,17 +15,25 @@ import { optionsSterilized } from "../../../../utils/sterilized";
 import { amountBigReverse, getAmountsIn } from "../../../../utils";
 import { Web3Context } from "../../../../contexts/Web3/Web3Context";
 
-export const PetRegister = ({ petValues, watchPet, setPet, errorsPet }) => {
+export const PetRegister = ({
+	petValues,
+	watchPet,
+	setPet,
+	errorsPet,
+	check,
+	setCheck,
+}) => {
 	const { web3 } = useContext(Web3Context);
-	const [isFiat, setIsFiat] = useState(true);
-	const [isCrypto, setIsCrypto] = useState(false);
-	const [haveChip, setHaveChip] = useState();
-	const [priceU, setPriceU] = useState("0");
-	const [priceF, setPriceF] = useState(0);
+	const [haveChip, setHaveChip] = useState(false);
 
 	const { species, races } = useSpecie(watchPet("type"));
 	const { countries } = useCountry();
 	const { colours } = useColours();
+
+	// const [isFiat, setIsFiat] = useState(true);
+	// const [isCrypto, setIsCrypto] = useState(false);
+	// const [priceU, setPriceU] = useState("0");
+	// const [priceF, setPriceF] = useState(0);
 
 	// const onSetFiat = () => {
 	// 	setIsFiat(true);
@@ -62,6 +70,12 @@ export const PetRegister = ({ petValues, watchPet, setPet, errorsPet }) => {
 	// 		})
 	// 		.catch((e) => console.log(e));
 	// }, [priceU]);
+
+	useEffect(() => {
+		if (watchPet("race") === "HALF BLOOD") {
+			setPet("pedigree", "");
+		}
+	}, [watchPet("race")]);
 
 	return (
 		<>
@@ -173,8 +187,8 @@ export const PetRegister = ({ petValues, watchPet, setPet, errorsPet }) => {
 					<ModalCheckbox
 						onClick={() => setHaveChip(!haveChip)}
 						show={haveChip}
+						label="¿La mascota tiene chip de identificación?"
 					/>
-					<p>¿La mascota tiene chip de identificación?</p>
 				</div>
 				{haveChip && (
 					<div>
@@ -204,7 +218,7 @@ export const PetRegister = ({ petValues, watchPet, setPet, errorsPet }) => {
 						error={errorsPet}
 						required
 					/>
-					<ReactSelectComponent
+					{/* <ReactSelectComponent
 						name="País"
 						property="country"
 						options={countries}
@@ -213,7 +227,7 @@ export const PetRegister = ({ petValues, watchPet, setPet, errorsPet }) => {
 						setValue={setPet}
 						error={errorsPet}
 						required
-					/>
+					/> */}
 
 					<ReactSelectComponent
 						name="Animal"
@@ -339,6 +353,55 @@ export const PetRegister = ({ petValues, watchPet, setPet, errorsPet }) => {
 							property="image"
 							error={errorsPet}
 							required
+						/>
+					</div>
+					{watchPet("race") !== "HALF BLOOD" && watchPet("race") && (
+						<div>
+							<ModalFile
+								name="Comprobante Pedigree"
+								values={petValues}
+								watch={watchPet}
+								property="pedigree"
+								error={errorsPet}
+							/>
+						</div>
+					)}
+				</div>
+			</div>
+
+			<div>
+				<h4>Declaro bajo juramento que:</h4><br/>
+				<div className={`${classes.modal__contentMainFormReveal}`} style={{  gridTemplateColumns: "repeat(1, 1fr)"
+}} >
+					<div>
+						<ModalCheckbox
+							onClick={() => setCheck((v) => ({ ...v, pet: !v.pet }))}
+							show={check.pet}
+							label="Soy Propietario de la mascota a registrar"
+						/>
+					</div>
+				</div>
+				<div className={`${classes.modal__contentMainFormReveal}`} style={{  gridTemplateColumns: "repeat(1, 1fr)"
+}}>
+					<div>
+						<ModalCheckbox
+							onClick={() => setCheck((v) => ({ ...v, chip: !v.chip }))}
+							show={check.chip}
+							label={
+								haveChip
+									? "Mi mascota a registrar cuenta con microchip o identificación interna"
+									: "Mi mascota a registrar no cuenta con microchip o identificación interna"
+							}
+						/>
+					</div>
+				</div>
+				<div className={`${classes.modal__contentMainFormReveal}`} style={{  gridTemplateColumns: "repeat(1, 1fr)"
+}}>
+					<div>
+						<ModalCheckbox
+							onClick={() => setCheck((v) => ({ ...v, search: !v.search }))}
+							show={check.search}
+							label="Acepto compartir mi información en las búsquedas de la plataforma"
 						/>
 					</div>
 				</div>

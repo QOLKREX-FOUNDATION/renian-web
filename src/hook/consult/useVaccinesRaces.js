@@ -10,5 +10,5 @@ export const useRaceVaccines = () => {
 		setListVaccines(SpeciesVaccines[specie] ?? []);
 	}, []);
 
-	return { listVaccines, handleListVaccines };
+	return { listVaccines, handleListVaccines, setListVaccines };
 };
