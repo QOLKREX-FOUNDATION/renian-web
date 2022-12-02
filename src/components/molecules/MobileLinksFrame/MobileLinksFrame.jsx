@@ -71,7 +71,7 @@ export const MobileLinksFrame = ({
           <p>
             <a
               onClick={() => {
-                router.push("/faq");
+                router.push("/preguntas-frecuentes");
                 linkClicked();
               }}
             >

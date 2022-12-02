@@ -1,8 +1,15 @@
-import { HomeView } from "../components";
+import { HomeView, Layout } from "../components";
 import { URL_RENIAN_NOTICES } from "../config/constants/endpoints";
 
 export default function Home({ news }) {
-	return <HomeView news={news} />;
+	return (
+		<Layout
+			title="Renian | Registro Nacional de Identidad Animal"
+			description="En RENIAN nos encargamos del registro civil dentro de un marco de Políticas Públicas de Protección"
+		>
+			<HomeView news={news} />
+		</Layout>
+	);
 }
 
 // You should use getStaticProps when:

@@ -51,7 +51,7 @@ export const Header = () => {
           header.style.position = "absolute";
           header.style.top = "auto";
           header.style.backdropFilter = "blur(0)";
-          if (router.asPath == "/faq") {
+          if (router.asPath == "/preguntas-frecuentes") {
             header.style.backdropFilter = "blur(0.8rem)";
           }
           if (router.asPath == "/") {
@@ -152,7 +152,7 @@ export const Header = () => {
                   >
                     nuestra misión
                   </Link>
-                  <a onClick={() => router.push("/faq")}>
+                  <a onClick={() => router.push("/preguntas-frecuentes")}>
                     preguntas frecuentes
                   </a>
                   <Link

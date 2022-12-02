@@ -1,7 +1,15 @@
-import { CentersView } from "../../components";
+import { CentersView, Layout } from "../../components";
 
 export default function CentersMain({ centers }) {
-	return <CentersView centers={centers} />;
+	return (
+		<Layout
+			title="Renian | Centros Afiliados"
+			description="Consulta nuestros centros de atención y afiliados, para que atendamos tu mascota"
+			url="centros"
+		>
+			<CentersView centers={centers} />
+		</Layout>
+	);
 }
 
 // You should use getServerSideProps when:

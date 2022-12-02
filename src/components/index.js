@@ -49,3 +49,4 @@ export * from "./containers/modals/DefaultModal/DefaultModal";
 export * from "./containers/modals/RegistryModal/RegistryModal";
 export * from "./containers/MainContainer/MainContainer";
 export * from "./containers/DrawerContainer";
+export * from "./containers/Layout/Layout";
