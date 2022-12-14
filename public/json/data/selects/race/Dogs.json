@@ -357,9 +357,28 @@
 	},
 	{
 		"en-Us": "BICHON FRISE",
-		"es-Es": "BICHON FRISE",
+		"es-Es": "BICHÓN FRISE",
 		"value": "BICHON FRISE"
 	},
+
+	{
+		"en-Us": "BICHON MALTES",
+		"es-Es": "BICHÓN MALTÉS",
+		"value": "BICHON MALTES"
+	},
+
+	{
+		"en-Us": "BICHON HABANERO",
+		"es-Es": "BICHÓN HABANERO",
+		"value": "BICHON HABANERO"
+	},
+
+	{
+		"en-Us": "BICHON BOLOÑES",
+		"es-Es": "BICHON BOLOÑÉS",
+		"value": "BICHON BOLOÑES"
+	},
+
 	{
 		"en-Us": "BOERBOEL",
 		"es-Es": "BOERBOEL",
