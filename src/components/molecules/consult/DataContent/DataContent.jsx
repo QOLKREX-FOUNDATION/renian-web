@@ -274,7 +274,7 @@ export const ContentMongoPet = ({ dataPet }) => {
 										<span>{formatDate(dataPet.pet?.dateAdoption)}</span>
 									)}
 									{dataPet.pet?.usuario_registrado != undefined && (
-										<span>{formatDate(dataPet.pet?.usuario_registrado)}</span>
+										<span>{formatDate(dataPet.pet?.usuario_empresa_sector)}</span>
 									)}
 								</div>
 
