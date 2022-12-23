@@ -30,9 +30,19 @@
 		"value": "AKBASH DOG"
 	},
 	{
-		"en-Us": "AKITA",
-		"es-Es": "AKITA",
-		"value": "AKITA"
+		"en-Us": "AKITA ",
+		"es-Es": "AKITA ",
+		"value": "AKITA "
+	},
+	{
+		"en-Us": "AKITA AMERICANO",
+		"es-Es": "AKITA AMERICANO",
+		"value": "AKITA AMERICANO"
+	},
+	{
+		"en-Us": "AKITA INU",
+		"es-Es": "AKITA INU",
+		"value": "AKITA INU"
 	},
 	{
 		"en-Us": "ALANO ESPAÑOL",
@@ -110,6 +120,23 @@
 		"es-Es": "PERRO ESQUIMAL AMERICANO",
 		"value": "AMERICAN ESKIMO DOG"
 	},
+	{
+		"en-Us": "AMERICAN FOXHOUND",
+		"es-Es": "RASTRERO AMERICANO",
+		"value": "AMERICAN FOXHOUND"
+	},
+
+	{
+		"en-Us": "ROTTWEILER AMERICANO",
+		"es-Es": "ROTTWEILER AMERICANO",
+		"value": "ROTTWEILER AMERICANO"
+	},
+	{
+		"en-Us": "ROTTWEILER ALEMAN",
+		"es-Es": "ROTTWEILER ALEMAN",
+		"value": "ROTTWEILER ALEMAN"
+	},
+
 	{
 		"en-Us": "AMERICAN FOXHOUND",
 		"es-Es": "RASTRERO AMERICANO",
