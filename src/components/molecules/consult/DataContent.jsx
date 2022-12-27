@@ -18,7 +18,7 @@ export const ContentMongoPet = ({ dataPet }) => {
               <Image
                 src={
                   dataPet.pet?.chip != undefined
-                    ? `https://firu.alejandroaguilar.dev/public/images/image/${dataPet?.pet.chip}.jpg`
+                    ? `https://firu.qolkrex.foundation/public/images/image/${dataPet?.pet.chip}.jpg`
                     : "/img/img-nofound.png"
                 }
                 layout="responsive"

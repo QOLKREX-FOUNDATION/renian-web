@@ -98,7 +98,7 @@ export const ContentMongoPet = ({ dataPet }) => {
 
 	const [src, setSrc] = useState(
 		dataPet.pet.chip
-			? `https://firu.alejandroaguilar.dev/public/images/image/${dataPet?.pet.chip}.jpg`
+			? `https://firu.qolkrex.foundation/public/images/image/${dataPet?.pet.chip}.jpg`
 			: `${URL_RENIAN}/petimg/${dataPet?.pet.usuario_foto}`
 	);
 
