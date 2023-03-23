@@ -1,5 +1,6 @@
 //export const URL_RENIAN = "https://consultwar.renian.foundation/public/images";
-export const URL_RENIAN_NOTICES = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/@@renian.pe/feed/";
+export const URL_RENIAN_NOTICES =
+  "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/@@renian.pe/feed/";
 
 export const URL_MAINET = "https://firulaixcoin.finance/";
 export const URL_TESNET = "http://localhost:3000/";
@@ -24,3 +25,6 @@ export const API_TESNET = {
   firulaixPublic: "https://firuapi1.firulaixcoin.finance/",
   war: "https://firuTestnet.alejandroaguilar.dev/api/",
 };
+
+export const imageURI =
+  "https://res.cloudinary.com/worldanireg/image/upload/v1/images/image/";

@@ -10,6 +10,7 @@ import { formatDate, stringToDate } from "../../../../utils/date";
 import { Vaccines } from "./Vaccines/Vaccines";
 import { useState } from "react";
 import { DefaultButton } from "../../../atoms/buttons/DefaultButton/DefaultButton";
+import { imageURI } from "../../../../config/constants/endpoints";
 //import { URL_RENIAN } from "../../../../config/constants/endpoints";
 
 const marcas = {
@@ -97,10 +98,11 @@ export const ContentMongoPet = ({ dataPet }) => {
 		}
 	}, [dataPet?.vaccines]);
 
+	// ? `https://consultwar.renian.foundation/public/images/image/${ dataPet?.pet.chip }.jpg`
 	const [src, setSrc] = useState(
 		dataPet.pet.chip
-			? `https://consultwar.renian.foundation/public/images/image/${dataPet?.pet.chip}.jpg`
-			: `${URL_RENIAN}/petimg/${dataPet?.pet.usuario_foto}`
+			? `${ imageURI }${ dataPet.pet.chip }.png`
+			: `${ URL_RENIAN }/petimg/${ dataPet?.pet.usuario_foto }`
 	);
 
 	return (
@@ -124,6 +126,12 @@ export const ContentMongoPet = ({ dataPet }) => {
 											height={70}
 											href="image-dog"
 											alt="image-dog"
+											onError={
+												() => {
+													console.log("error")
+													setSrc(`https://ipfs.io/ipfs/${ dataPet?.pet.image }`)
+												}
+											}
 										/>
 									) : (
 										<Image
@@ -201,12 +209,18 @@ export const ContentMongoPet = ({ dataPet }) => {
 								<div className={classes.contentInfo__cardsText}>
 									<h4>Registrado por:</h4>
 									{dataPet.pet?.userAddress != undefined && (
-										<span>{`${dataPet.pet?.userAddress.substring(
+										<span>{`${ dataPet.pet?.userAddress.substring(
 											0,
 											10
-										)}...`}</span>
+										) }...`}</span>
 									)}
 									{!dataPet.pet?.userAddress && <span>No definido</span>}
+									<br />
+									{
+										dataPet.pet?.userName && (
+											<span>{`${ dataPet.pet?.userName.substring(0, 20) }...`}</span>
+										)
+									}
 								</div>
 
 								<div className={classes.contentInfo__cardsImg}>
@@ -376,7 +390,7 @@ export const ContentWeb3Pet = ({ pet, status }) => {
 							<div>
 								<div>
 									<img
-										src={`https://ipfs.io/ipfs/${pet?.image}`}
+										src={`https://ipfs.io/ipfs/${ pet?.image }`}
 										alt="image-dog"
 									/>
 								</div>
@@ -427,7 +441,13 @@ export const ContentWeb3Pet = ({ pet, status }) => {
 							<div>
 								<div className={classes.contentInfo__cardsText}>
 									<h4>Registrado por:</h4>
-									<span>{`${pet?.userAddress.substring(0, 10)}...`}</span>
+									<span>{`${ pet?.userAddress.substring(0, 10) }...`}</span>
+									<br />
+									{
+										pet?.userName && (
+											<span>{`${ pet?.userName.substring(0, 20) }...`}</span>
+										)
+									}
 								</div>
 								<div className={classes.contentInfo__cardsImg}>
 									<div>
