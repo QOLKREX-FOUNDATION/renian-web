@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useEffect } from "react";
 import { IPFS } from "../../../../../config";
-import { URL_RENIAN } from "../../../../../config/constants/endpoints";
+//import { URL_RENIAN } from "../../../../../config/constants/endpoints";
 import { useRaceVaccines } from "../../../../../hook/consult/useVaccinesRaces";
 import { useView } from "../../../../../hook/consult/useView";
 import { formatDate } from "../../../../../utils/date";
@@ -10,6 +10,7 @@ import classes from "./view.module.css";
 export const Vaccines = ({ pets, type = "WAR" }) => {
 	const { listVaccines, handleListVaccines } = useRaceVaccines();
 	const { colours, values, handleView } = useView();
+	const URL_RENIAN = "https://consultwar.renian.foundation/public/images";
 
 	useEffect(() => {
 		handleView(pets);

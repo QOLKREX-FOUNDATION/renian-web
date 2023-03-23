@@ -10,7 +10,7 @@ import { formatDate, stringToDate } from "../../../../utils/date";
 import { Vaccines } from "./Vaccines/Vaccines";
 import { useState } from "react";
 import { DefaultButton } from "../../../atoms/buttons/DefaultButton/DefaultButton";
-import { URL_RENIAN } from "../../../../config/constants/endpoints";
+//import { URL_RENIAN } from "../../../../config/constants/endpoints";
 
 const marcas = {
 	1: "virbac",
@@ -26,6 +26,7 @@ export const ContentMongoPet = ({ dataPet }) => {
 	const { colours } = useColours();
 	const [openVaccines, setOpenVaccines] = useState(false);
 	const [vaccines, setVaccines] = useState([]);
+	const URL_RENIAN = "https://consultwar.renian.foundation/public/images";
 
 	useEffect(() => {
 		obtainPetState();
@@ -98,7 +99,7 @@ export const ContentMongoPet = ({ dataPet }) => {
 
 	const [src, setSrc] = useState(
 		dataPet.pet.chip
-			? `https://firu.qolkrex.foundation/public/images/image/${dataPet?.pet.chip}.jpg`
+			? `https://consultwar.renian.foundation/public/images/image/${dataPet?.pet.chip}.jpg`
 			: `${URL_RENIAN}/petimg/${dataPet?.pet.usuario_foto}`
 	);
 

@@ -1,4 +1,4 @@
-export const URL_RENIAN = "https://renian.org/srm";
+//export const URL_RENIAN = "https://consultwar.renian.foundation/public/images";
 export const URL_RENIAN_NOTICES = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/@@renian.pe/feed/";
 
 export const URL_MAINET = "https://firulaixcoin.finance/";
@@ -16,7 +16,7 @@ export const IPFS_TESNET = "https://gateway.pinata.cloud/ipfs/";
 export const API_MAINET = {
   firulaix: "https://firuapi1.firulaixcoin.finance/api/",
   firulaixPublic: "https://firuapi1.firulaixcoin.finance/",
-  war: "https://firu.qolkrex.foundation/api/",
+  war: "https://consultwar.renian.foundation/api/",
 };
 
 export const API_TESNET = {

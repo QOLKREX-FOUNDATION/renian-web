@@ -18,8 +18,9 @@ export const ContentMongoPet = ({ dataPet }) => {
               <Image
                 src={
                   dataPet.pet?.chip != undefined
-                    ? `https://firu.qolkrex.foundation/public/images/image/${dataPet?.pet.chip}.jpg`
-                    : "/img/img-nofound.png"
+                    ? `https://consultwar.renian.foundation/public/images/image/${dataPet?.pet.chip}.jpg`
+                    //: "/img/img-nofound.png"
+                    : `${URL_RENIAN}/petimg/${dataPet?.pet.chip}.jpg`
                 }
                 layout="responsive"
                 width={60}
