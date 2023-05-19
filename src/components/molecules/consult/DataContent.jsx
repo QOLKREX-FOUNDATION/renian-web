@@ -18,9 +18,9 @@ export const ContentMongoPet = ({ dataPet }) => {
               <Image
                 src={
                   dataPet.pet?.chip != undefined
-                    ? `https://consultwar.renian.foundation/public/images/image/${dataPet?.pet.chip}.jpg`
+                    ? `https://consultwar.renian.foundation/public/images/image/${ dataPet?.pet.chip }.jpg`
                     //: "/img/img-nofound.png"
-                    : `${URL_RENIAN}/petimg/${dataPet?.pet.chip}.jpg`
+                    : `${ URL_RENIAN }/petimg/${ dataPet?.pet.chip }.jpg`
                 }
                 layout="responsive"
                 width={60}
@@ -128,6 +128,15 @@ export const ContentMongoPet = ({ dataPet }) => {
               </div>
 
               <div>
+                <h5>Tipo:</h5>
+                <span>
+                  {
+                    dataPet.pet?.type
+                  }
+                </span>
+              </div>
+
+              <div>
                 <h5>Nacimiento:</h5>
                 {dataPet.pet?.date != undefined && (
                   <span>{dataPet.pet?.date}</span>
@@ -225,7 +234,7 @@ export const ContentWeb3Pet = ({ pets }) => {
           <div className={classes.consult__contentImg}>
             <div>
               <img
-                src={`https://ipfs.io/ipfs/${dataPetWeb3?.image}`}
+                src={`https://ipfs.io/ipfs/${ dataPetWeb3?.image }`}
                 alt="image-dog"
               />
             </div>

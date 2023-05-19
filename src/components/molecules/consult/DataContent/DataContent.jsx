@@ -274,6 +274,15 @@ export const ContentMongoPet = ({ dataPet }) => {
 								</div>
 
 								<div>
+									<h5>Tipo:</h5>
+									<span>
+										{
+											dataPet.pet?.type
+										}
+									</span>
+								</div>
+
+								<div>
 									<h5>Nacimiento:</h5>
 									{dataPet.pet?.date != undefined && (
 										<span>{formatDate(dataPet.pet?.date)}</span>
