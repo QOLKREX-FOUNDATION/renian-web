@@ -13,14 +13,18 @@ export const providers = (string) => {
   switch (string) {
     case "walletconnect":
       return new WalletConnectProvider({
+        // rpc: {
+        //   97: "https://data-seed-prebsc-1-s1.binance.org:8545",
+        //   1285: "https://moonriver.api.onfinality.io/rpc?apikey=4cc1072b-afe8-4d8d-b11b-53b298e6e6bc",
+        // },
         rpc: {
           97: "https://data-seed-prebsc-1-s1.binance.org:8545",
-          1285: "https://moonriver.api.onfinality.io/rpc?apikey=4cc1072b-afe8-4d8d-b11b-53b298e6e6bc",
+          42220: "https://forno.celo.org",
         },
         qrcodeModalOptions: {
           mobileLinks: ["metamask", "trust"],
         },
-        chainId: 1285,
+        chainId: 42220,
       });
 
     default:
