@@ -16,7 +16,8 @@ import { useModal } from '../../../../hook/useModal'
 export const RequestView = () => {
 
     const [step, setStep] = useState(1);
-    const { openModal, setOpenModal } = useModal();
+    // const { openModal,  setOpenModal } = useModal();
+    const [openModal, setOpenModal] = useState(false);
     const router = useRouter();
     const query = router.query;
 
@@ -100,8 +101,8 @@ export const RequestView = () => {
         // console.log(data)
         try {
             // 'http://localhost:5000/api/request/register-user'
-            const res = await fetch('https://firulaix-api-test.vercel.app/api/request/register-user', {
-                // const res = await fetch('https://firulaix-api-nodejs.vercel.app/api/request/register-user', {
+            // const res = await fetch('https://firulaix-api-test.vercel.app/api/request/register-user', {
+            const res = await fetch('https://firulaix-api-nodejs.vercel.app/api/request/register-user', {
                 method: 'POST',
                 body: formData,
             })
@@ -178,7 +179,7 @@ export const RequestView = () => {
     return (
         <>
             {openModal && (
-                <DefaultModal setOpenModal={setOpenModal}>
+                <DefaultModal setOpenDefaultModal={setOpenModal}>
                     <h1>Email enviado satisfactoriamente!</h1>
                 </DefaultModal>
             )}
@@ -588,7 +589,7 @@ export const RequestView = () => {
                                                 documentNumber: watch('documentNumber'),
                                                 paymentMethod: watch('paymentMethod'),
                                             }}
-                                            url={watch("typeService") == "REGISTRO COMPLETO S/.60" ? 'https://firulaix-api-test.vercel.app/api/payment/create-order' : 'https://firulaix-api-test.vercel.app/api/payment/create-order-2'}
+                                            url={watch("typeService") == "REGISTRO COMPLETO S/.60" ? 'https://firulaix-api-nodejs.vercel.app/api/payment/create-order' : 'https://firulaix-api-nodejs.vercel.app/api/payment/create-order-2'}
                                         />
                                     }
                                 </div>

@@ -27,6 +27,7 @@ export const ModalForm = ({ info, url }) => {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
+                        platform: "renian",
                         country: info.country,
                         person: info.person,
                         email: info.email,
@@ -35,7 +36,7 @@ export const ModalForm = ({ info, url }) => {
                         document: info.document,
                         documentNumber: info.documentNumber,
                         typeService: info.typeService,
-                        image: info.image
+                        image: ""
                     })
                 });
                 const data = await resp.json();

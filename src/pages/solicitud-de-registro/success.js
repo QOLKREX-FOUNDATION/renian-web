@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
-import { RequestView } from "../../components/request";
 import { Layout } from "../../components/containers/Layout/Layout";
 
 export default function Success() {
@@ -26,9 +25,9 @@ export default function Success() {
         console.log(payment_id);
         // consultar el estado de la solicitud en la base de datos
         // `https://firulaix-api-test.vercel.app/api/payment/order?id=${payment_id}`,
+        // `http://localhost:5000/api/payment/order?id=${payment_id}`,
         const resp = await fetch(
-          `https://firulaix-api-test.vercel.app/api/payment/order?id=${payment_id}`,
-          // `https://firulaix-api-nodejs.vercel.app/api/payment/order?id=${payment_id}`,
+          `https://firulaix-api-nodejs.vercel.app/api/payment/order?id=${payment_id}`,
           {
             method: "POST",
           }
@@ -55,39 +54,41 @@ export default function Success() {
     }
   }, [payment_id]);
   return (
-    <Layout>
-      {!error ? (
-        <div className="flex w-full justify-center bg-green-500">
-          <div className="flex flex-col font-fredoka py-10">
-            <h1 className="text-3xl font-bold">Gracias por tu solicitud</h1>
-            <p className="text-xl font-semibold">
-              En breve nos pondremos en contacto contigo
-            </p>
-            <p className="text-xl font-semibold">
-              Revisa tu correo electrónico para más información
-            </p>
-            {paymentData.status === "approved" && paymentData.id && (
-              <div className="">
-                <h2 className="font-bold">Información de pago</h2>
-                <p>Id de pago: {paymentData.id}</p>
-                <p>Estado: {paymentData.status}</p>
-                <p>Detalle: {paymentData.status_detail}</p>
-              </div>
-            )}
+    <Layout title={"Solicitud de registro"}>
+      <div className="flex flex-col pt-20" style={{ fontFamily: "serif" }}>
+        {!error ? (
+          <div className="flex w-full justify-center bg-green-500">
+            <div className="flex flex-col font-fredoka py-10">
+              <h1 className="text-3xl font-bold">Gracias por tu solicitud</h1>
+              <p className="text-xl font-semibold">
+                En breve nos pondremos en contacto contigo
+              </p>
+              <p className="text-xl font-semibold">
+                Revisa tu correo electrónico para más información
+              </p>
+              {paymentData.status === "approved" && paymentData.id && (
+                <div className="">
+                  <h2 className="font-bold">Información de pago</h2>
+                  <p>Id de pago: {paymentData.id}</p>
+                  <p>Estado: {paymentData.status}</p>
+                  <p>Detalle: {paymentData.status_detail}</p>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="flex w-full justify-center bg-red-500">
-          <div className="flex flex-col font-fredoka py-10">
-            <h1 className="text-3xl font-bold">
-              Ha ocurrido un error con tu solicitud
-            </h1>
-            <p className="text-xl font-semibold">
-              Por favor, intenta nuevamente
-            </p>
+        ) : (
+          <div className="flex w-full justify-center bg-red-500">
+            <div className="flex flex-col font-fredoka py-10">
+              <h1 className="text-3xl font-bold">
+                Ha ocurrido un error con tu solicitud
+              </h1>
+              <p className="text-xl font-semibold">
+                Por favor, intenta nuevamente
+              </p>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </Layout>
   );
 }

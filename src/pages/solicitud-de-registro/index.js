@@ -3,7 +3,7 @@ import { RequestView } from "../../components/molecules/request/RequestView/Requ
 
 export default function Request() {
   return (
-    <Layout>
+    <Layout title={"Solicitud de registro"}>
       <RequestView />
     </Layout>
   );

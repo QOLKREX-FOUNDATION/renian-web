@@ -119,55 +119,55 @@ export const Header = () => {
               </div>
             )}
 
-            {(router.asPath == "/" || router.asPath == "/solicitud-de-registro") && (
-              <nav className={classes.header__links}>
-                <div>
-                  <Link
-                    to="about"
-                    smooth={true}
-                    duration={500}
-                    spy={true}
-                    exact="true"
-                  // offset={-80}
-                  >
-                    ¿qué es renian?
-                  </Link>
-                  <Link
-                    to="microchip"
-                    smooth={true}
-                    duration={500}
-                    spy={true}
-                    exact="true"
-                    offset={-80}
-                  >
-                    el microchip
-                  </Link>
-                  <Link
-                    to="mission"
-                    smooth={true}
-                    duration={500}
-                    spy={true}
-                    exact="true"
-                    offset={-80}
-                  >
-                    nuestra misión
-                  </Link>
-                  <a onClick={() => router.push("/preguntas-frecuentes")}>
-                    preguntas frecuentes
-                  </a>
-                  <Link
-                    to="contact"
-                    smooth={true}
-                    duration={500}
-                    spy={true}
-                    exact="true"
-                    offset={-80}
-                  >
-                    contáctanos
-                  </Link>
-                </div>
-              </nav>
-            )}
+            {/* {(router.asPath == "/" || router.asPath == "/solicitud-de-registro" || router.asPath == "/solicitud-de-registro/success") && ( */}
+            <nav className={classes.header__links}>
+              <div>
+                <Link
+                  to="about"
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact="true"
+                // offset={-80}
+                >
+                  ¿qué es renian?
+                </Link>
+                <Link
+                  to="microchip"
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                >
+                  el microchip
+                </Link>
+                <Link
+                  to="mission"
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                >
+                  nuestra misión
+                </Link>
+                <a onClick={() => router.push("/preguntas-frecuentes")}>
+                  preguntas frecuentes
+                </a>
+                <Link
+                  to="contact"
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                >
+                  contáctanos
+                </Link>
+              </div>
+            </nav>
+            {/* )} */}
           </div>
         </MainContainer>
       </header>
