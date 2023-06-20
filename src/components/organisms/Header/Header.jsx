@@ -119,7 +119,7 @@ export const Header = () => {
               </div>
             )}
 
-            {router.asPath == "/" && (
+            {(router.asPath == "/" || router.asPath == "/solicitud-de-registro") && (
               <nav className={classes.header__links}>
                 <div>
                   <Link
@@ -128,7 +128,7 @@ export const Header = () => {
                     duration={500}
                     spy={true}
                     exact="true"
-                    // offset={-80}
+                  // offset={-80}
                   >
                     ¿qué es renian?
                   </Link>

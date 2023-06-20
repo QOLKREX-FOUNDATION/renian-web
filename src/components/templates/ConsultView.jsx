@@ -1,9 +1,9 @@
-import { Consult, DrawerContainer } from "../";
+// import { Consult, DrawerContainer } from "../";
 
-export const ConsultView = () => {
-  return (
-    <DrawerContainer>
-      <Consult />
-    </DrawerContainer>
-  );
-};
+// export const ConsultView = () => {
+//   return (
+//     <DrawerContainer>
+//       <Consult />
+//     </DrawerContainer>
+//   );
+// };
