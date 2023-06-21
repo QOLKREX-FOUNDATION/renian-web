@@ -392,7 +392,7 @@ export const RequestView = () => {
                                                     <ReCAPTCHA
                                                         ref={recaptchaRef}
                                                         size="normal"
-                                                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                                                        sitekey={"6LfbFwIkAAAAAFJwKupecuDU3y9eN4fcubnBiYUl"}
                                                         onChange={onReCAPTCHAChange}
                                                     />
                                                     <div className="flex flex-col gap-2">
