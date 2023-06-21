@@ -40,11 +40,11 @@ export const ModalForm = ({ info, url }) => {
                     })
                 });
                 const data = await resp.json();
-                console.log(data)
-                console.log(data.data.id)
+                // console.log(data)
+                // console.log(data.data.id)
                 // setPreferenceId(data.data.id)
                 if (data.data.id) {
-                    console.log(data.data.id)
+                    // console.log(data.data.id)
                     const script = document.createElement('script');
                     script.type = 'text/javascript';
                     script.src =

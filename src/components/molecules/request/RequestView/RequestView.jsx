@@ -209,7 +209,7 @@ export const RequestView = () => {
                         </div>
 
                         <div className="flex flex-col lg:flex-row justify-start items-start lg:pb-0 max-w-xl lg:max-w-3xl w-full rounded-2xl min-h-[700px] mb-10">
-                            <div className="flex flex-col items-center py-5 px-4 lg:w-1/3 bg-[#00a99d] min-h-[790px] rounded-l-2xl">
+                            <div className="flex flex-col items-center py-5 px-4 lg:w-1/3 bg-[#b81c36] min-h-[790px] rounded-l-2xl">
                                 <Image
                                     src="/img/request/image-02.webp"
                                     alt="Picture of the author"
@@ -223,9 +223,9 @@ export const RequestView = () => {
                                     EL REGISTRO DE ANIMALES SILVESTRES Y DOMÉSTICOS
                                 </h2>
                                 <img
-                                    src="/img/request/recurso-116.webp"
+                                    src="/img/renian-img.png"
                                     alt="Picture of the author"
-                                    width={150}
+                                    width={100}
                                     height={150}
                                     className="object-cover"
                                 />
@@ -254,9 +254,9 @@ export const RequestView = () => {
                                     onSubmit={handleSubmit(onSubmit)}
                                     className=" flex flex-col items-center gap-3 w-full h-full py-10 px-5 rounded-r-2xl">
                                     <div className="flex">
-                                        <button type='button' className={`text-white w-12 h-12 rounded-full font-bold ${ step === 1 ? 'bg-[#29abe2]' : 'bg-[#4ab9e9]' }`}>1</button>
+                                        <button type='button' className={`text-white w-12 h-12 rounded-full font-bold ${ step === 1 ? 'bg-[#b81c36]' : 'bg-[#9c182e]' }`}>1</button>
                                         <div className='w-10 h-2 bg-white mt-4'></div>
-                                        <button type='button' className={`text-white w-12 h-12 rounded-full font-bold ${ step === 2 ? 'bg-[#29abe2]' : 'bg-[#4ab9e9]' }`}>2</button>
+                                        <button type='button' className={`text-white w-12 h-12 rounded-full font-bold ${ step === 2 ? 'bg-[#b81c36]' : 'bg-[#9c182e]' }`}>2</button>
                                     </div>
                                     {/* step 1 form */}
                                     <div className={`w-full flex flex-col py-3 gap-3 max-w-xl ${ step === 1 ? 'opacity-100 z-10' : 'opacity-0 -z-20 absolute overflow-hidden w-0' }`}>
@@ -351,7 +351,7 @@ export const RequestView = () => {
                                         />
                                         <button
                                             type='button'
-                                            className="bg-[#29abe2] text-white rounded-xl h-10 font-bold disabled:opacity-50"
+                                            className="bg-[#b81c36] text-white rounded-xl h-10 font-bold disabled:opacity-50"
                                             onClick={handleNextStep}
                                             disabled={watch("email") === "" || watch("phone") === "" || watch("country") === "" || watch("person") === "" || watch("document") === "" || watch("documentNumber") === "" || watch("type") === "" || watch("typeService") === ""}
                                         >
@@ -454,7 +454,7 @@ export const RequestView = () => {
                                                             && (
                                                                 <button
                                                                     type='submit'
-                                                                    className="bg-[#29abe2] text-white rounded-xl h-10 font-bold w-full capitalize"
+                                                                    className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
                                                                 >
                                                                     Enviar
                                                                 </button>
@@ -493,7 +493,7 @@ export const RequestView = () => {
                                                 <h2 className="font-bold">Pagar con Tarjeta</h2>
                                                 {/* <button
                                                     type='button'
-                                                    className="bg-[#29abe2] text-white rounded-xl h-10 font-bold"
+                                                    className="bg-[#b81c36] text-white rounded-xl h-10 font-bold"
                                                     onClick={handlePaymentMethod}
                                                 >
                                                     {t("Go to Cash Payment")}
@@ -562,7 +562,7 @@ export const RequestView = () => {
 
                                         <button
                                             type='button'
-                                            className="bg-[#29abe2] text-white rounded-xl h-10 font-bold w-full capitalize"
+                                            className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
                                             onClick={handlePrevStep}
                                         >
                                             regresar
