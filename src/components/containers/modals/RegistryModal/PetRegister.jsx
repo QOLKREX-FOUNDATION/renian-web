@@ -12,7 +12,7 @@ import {
 import classes from "./registry-modal.module.scss";
 import { useSpecie, useCountry, useColours } from "../../../../hook/inputs";
 import { optionsSterilized } from "../../../../utils/sterilized";
-import { amountBigReverse, getAmountsIn } from "../../../../utils";
+// import { amountBigReverse, getAmountsIn } from "../../../../utils";
 import { Web3Context } from "../../../../contexts/Web3/Web3Context";
 
 export const PetRegister = ({
@@ -182,7 +182,7 @@ export const PetRegister = ({
 				</div>
 			</div> */}
 
-			<div className={`${classes.modal__contentMainFormReveal}`}>
+			<div className={`${ classes.modal__contentMainFormReveal }`}>
 				<div>
 					<ModalCheckbox
 						onClick={() => setHaveChip(!haveChip)}
@@ -207,7 +207,7 @@ export const PetRegister = ({
 				)}
 			</div>
 			<div
-				className={`${classes.modal__contentMainFormSection} ${classes.modal__contentMainFormChip}`}
+				className={`${ classes.modal__contentMainFormSection } ${ classes.modal__contentMainFormChip }`}
 			>
 				<h3>identificación</h3>
 				<div>
@@ -341,7 +341,7 @@ export const PetRegister = ({
 				</div>
 			</div>
 
-			<div className={`${classes.modal__contentMainFormCapture}`}>
+			<div className={`${ classes.modal__contentMainFormCapture }`}>
 				<h3>imagen de mascota</h3>
 				<div>
 					<div>
@@ -370,9 +370,10 @@ export const PetRegister = ({
 			</div>
 
 			<div>
-				<h4>Declaro bajo juramento que:</h4><br/>
-				<div className={`${classes.modal__contentMainFormReveal}`} style={{  gridTemplateColumns: "repeat(1, 1fr)"
-}} >
+				<h4>Declaro bajo juramento que:</h4><br />
+				<div className={`${ classes.modal__contentMainFormReveal }`} style={{
+					gridTemplateColumns: "repeat(1, 1fr)"
+				}} >
 					<div>
 						<ModalCheckbox
 							onClick={() => setCheck((v) => ({ ...v, pet: !v.pet }))}
@@ -381,8 +382,9 @@ export const PetRegister = ({
 						/>
 					</div>
 				</div>
-				<div className={`${classes.modal__contentMainFormReveal}`} style={{  gridTemplateColumns: "repeat(1, 1fr)"
-}}>
+				<div className={`${ classes.modal__contentMainFormReveal }`} style={{
+					gridTemplateColumns: "repeat(1, 1fr)"
+				}}>
 					<div>
 						<ModalCheckbox
 							onClick={() => setCheck((v) => ({ ...v, chip: !v.chip }))}
@@ -395,8 +397,9 @@ export const PetRegister = ({
 						/>
 					</div>
 				</div>
-				<div className={`${classes.modal__contentMainFormReveal}`} style={{  gridTemplateColumns: "repeat(1, 1fr)"
-}}>
+				<div className={`${ classes.modal__contentMainFormReveal }`} style={{
+					gridTemplateColumns: "repeat(1, 1fr)"
+				}}>
 					<div>
 						<ModalCheckbox
 							onClick={() => setCheck((v) => ({ ...v, search: !v.search }))}

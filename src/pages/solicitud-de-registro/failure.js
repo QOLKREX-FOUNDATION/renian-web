@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
-import { RequestView } from "../../components/request";
 import { Layout } from "../../components/containers/Layout/Layout";
 
 export default function Failure() {
