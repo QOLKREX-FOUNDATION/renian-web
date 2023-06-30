@@ -144,7 +144,7 @@ export const CardsSection = () => {
 								<div className={classes.cards__cardDetail}>
 									<p>Consulta y edita los datos de tus mascotas</p>
 									<a
-										href="https://registro.firulaixcoin.finance/"
+										href="https://registro.worldanimalregistry.org"
 										target="_blank"
 										rel="noreferrer noopener"
 									>
