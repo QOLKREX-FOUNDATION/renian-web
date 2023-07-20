@@ -17,7 +17,8 @@ export const IPFS_TESNET = "https://gateway.pinata.cloud/ipfs/";
 export const API_MAINET = {
   firulaix: "https://firuapi1.firulaixcoin.finance/api/",
   firulaixPublic: "https://firuapi1.firulaixcoin.finance/",
-  war: "https://consultwar.renian.foundation/api/",
+  // war: "https://consultwar.renian.foundation/api/",
+  war: "https://firulaix-api-nodejs.vercel.app/api/",
 };
 
 export const API_TESNET = {

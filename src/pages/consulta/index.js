@@ -1,4 +1,4 @@
-import { CardsButton, Layout } from "../../components";
+import { CardsButton, Consult, Layout } from "../../components";
 
 export default function ConsultMain() {
   return (
@@ -7,9 +7,10 @@ export default function ConsultMain() {
       description="Consulta la información de tu mascota en nuestro sistema"
       url="consulta"
     >
-      <a href="https://worldanimalregistry.org/consult">
+      <Consult />
+      {/* <a href="https://worldanimalregistry.org/consult">
         <CardsButton name="aquí" />
-      </a>
+      </a> */}
     </Layout>
   );
 }
