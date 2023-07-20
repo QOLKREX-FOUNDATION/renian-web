@@ -52,13 +52,13 @@ export const CardsSection = () => {
 							<div>
 								<div className={classes.cards__cardDetail}>
 									<p>Revisa los datos de cualquier mascota</p>
-									<a
-										href="https://worldanimalregistry.org/consult"
+									<Link
+										href="/consulta"
 									>
 										<CardsButton
 											name="aquí"
 										/>
-									</a>
+									</Link>
 								</div>
 							</div>
 						</div>
