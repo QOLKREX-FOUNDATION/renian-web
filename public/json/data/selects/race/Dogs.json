@@ -393,13 +393,6 @@
     "es-Es": "BICHÓN MALTÉS",
     "value": "BICHON MALTES"
   },
-
-  {
-    "en-Us": "BICHON HABANERO",
-    "es-Es": "BICHÓN HABANERO",
-    "value": "BICHON HABANERO"
-  },
-
   {
     "en-Us": "BICHON BOLOÑES",
     "es-Es": "BICHON BOLOÑÉS",
@@ -467,34 +460,69 @@
     "value": "BOYKIN SPANIEL"
   },
   {
-    "en-Us": "BRACCO ITALIANO",
-    "es-Es": "BRACCO ITALIANO",
-    "value": "BRACCO ITALIANO"
+    "en-Us": "BRACCO ITALIAN",
+    "es-Es": "BRACO ITALIANO",
+    "value": "BRACCO ITALIEN"
   },
   {
-    "en-Us": "BRAQUE D'AUVERGNE",
-    "es-Es": "BRAQUE D'AUVERGNE",
+    "en-Us": "BRACCO WEIMARANER",
+    "es-Es": "BRACO DE WEIMAR",
+    "value": "BRAQUE WEIMAR"
+  },
+  {
+    "en-Us": "BRACCO GERMAN",
+    "es-Es": "BRACO ALEMAN",
+    "value": "BRAQUE ALLEMAND"
+  },
+  {
+    "en-Us": "BRACCO UNGHRESE - VIZLA",
+    "es-Es": "BRACO HUNGARO - VIZLA",
+    "value": "BRAQUE HONGROIS - VIZLA"
+  },
+  {
+    "en-Us": "BRACCO OF ARIEGE",
+    "es-Es": "BRACO DE ARIEGE",
+    "value": "BRAQUE DE L'ARIEGE"
+  },
+  {
+    "en-Us": "BRACCO OF AUVERGNE",
+    "es-Es": "BRACO DE AUVERNIA",
     "value": "BRAQUE D'AUVERGNE"
   },
   {
-    "en-Us": "BRAQUE DU BOURBONNAIS",
-    "es-Es": "BRAQUE DEL BOURBONNAIS",
+    "en-Us": "BRACCO OF BOURBON",
+    "es-Es": "BRACO DE BORBON",
     "value": "BRAQUE DU BOURBONNAIS"
   },
   {
-    "en-Us": "BRAQUE DU PUY",
-    "es-Es": "BRAQUE DEL PUY",
+    "en-Us": "BRACCO OF PUY",
+    "es-Es": "BRACO DE PUY",
     "value": "BRAQUE DU PUY"
   },
   {
     "en-Us": "BRAQUE FRANCAIS",
-    "es-Es": "BRAQUE FRANCÉS",
+    "es-Es": "BRACO FRANCÉS",
     "value": "BRAQUE FRANCAIS"
   },
   {
-    "en-Us": "BRAQUE SAINT-GERMAIN",
-    "es-Es": "BRAQUE SAINT-GERMAIN",
+    "en-Us": "BRACCO SAINT-GERMAIN",
+    "es-Es": "BRACO SAINT-GERMAIN",
     "value": "BRAQUE SAINT-GERMAIN"
+  },
+  {
+    "en-Us": "BRACCO TIROLES",
+    "es-Es": "BRACO TIROLES",
+    "value": "BRAQUE TIROLES"
+  },
+  {
+    "en-Us": "BRACCO SLOVACCO",
+    "es-Es": "BRACO ESLOVACO",
+    "value": "BRACCO SLOVACCO"
+  },
+  {
+    "en-Us": "BRACCO SLOVACO WIREHAIRED",
+    "es-Es": "BRACO ESLOVACO DE PELO DURO",
+    "value": "BRACCO SLOVACO WIREHAIRED"
   },
   {
     "en-Us": "BRAZILIAN TERRIER",
@@ -977,24 +1005,49 @@
     "value": "FRENCH BULLDOG"
   },
   {
-    "en-Us": "PITBULL",
-    "es-Es": "PITBULL",
-    "value": "PITBULL"
+    "en-Us": "AUSTRALIAN BULLDOG",
+    "es-Es": "BULLDOG AUSTRALIANO",
+    "value": "AUSTRALIAN BULLDOG"
   },
   {
-    "en-Us": "AMERICAN PITBULL TERRIER",
-    "es-Es": "AMERICAN PITBULL TERRIER",
-    "value": "AMERICAN PITBULL TERRIER"
+    "en-Us": "CATAHOULA BULLDOG",
+    "es-Es": "BULLDOG CATAHOULA",
+    "value": "CATAHOULA BULLDOG"
   },
   {
-    "en-Us": "PITBULL AMERICAN STAFFORD",
-    "es-Es": "PITBULL AMERICAN STAFFORD",
-    "value": "PITBULL AMERICAN STAFFORD"
+    "en-Us": "ALAPAHA BLUE BLOOD BULLDOG",
+    "es-Es": "BULLDOG ALAPAHA DE SANGRE AZUL",
+    "value": "ALAPAHA BLUE BLOOD BULLDOG"
   },
   {
-    "en-Us": "PITBULL HALF BLOOD",
-    "es-Es": "MESTIZO TIPO BULL",
-    "value": "PITBULL HALF BLOOD"
+    "en-Us": "VICTORIAN BULLDOG",
+    "es-Es": "BULLDOG VICTORIANO",
+    "value": "VICTORIAN BULLDOG"
+  },
+  {
+    "en-Us": "CAMPEIRO BULLDOG",
+    "es-Es": "BULLDOG CAMPEIRO",
+    "value": "CAMPEIRO BULLDOG"
+  },
+  {
+    "en-Us": "VALLEY BULLDOG",
+    "es-Es": "BULLDOG DEL VALLE",
+    "value": "VALLEY BULLDOG"
+  },
+  {
+    "en-Us": "CONTINENTAL BULLDOG",
+    "es-Es": "BULLDOG CONTINENTAL",
+    "value": "CONTINENTAL BULLDOG"
+  },
+  {
+    "en-Us": "BULLMASTIFF",
+    "es-Es": "BULLMASTIFF",
+    "value": "BULLMASTIFF"
+  },
+  {
+    "en-Us": "PITUBULL",
+    "es-Es": "PITUBULL",
+    "value": "PITUBULL"
   },
   {
     "en-Us": "FRENCH SPANIEL",
@@ -1638,8 +1691,13 @@
   },
   {
     "en-Us": "OLDE ENGLISH BULLDOGGE",
-    "es-Es": "ANTIGUO BULLDOGGE INGLÉS",
+    "es-Es": "ANTIGUO BULLDOG INGLÉS",
     "value": "OLDE ENGLISH BULLDOGGE"
+  },
+  {
+    "en-Us": "ENGLISH BULLDOGGE",
+    "es-Es": "BULLDOG INGLÉS",
+    "value": "ENGLISH BULLDOGGE"
   },
   {
     "en-Us": "OTTERHOUND",
@@ -1773,7 +1831,7 @@
   },
   {
     "en-Us": "POMERANIAN",
-    "es-Es": "POMERANIO",
+    "es-Es": "POMERANIAN",
     "value": "POMERANIAN"
   },
   {
@@ -2380,5 +2438,261 @@
     "en-Us": "ŠARPLANINAC",
     "es-Es": "ŠARPLANINAC",
     "value": "ŠARPLANINAC"
+  },
+  {
+    "en-Us": "BLUE NOSE PITBULL",
+    "es-Es": "PITBULL NARIZ AZUL",
+    "value": "BLUE NOSE PITBULL"
+  },
+  {
+    "en-Us": "AMERICAN BULLY",
+    "es-Es": "BULLY AMERICANO",
+    "value": "AMERICAN BULLY"
+  },
+  {
+    "en-Us": "CHAMUCO PITBULL",
+    "es-Es": "CHAMUCO PITBULL",
+    "value": "CHAMUCO PITBULL"
+  },
+  {
+    "en-Us": "GAMER PITBULL",
+    "es-Es": "GAMER PITBULL",
+    "value": "GAMER PITBULLL"
+  },
+  {
+    "en-Us": "COLBY PITBULL",
+    "es-Es": "COLBY PITBULL",
+    "value": "COLBY PITBULL"
+  },
+  {
+    "en-Us": "JOHNSON PITBULL",
+    "es-Es": "JOHNSON PITBULL",
+    "value": "JOHNSON PITBULL"
+  },
+  {
+    "en-Us": "MONSTER BLUE PITBULL",
+    "es-Es": "MONSTRUO PITBULL AZUL",
+    "value": "MONSTER BLUE PITBULL"
+  },
+  {
+    "en-Us": "PYNAT PITBULL",
+    "es-Es": "PYNAT PITBULL",
+    "value": "PYNAT PITBULL"
+  },
+  {
+    "en-Us": "SPIKE PITBULL",
+    "es-Es": "SPIKE PITBULL",
+    "value": "SPIKE PITBULL"
+  },
+  {
+    "en-Us": "RED NOSE PITBULL",
+    "es-Es": "PITBULL NARIZ ROJA",
+    "value": "RED NOSE PITBULL"
+  },
+  {
+    "en-Us": "STUFFAWLER PITBULL",
+    "es-Es": "STUFFAWLER PITBULL",
+    "value": "STUFFAWLER PITBULL"
+  },
+  {
+    "en-Us": "VILLALIBERTY PITBULL",
+    "es-Es": "VILLALIBERTY PITBULL",
+    "value": "VILLALIBERTY PITBULL"
+  },
+  {
+    "en-Us": "PITBULL",
+    "es-Es": "PITBULL",
+    "value": "PITBULL"
+  },
+
+  {
+    "en-Us": "FRENCH BULLDOG",
+    "es-Es": "FRUG O PUG FRANCÉS",
+    "value": "FRENCH BULLDOG"
+  },
+  {
+    "en-Us": "CHUG",
+    "es-Es": "CHUG",
+    "value": "CHUG"
+  },
+  {
+    "en-Us": "JUG",
+    "es-Es": "JUG",
+    "value": "JUG"
+  },
+  {
+    "en-Us": "SHUG",
+    "es-Es": "SHUG",
+    "value": "SHUG"
+  },
+  {
+    "en-Us": "PUGADOR",
+    "es-Es": "PUGADOR",
+    "value": "PUGADOR"
+  },
+  {
+    "en-Us": "PUGALIER",
+    "es-Es": "PUGALIER",
+    "value": "PUGALIER"
+  },
+  {
+    "en-Us": "BULLPUG",
+    "es-Es": "BULLPUG",
+    "value": "BULLPUG"
+  },
+  {
+    "en-Us": "PUGSKY O HUG",
+    "es-Es": "PUGSKY O HUG",
+    "value": "PUGSKY O HUG"
+  },
+  {
+    "en-Us": "BUGG",
+    "es-Es": "BUGG",
+    "value": "BUGG"
+  },
+  {
+    "en-Us": "PUG TZU",
+    "es-Es": "PUG TZU",
+    "value": "PUG TZU"
+  },
+  {
+    "en-Us": "SCHNUG",
+    "es-Es": "SCHNUG",
+    "value": "SCHNUG"
+  },
+  {
+    "en-Us": "POM-A-PUG",
+    "es-Es": "POM-A-PUG",
+    "value": "POM-A-PUG"
+  },
+  {
+    "en-Us": "PUGGLE",
+    "es-Es": "PUGGLE",
+    "value": "PUGGLE"
+  },
+  {
+    "en-Us": "DAUG",
+    "es-Es": "DAUG",
+    "value": "DAUG"
+  },
+  {
+    "en-Us": "PUGINESE",
+    "es-Es": "PUGINESE",
+    "value": "PUGINESE"
+  },
+  {
+    "en-Us": "PORGI",
+    "es-Es": "PORGI",
+    "value": "PORGI"
+  },
+  {
+    "en-Us": "PUG GRIFÓN",
+    "es-Es": "PUG GRIFÓN",
+    "value": "PUG GRIFÓN"
+  },
+  {
+    "en-Us": "POXER",
+    "es-Es": "POXER",
+    "value": "POXER"
+  },
+  {
+    "en-Us": "PUGSHIRE",
+    "es-Es": "PUGSHIRE",
+    "value": "PUGSHIRE"
+  },
+  {
+    "en-Us": "SHEPUG AUSTRALIANO",
+    "es-Es": "SHEPUG AUSTRALIANO",
+    "value": "SHEPUG AUSTRALIANO"
+  },
+  {
+    "en-Us": "PUG-A-MO",
+    "es-Es": "PUG-A-MO",
+    "value": "PUG-A-MO"
+  },
+  {
+    "en-Us": "BASSUGG",
+    "es-Es": "BASSUGG",
+    "value": "BASSUGG"
+  },
+  {
+    "en-Us": "PUSHON",
+    "es-Es": "PUSHON",
+    "value": "PUSHON"
+  },
+  {
+    "en-Us": "PUGESE",
+    "es-Es": "PUGESE",
+    "value": "PUGESE"
+  },
+  {
+    "en-Us": "PUGILLON",
+    "es-Es": "PUGILLON",
+    "value": "PUGILLON"
+  },
+  {
+    "en-Us": "PUGAPOO",
+    "es-Es": "PUGAPOO",
+    "value": "PUGAPOO"
+  },
+  {
+    "en-Us": "JAPUG",
+    "es-Es": "JAPUG",
+    "value": "JAPUG"
+  },
+  {
+    "en-Us": "ORI PEI",
+    "es-Es": "ORI PEI",
+    "value": "ORI PEI"
+  },
+  {
+    "en-Us": "BULLY FUSION",
+    "es-Es": "FUSION BULLY",
+    "value": "BULLY FUSION"
+  },
+  {
+    "en-Us": "SIAM",
+    "es-Es": "SIAMES",
+    "value": "SIAM"
+  },
+  {
+    "en-Us": "STANDARD DACHSHUND",
+    "es-Es": "PERRO SALCHICHA ESTÁNDAR",
+    "value": "STANDARD DACHSHUND"
+  },
+  {
+    "en-Us": "MINIATURE DACHSHUND",
+    "es-Es": "PERRO SALCHICHA MINIATURA",
+    "value": "MINIATURE DACHSHUND"
+  },
+  {
+    "en-Us": "KANINCHEN DACHSHUND",
+    "es-Es": "PERRO SALCHICHA KANINCHEN",
+    "value": "KANINCHEN DACHSHUND"
+  },
+  {
+    "en-Us": "SHORTHAIR DACHSHUND",
+    "es-Es": "SALCHICHA DE PELO CORTO",
+    "value": "SHORTHAIR DACHSHUND"
+  },
+  {
+    "en-Us": "LONGHAIRED DACHSHUND",
+    "es-Es": "SALCHICHA DE PELO LARGO",
+    "value": "LONGHAIRED DACHSHUND"
+  },
+  {
+    "en-Us": "WICKED DACHSHUND",
+    "es-Es": "SALCHICHA DE PELO DURO",
+    "value": "WICKED DACHSHUND"
+  },
+  {
+    "en-Us": "BICHON HAVANESE o HABANERO",
+    "es-Es": "BICHON HABANERO O HAVANESE",
+    "value": "BICHON HAVANESE o HABANERO"
+  },
+  {
+    "en-Us": "AMERICAN BULLY EXOTIC",
+    "es-Es": "AMERICAN BULLY EXOTIC",
+    "value": "AMERICAN BULLY EXOTIC"
   }
 ]

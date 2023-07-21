@@ -496,7 +496,7 @@
   },
   {
     "en-Us": "TOYGER",
-    "es-Es": "JUGUETE",
+    "es-Es": "JUGUETERO",
     "value": "TOYGER"
   },
   {
@@ -528,5 +528,15 @@
     "en-Us": "ÄGYPTISCHE MAU",
     "es-Es": "AGYPTISCHE MAU",
     "value": "ÄGYPTISCHE MAU"
+  },
+  {
+    "en-Us": "MALHADO",
+    "es-Es": "CALICÓ",
+    "value": "MALHADO"
+  },
+  {
+    "en-Us": "TORTOISESHELL",
+    "es-Es": "CAREY",
+    "value": "TORTOISESHELL"
   }
 ]
