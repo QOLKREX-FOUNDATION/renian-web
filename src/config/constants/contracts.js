@@ -67,4 +67,8 @@ export const TESNET_CONTRACT_WAR = {
 export const TESNET_CONTRACT_SPECIES = {
   DOG: "",
   CAT: "",
+  RABBIT: "",
+  MACAW: "",
+  FERRET: "",
+  GUINEA_PIG: "",
 };

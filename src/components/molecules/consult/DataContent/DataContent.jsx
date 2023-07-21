@@ -22,7 +22,7 @@ const marcas = {
 
 export const ContentMongoPet = ({ dataPet }) => {
     const { obtainPetState, petState, colorState } = usePetState(dataPet);
-    const { races } = useSpecie(dataPet.pet?.type);
+    const { races, species } = useSpecie(dataPet.pet?.type);
     const { countries } = useCountry();
     const { colours } = useColours();
     const [openVaccines, setOpenVaccines] = useState(false);
@@ -104,6 +104,8 @@ export const ContentMongoPet = ({ dataPet }) => {
             ? `${ imageURI }${ dataPet.pet.chip }.png`
             : `${ URL_RENIAN }/petimg/${ dataPet?.pet.usuario_foto }`
     );
+
+    console.log(species)
 
     return (
         <>
@@ -310,7 +312,9 @@ export const ContentMongoPet = ({ dataPet }) => {
                                     <h5>Tipo:</h5>
                                     <span>
                                         {
-                                            dataPet.pet?.type
+                                            species.map(
+                                                (specie) => specie.value === dataPet.pet?.type && specie.label
+                                            )
                                         }
                                     </span>
                                 </div>
