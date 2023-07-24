@@ -39,7 +39,7 @@ export const Back = () => {
                     />
                   </div>
                 </div>
-                <div>
+                {/* <div>
                   <div>
                     <Image
                       src="/img/back/image_03.png"
@@ -49,7 +49,7 @@ export const Back = () => {
                       alt="image"
                     />
                   </div>
-                </div>
+                </div> */}
                 <div>
                   <div>
                     <Image
@@ -128,7 +128,7 @@ export const Back = () => {
                     />
                   </div>
                 </div>
-                <div>
+                {/* <div>
                   <div>
                     <Image
                       src="/img/back/image_03.png"
@@ -138,7 +138,7 @@ export const Back = () => {
                       alt="image"
                     />
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
