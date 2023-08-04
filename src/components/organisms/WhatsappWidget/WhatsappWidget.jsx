@@ -51,16 +51,16 @@ const Card = ({ setOpenMsj }) => {
             />
           </div>
           <div className={classes.card__headerTitle}>
-            <h3>marcela aspillaga</h3>
-            <p>Asesora de Renian</p>
+            <h3>Renian</h3>
+            {/* <p>Asesora de Renian</p> */}
           </div>
         </div>
 
         <section className={classes.card__section}>
           <div>
-            <h6>marcela aspillaga</h6>
+            <h6>renian</h6>
             <p>
-              ¡Hola!, soy Marcela Aspillaga asesora de RENIAN, ¿Cómo puedo
+              ¡Hola!, soy Julián Rojas asesor de RENIAN, ¿Cómo puedo
               ayudarte?
             </p>
           </div>

@@ -11,6 +11,8 @@ import { Vaccines } from "./Vaccines/Vaccines";
 import { useState } from "react";
 import { DefaultButton } from "../../../atoms/buttons/DefaultButton/DefaultButton";
 import { imageURI } from "../../../../config/constants/endpoints";
+import { useRaces } from "../../../../hook/useRaces";
+import { useRouter } from "next/router";
 //import { URL_RENIAN } from "../../../../config/constants/endpoints";
 
 const marcas = {
@@ -106,6 +108,18 @@ export const ContentMongoPet = ({ dataPet }) => {
     );
 
     console.log(species)
+
+    const { getRace, race } = useRaces();
+    // const { locale } = useRouter();
+
+    // console.log(locale)
+
+    useEffect(() => {
+        getRace({
+            type: dataPet.pet?.type,
+            race: dataPet.pet?.race
+        })
+    }, [])
 
     return (
         <>
@@ -296,9 +310,12 @@ export const ContentMongoPet = ({ dataPet }) => {
                                                     dataPet.pet?.race :
                                                     <>
                                                         {" "}
-                                                        {races.map(
+                                                        {/* {races.map(
                                                             (race) => race.value === dataPet.pet?.race && race.label
-                                                        )}
+                                                        )} */}
+                                                        {
+                                                            race.nameSpanish
+                                                        }
                                                     </>
                                             }
                                         </span>
@@ -452,10 +469,18 @@ export const ContentMongoPet = ({ dataPet }) => {
 };
 
 export const ContentWeb3Pet = ({ pet, status }) => {
+    const { locale } = useRouter();
+    const { getRace, race } = useRaces();
     const { races } = useSpecie(pet.type);
     const { countries } = useCountry();
     const { colours } = useColours();
     const { openVaccines, setOpenVaccines } = useState(false);
+    useEffect(() => {
+        getRace({
+            type: pet.type,
+            race: pet.race
+        })
+    }, [])
 
     return (
         <>
@@ -554,9 +579,13 @@ export const ContentWeb3Pet = ({ pet, status }) => {
                                 <div>
                                     <h5>Raza:</h5>
                                     <span>
-                                        {races.map(
+                                        {/* {races.map(
                                             (race) => race.value === pet?.race && race.label
-                                        )}
+                                        )} */}
+                                        {
+                                            race.nameSpanish
+
+                                        }
                                     </span>
                                 </div>
 
