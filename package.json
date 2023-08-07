@@ -9,6 +9,9 @@
     "export": "next export",
     "lint": "next lint"
   },
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "@react-google-maps/api": "^2.13.1",
     "@react-hook/hover": "^4.0.0",
