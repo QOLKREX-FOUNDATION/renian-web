@@ -4,10 +4,11 @@ import { memo } from 'react';
 
 const FORM_ID = 'payment-form';
 
-export const ModalForm = ({ info, url }) => {
+export const ModalForm = ({ info, url, setLoadingButton }) => {
 
     const handlePaymentMethod = useCallback(
         async () => {
+            setLoadingButton(true);
             const formData = new FormData();
             formData.append("platform", "renian");
             formData.append("country", info.country);
@@ -52,6 +53,8 @@ export const ModalForm = ({ info, url }) => {
                     script.setAttribute('data-preference-id', data.data.id);
                     const form = document.getElementById(FORM_ID);
                     form.appendChild(script);
+                    setLoadingButton(false);
+
                 }
                 // window.open(data.data.init_point, "_blank");
             } catch (error) {
