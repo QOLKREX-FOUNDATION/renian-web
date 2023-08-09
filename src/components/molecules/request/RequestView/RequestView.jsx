@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 // import { useCountry, useDocuments, usePerson, useType } from '../../../hook/inputs'
 import { useForm } from 'react-hook-form'
 import ReCAPTCHA from 'react-google-recaptcha'
@@ -11,7 +11,16 @@ import { ReactSelectComponent } from '../../ReactSelectComponent/ReactSelectComp
 import { useUbigeo } from '../../../../hook/useUbigeo'
 import { useCountry, useDocuments, usePerson, useType } from '../../../../hook/inputs'
 import { DefaultModal } from '../../../containers/modals/DefaultModal/DefaultModal'
-import { useModal } from '../../../../hook/useModal'
+
+const requiredFields = [
+    "image",
+    "country",
+    "person",
+    "type",
+    "document",
+    "typeService",
+    "documentNumber",
+];
 
 export const RequestView = () => {
 
@@ -57,6 +66,8 @@ export const RequestView = () => {
     const recaptchaRef = useRef(null);
     const refForm = useRef(null);
     const [showForm, setshowForm] = useState(false);
+    const [disabledButton, setDisabledButton] = useState(true);
+    const [isLoadingButton, setLoadingButton] = useState(true);
 
     const handlePaymentMethod = async () => {
         // const resp= await fetch('https://firulaix-api-nodejs.vercel.app/api/request/payment-methods');
@@ -98,22 +109,22 @@ export const RequestView = () => {
         formData.append("type_service", data.typeService);
         formData.append("image", data.image);
 
-        // console.log(data)
+        console.log(data)
         try {
             // 'http://localhost:5000/api/request/register-user'
             // const res = await fetch('https://firulaix-api-test.vercel.app/api/request/register-user', {
-            const res = await fetch('https://firulaix-api-nodejs.vercel.app/api/request/register-user', {
-                method: 'POST',
-                body: formData,
-            })
-            const response = await res.json();
-            console.log(response);
-            if (response.ok) {
-                setOpenModal(true);
-                reset();
-                recaptchaRef.current.reset();
-                setStep(1);
-            }
+            // const res = await fetch('https://firulaix-api-nodejs.vercel.app/api/request/register-user', {
+            //     method: 'POST',
+            //     body: formData,
+            // })
+            // const response = await res.json();
+            // console.log(response);
+            // if (response.ok) {
+            //     setOpenModal(true);
+            //     reset();
+            //     recaptchaRef.current.reset();
+            //     setStep(1);
+            // }
         } catch (error) {
             console.log(error);
         }
@@ -140,6 +151,7 @@ export const RequestView = () => {
     const handleDeleteImage = () => {
         setValue("image", "");
     };
+
 
     const {
         departments,
@@ -175,6 +187,10 @@ export const RequestView = () => {
         );
     }, [watch("country")]);
 
+    useEffect(() => {
+        const allFieldsFilled = requiredFields.every((field) => !!getValues(field));
+        setDisabledButton(allFieldsFilled);
+    }, [getValues, requiredFields]);
 
     return (
         <>
@@ -353,7 +369,7 @@ export const RequestView = () => {
                                             type='button'
                                             className="bg-[#b81c36] text-white rounded-xl h-10 font-bold disabled:opacity-50"
                                             onClick={handleNextStep}
-                                            disabled={watch("email") === "" || watch("phone") === "" || watch("country") === "" || watch("person") === "" || watch("document") === "" || watch("documentNumber") === "" || watch("type") === "" || watch("typeService") === ""}
+                                            disabled={!watch("email")|| !watch("phone") || !watch("country") || !watch("person")  || !watch("document")  || !watch("documentNumber")  || !watch("type")  || !watch("typeService") }
                                         >
                                             Continuar
                                         </button>
@@ -444,22 +460,6 @@ export const RequestView = () => {
                                                                 )
                                                             }
                                                         </div>
-                                                    </div>
-                                                    <div className="flex gap-2 mt-4">
-                                                        {
-
-                                                            watch("image") !== '' && watch("recaptcha") !== ''
-                                                            && watch("country") !== '' && watch("person") !== ''
-                                                            && watch("type") !== '' && watch("document") !== '' && watch("typeService") !== '' && watch("documentNumber") !== ''
-                                                            && (
-                                                                <button
-                                                                    type='submit'
-                                                                    className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
-                                                                >
-                                                                    Enviar
-                                                                </button>
-                                                            )
-                                                        }
                                                     </div>
                                                 </div>
 
@@ -559,25 +559,57 @@ export const RequestView = () => {
                                                 </>
                                             )
                                         } */}
+                                        { watch('paymentMethod') === 'transferencia' &&
+                                        <>
+                                            <div className="flex gap-2 mt-4">
+                                                <button
+                                                    type='submit'
+                                                    className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
+                                                    disabled={disabledButton}
+                                                    style={{
+                                                        opacity:disabledButton ? 1: 0.5,
+                                                        cursor: disabledButton? 'pointer' :'not-allowed'
+                                                    }}
+                                                >
+                                                    Enviar
+                                                </button>
+                                            </div>
 
-                                        <button
-                                            type='button'
-                                            className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
-                                            onClick={handlePrevStep}
-                                        >
-                                            regresar
-                                        </button>
+                                            <button
+                                                type='button'
+                                                className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
+                                                onClick={handlePrevStep}
+                                            >
+                                                regresar
+                                            </button>
+                                        </>
+
+                                        }
                                     </div>
 
                                 </form>
-                                <div className="flex justify-center border">
+                                <div className="flex justify-center border flex-col">
                                     {
                                         watch('paymentMethod') === 'tarjeta' &&
                                         watch("country") !== '' && watch("person") !== ''
                                         && watch("type") !== '' && watch("document") !== '' && watch("typeService") !== '' && watch("documentNumber") !== ''
                                         && showForm &&
+                                        <>
+                                        {isLoadingButton &&
+                                            <button
+                                                type='submit'
+                                                className="bg-[#b81c36] text-white rounded-xl h-10 font-bold capitalize mx-5"
+                                                disabled={true}
+                                                style={{
+                                                    opacity: 0.5,
+                                                    cursor: 'not-allowed',
+                                                }}
+                                                >
+                                                Pagar
+                                            </button>
+                                        }
                                         < ModalForm
-                                            info={{
+                                        info={{
                                                 country: watch('country'),
                                                 person: watch('person'),
                                                 email: watch('email'),
@@ -589,10 +621,28 @@ export const RequestView = () => {
                                                 documentNumber: watch('documentNumber'),
                                                 paymentMethod: watch('paymentMethod'),
                                             }}
+                                            setLoadingButton ={setLoadingButton}
                                             url={watch("typeService") == "REGISTRO COMPLETO S/.60" ? 'https://firulaix-api-nodejs.vercel.app/api/payment/create-order' : 'https://firulaix-api-nodejs.vercel.app/api/payment/create-order-2'}
-                                        />
+                                            />
+
+                                            
+                                            <button
+                                                type='button'
+                                                className="bg-[#b81c36] text-white rounded-xl h-10 font-bold capitalize mx-5"
+                                                onClick={handlePrevStep}
+                                            >
+                                                regresar
+                                            </button>
+                                        </>
                                     }
                                 </div>
+                                 {/* <button
+                                    type='button'
+                                    className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
+                                    onClick={handlePrevStep}
+                                >
+                                    regresar
+                                </button> */}
                             </div>
                         </div>
                     </div>
