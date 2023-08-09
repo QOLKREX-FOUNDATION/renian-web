@@ -60,7 +60,7 @@ const Card = ({ setOpenMsj }) => {
           <div>
             <h6>renian</h6>
             <p>
-              ¡Hola!, soy Julián Rojas asesor de RENIAN, ¿Cómo puedo
+              ¡Hola!, soy tu asesor de RENIAN, ¿Cómo puedo
               ayudarte?
             </p>
           </div>
