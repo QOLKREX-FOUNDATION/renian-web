@@ -7,7 +7,7 @@ export const Layout = ({ children, title, description, url = "" }) => {
 		<>
 			<Head>
 				<link rel="icon" href="/renian.ico" />
-				<meta author="Qolkrex Foundation/" />
+				<meta name="author" content="Qolkrex Foundation" />
 			</Head>
 			<NextSeo
 				title={title}
