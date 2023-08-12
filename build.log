@@ -1,5 +1,0 @@
-yarn run v1.22.19
-$ next build --verbose
-Unknown or unexpected option: --verbose
-error Command failed with exit code 1.
-info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

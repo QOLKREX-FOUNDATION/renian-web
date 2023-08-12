@@ -35,7 +35,7 @@ export const CardsSection = () => {
 			<section className={classes.cards}>
 				<MainContainer>
 					<div className={classes.cards__container}>
-						<div className={`${ classes.cards__card } ${ classes.cardsOne }`}>
+						<div className={`${classes.cards__card} ${classes.cardsOne}`}>
 							<div className={classes.cards__cardTitle}>
 								<h3>Consultar</h3>
 								<div>
@@ -52,17 +52,15 @@ export const CardsSection = () => {
 							<div>
 								<div className={classes.cards__cardDetail}>
 									<p>Revisa los datos de cualquier mascota</p>
-									<Link
-										href="/consulta"
-									>
-										<CardsButton
-											name="aquí"
-										/>
+									<Link href="/consulta" passHref>
+										<a>
+											<CardsButton name="aquí" />
+										</a>
 									</Link>
 								</div>
 							</div>
 						</div>
-						<div className={`${ classes.cards__card } ${ classes.cardsTwo }`}>
+						<div className={`${classes.cards__card} ${classes.cardsTwo}`}>
 							<div className={classes.cards__cardTitle}>
 								<h3>Solicitud de Registro</h3>
 								<div>
@@ -82,21 +80,15 @@ export const CardsSection = () => {
 										Pre registra los datos y asiste a nuestro local para la
 										aplicación de microchip
 									</p>
-									{/* <CardsButton
-										name="completar"
-										onClick={() => setOpenRegistryModal(true)}
-									/> */}
-									<Link
-										href="/solicitud-de-registro"
-									>
-										<CardsButton
-											name="Completar"
-										/>
+									<Link href="/solicitud-de-registro" passHref>
+										<a>
+											<CardsButton name="Completar" />
+										</a>
 									</Link>
 								</div>
 							</div>
 						</div>
-						<div className={`${ classes.cards__card } ${ classes.cardsThree }`}>
+						<div className={`${classes.cards__card} ${classes.cardsThree}`}>
 							<div className={classes.cards__cardTitle}>
 								<h3>Centros de Registro</h3>
 								<div>
@@ -118,15 +110,12 @@ export const CardsSection = () => {
 										target="_blank"
 										rel="noreferrer noopener"
 									>
-										<CardsButton
-											name="ver mapa"
-										// onClick={() => router.push("/centers")}
-										/>
+										<CardsButton name="ver mapa" />
 									</a>
 								</div>
 							</div>
 						</div>
-						<div className={`${ classes.cards__card } ${ classes.cardsFour }`}>
+						<div className={`${classes.cards__card} ${classes.cardsFour}`}>
 							<div className={classes.cards__cardTitle}>
 								<h3>Mis Mascotas</h3>
 								<div>

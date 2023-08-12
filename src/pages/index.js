@@ -18,13 +18,25 @@ export default function Home({ news }) {
 //- The data can be publicly cached (not user-specific).
 //- The page must be pre-rendered (for SEO) and be very fast — getStaticProps generates HTML and JSON files, both of which can be cached by a CDN for performance.
 export const getStaticProps = async (ctx) => {
-	const content = await fetch(URL_RENIAN_NOTICES);
-	const news = await content.json();
+	try {
+		const content = await fetch(URL_RENIAN_NOTICES);
+		const news = await content.json();
 
-	return {
-		props: {
-			news,
-		},
-		revalidate: 42000, // In seconds
-	};
+		if (!Array.isArray(news)) {
+			throw new Error("Fetched data is not an array.");
+		}
+		return {
+			props: {
+				news,
+			},
+			revalidate: 42000, // In seconds
+		};
+	} catch (error) {
+		return {
+			props: {
+				news: [],
+			},
+			revalidate: 42000, // In seconds
+		};
+	}
 };
