@@ -101,6 +101,13 @@ export const RequestView = () => {
 			}
 		}
 
+		if (!data.image) {
+			toast.error("Se debe agregar el comprobante", {
+				theme: "colored",
+			});
+			return;
+		}
+
 		const formData = new FormData();
 		formData.append("country", data.country);
 		formData.append("person", data.person);
@@ -188,10 +195,18 @@ export const RequestView = () => {
 	}, [watch("country")]);
 
 	useEffect(() => {
-		const allFieldsFilled = requiredFields.every((field) => !!getValues(field));
-		setDisabledButton(allFieldsFilled);
-	}, [getValues, requiredFields]);
-
+		const allFieldsFilled = requiredFields.every((field) => !!watch(field));
+		console.log("allFieldsFilled:", allFieldsFilled);
+		setDisabledButton(!allFieldsFilled);
+	}, [
+		watch("image"),
+		watch("country"),
+		watch("person"),
+		watch("type"),
+		watch("document"),
+		watch("typeService"),
+		watch("documentNumber"),
+	]);
 	return (
 		<>
 			{openModal && (
@@ -504,6 +519,7 @@ export const RequestView = () => {
 															<input
 																id="photo"
 																type="file"
+																accept="image/*"
 																className="bg-gray-400 px-5 py-2 flex justify-center items-center gap-2 rounded-xl hover:cursor-pointer max-w-xs"
 																onChange={handleImage}
 															></input>
@@ -633,10 +649,10 @@ export const RequestView = () => {
 														className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
 														disabled={disabledButton}
 														style={{
-															opacity: disabledButton ? 1 : 0.5,
+															opacity: disabledButton ? 0.5 : 1,
 															cursor: disabledButton
-																? "pointer"
-																: "not-allowed",
+																? "not-allowed"
+																: "pointer",
 														}}
 													>
 														Enviar
