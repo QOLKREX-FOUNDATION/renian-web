@@ -7,7 +7,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper";
-import parse from "html-react-parser";
 import { useMemo } from "react";
 
 export const News = ({ news }) => {
@@ -24,7 +23,7 @@ export const News = ({ news }) => {
 							</p>
 						</div>
 					</Zoom>
-					<Carousel news={news} />
+					{news && <Carousel news={news} />}
 				</div>
 			</MainContainer>
 		</section>
@@ -32,32 +31,32 @@ export const News = ({ news }) => {
 };
 
 const Carousel = ({ news }) => {
-	const items = useMemo(() => news.items, [news]);
+	const items = useMemo(() => news?.items, [news]);
 
 	return (
 		<>
-			<main className={`${classes.carousel}`}>
-				<Swiper
-					slidesPerView="auto"
-					loop={true}
-					centeredSlides={true}
-					autoplay={{
-						delay: 10000,
-						disableOnInteraction: false,
-					}}
-					navigation={true}
-					pagination={{
-						clickable: true,
-					}}
-					breakpoints={{
-						767: {
-							slidesPerView: 3,
-						},
-					}}
-					modules={[Autoplay, Navigation, Pagination]}
-				>
-					{items?.map((article, index) => {
-						return (
+			<div className={`${classes.carousel}`}>
+				{items?.length > 0 && (
+					<Swiper
+						slidesPerView="auto"
+						loop={true}
+						centeredSlides={true}
+						autoplay={{
+							delay: 10000,
+							disableOnInteraction: false,
+						}}
+						navigation={true}
+						pagination={{
+							clickable: true,
+						}}
+						breakpoints={{
+							767: {
+								slidesPerView: 3,
+							},
+						}}
+						modules={[Autoplay, Navigation, Pagination]}
+					>
+						{items?.map((article, index) => (
 							<SwiperSlide key={index}>
 								<div className={classes.news__slide}>
 									<a
@@ -72,7 +71,7 @@ const Carousel = ({ news }) => {
 													layout="responsive"
 													width={90}
 													height={40}
-													href="image"
+													alt="image"
 												/>
 											</div>
 
@@ -86,9 +85,14 @@ const Carousel = ({ news }) => {
 														marginBottom: ".5rem",
 														overflow: "hidden",
 													}}
-													// dangerouslySetInnerHTML={{ __html: article?.content }}
 												>
-													{article?.content && parse(article?.content)}
+													{article?.content && (
+														<div
+															dangerouslySetInnerHTML={{
+																__html: article?.content,
+															}}
+														/>
+													)}
 													...
 												</div>
 											</div>
@@ -96,10 +100,10 @@ const Carousel = ({ news }) => {
 									</a>
 								</div>
 							</SwiperSlide>
-						);
-					})}
-				</Swiper>
-			</main>
+						))}
+					</Swiper>
+				)}
+			</div>
 
 			{/* <main className={`${classes.carousel} ${classes.carousel__mobile}`}>
         <Swiper

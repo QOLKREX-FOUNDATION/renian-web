@@ -22,7 +22,7 @@ export const getStaticProps = async (ctx) => {
 		const content = await fetch(URL_RENIAN_NOTICES);
 		const news = await content.json();
 
-		if (!Array.isArray(news)) {
+		if (!Array.isArray(news?.items)) {
 			throw new Error("Fetched data is not an array.");
 		}
 		return {
