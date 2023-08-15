@@ -78,23 +78,7 @@ const Carousel = ({ news }) => {
 											<div className={classes.news__cardContent}>
 												<h6>{article.author}</h6>
 												<h3>{article.title}</h3>
-												<div
-													style={{
-														fontSize: "1rem",
-														height: "7rem",
-														marginBottom: ".5rem",
-														overflow: "hidden",
-													}}
-												>
-													{article?.content && (
-														<div
-															dangerouslySetInnerHTML={{
-																__html: article?.content,
-															}}
-														/>
-													)}
-													...
-												</div>
+												<p>{article.pubDate}</p>
 											</div>
 										</div>
 									</a>
