@@ -103,23 +103,23 @@ export const ContentMongoPet = ({ dataPet }) => {
 	// ? `https://consultwar.renian.foundation/public/images/image/${ dataPet?.pet.chip }.jpg`
 	const [src, setSrc] = useState(
 		dataPet.pet.chip
-			? `${imageURI}${dataPet.pet.chip}.png`
-			: `${URL_RENIAN}/petimg/${dataPet?.pet.usuario_foto}`
+			? `${ imageURI }${ dataPet.pet.chip }.png`
+			: `${ URL_RENIAN }/petimg/${ dataPet?.pet.usuario_foto }`
 	);
 
 	console.log(species);
 
-	const { getRace, race } = useRaces();
+	// const { getRace, race } = useRaces();
 	// const { locale } = useRouter();
 
 	// console.log(locale)
 
-	useEffect(() => {
-		getRace({
-			type: dataPet.pet?.type,
-			race: dataPet.pet?.race,
-		});
-	}, []);
+	// useEffect(() => {
+	// 	getRace({
+	// 		type: dataPet.pet?.type,
+	// 		race: dataPet.pet?.race,
+	// 	});
+	// }, []);
 
 	return (
 		<>
@@ -161,9 +161,8 @@ export const ContentMongoPet = ({ dataPet }) => {
                                         />
                                     )} */}
 									<img
-										src={`${
-											dataPet.type === "RENIAN" ? dataPet.pet.image : src
-										}`}
+										src={`${ dataPet.type === "RENIAN" ? dataPet.pet.image : src
+											}`}
 										width={60}
 										height={70}
 										href="image-dog"
@@ -171,15 +170,15 @@ export const ContentMongoPet = ({ dataPet }) => {
 										onError={
 											dataPet?.pet
 												? () => {
-														console.log("error");
-														setSrc(
-															`https://ipfs.io/ipfs/${dataPet?.pet.image}`
-														);
-												  }
+													console.log("error");
+													setSrc(
+														`https://ipfs.io/ipfs/${ dataPet?.pet.image }`
+													);
+												}
 												: () => {
-														console.log("error not found");
-														setSrc("/img/img-nofound.png");
-												  }
+													console.log("error not found");
+													setSrc("/img/img-nofound.png");
+												}
 										}
 									/>
 								</div>
@@ -247,18 +246,18 @@ export const ContentMongoPet = ({ dataPet }) => {
 								<div className={classes.contentInfo__cardsText}>
 									<h4>Registrado por:</h4>
 									{dataPet.pet?.userAddress != undefined && (
-										<span>{`${dataPet.pet?.userAddress.substring(
+										<span>{`${ dataPet.pet?.userAddress.substring(
 											0,
 											10
-										)}...`}</span>
+										) }...`}</span>
 									)}
 									{!dataPet.pet?.userAddress && <span>No definido</span>}
 									<br />
 									{dataPet.pet?.userName && (
-										<span>{`${dataPet.pet?.userName.substring(
+										<span>{`${ dataPet.pet?.userName.substring(
 											0,
 											20
-										)}...`}</span>
+										) }...`}</span>
 									)}
 								</div>
 
@@ -311,10 +310,10 @@ export const ContentMongoPet = ({ dataPet }) => {
 											) : (
 												<>
 													{" "}
-													{/* {races.map(
-                                                            (race) => race.value === dataPet.pet?.race && race.label
-                                                        )} */}
-													{race.nameSpanish}
+													{races.map(
+														(race) => race.value === dataPet.pet?.race && race.label
+													)}
+													{/* {race.nameSpanish} */}
 												</>
 											)}
 										</span>
@@ -490,7 +489,7 @@ export const ContentWeb3Pet = ({ pet, status }) => {
 							<div>
 								<div>
 									<img
-										src={`https://ipfs.io/ipfs/${pet?.image}`}
+										src={`https://ipfs.io/ipfs/${ pet?.image }`}
 										alt="image-dog"
 									/>
 								</div>
@@ -541,10 +540,10 @@ export const ContentWeb3Pet = ({ pet, status }) => {
 							<div>
 								<div className={classes.contentInfo__cardsText}>
 									<h4>Registrado por:</h4>
-									<span>{`${pet?.userAddress.substring(0, 10)}...`}</span>
+									<span>{`${ pet?.userAddress.substring(0, 10) }...`}</span>
 									<br />
 									{pet?.userName && (
-										<span>{`${pet?.userName.substring(0, 20)}...`}</span>
+										<span>{`${ pet?.userName.substring(0, 20) }...`}</span>
 									)}
 								</div>
 								<div className={classes.contentInfo__cardsImg}>
@@ -574,10 +573,10 @@ export const ContentWeb3Pet = ({ pet, status }) => {
 								<div>
 									<h5>Raza:</h5>
 									<span>
-										{/* {races.map(
-                                            (race) => race.value === pet?.race && race.label
-                                        )} */}
-										{race.nameSpanish}
+										{races.map(
+											(race) => race.value === pet?.race && race.label
+										)}
+										{/* {race.nameSpanish} */}
 									</span>
 								</div>
 
