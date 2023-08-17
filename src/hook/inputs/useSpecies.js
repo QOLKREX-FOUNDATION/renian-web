@@ -1,60 +1,57 @@
-import { useEffect, useMemo, useState } from "react";
-import specieJson from "../../../public/json/data/selects/species.json";
-import { racesJson } from "../../config/constants/races";
-import { firuApi } from "../../../api/firuApi";
-// import { LangContext } from "../../contexts/Localization/LangContext";
-
+import { useCallback, useContext, useEffect, useState } from "react";
+import { WarContext } from "../../contexts/War/WarContext";
 const lang = { locale: "es-Es" };
 
-export const useSpecie = (specie) => {
-  // const { lang } = useContext(LangContext);
-  const [species, setSpecies] = useState([]);
-  const [races, setRaces] = useState([]);
+export const useSpecie = (type) => {
+	const { speciesData, racesData } = useContext(WarContext);
 
-  const handleSpecies = useMemo(() => {
-    const temp = [];
-    for (let i = 0; i < specieJson.length; i++) {
-      temp.push({
-        label: specieJson[i][lang.locale],
-        value: specieJson[i].value,
-      });
-    }
-    return temp;
-  }, [lang.locale]);
+	const [species, setSpecies] = useState([]);
+	const [races, setRaces] = useState([]);
 
-  const handleRaces = useMemo(() => {
-    const temp = [];
-    for (let i = 0; i < racesJson[specie]?.length; i++) {
-      temp.push({
-        label: racesJson[specie][i][lang.locale],
-        value: racesJson[specie][i].value,
-      });
-    }
+	const handleSpecies = useCallback(() => {
+		const animals = [];
+		for (let i = 0; i < speciesData?.length; i++) {
+			animals.push({
+				label:
+					lang.locale === "es-Es"
+						? speciesData[i]["nameSpanish"]
+						: speciesData[i]["nameEnglish"],
+				value: speciesData[i]["name"],
+			});
+		}
+		return animals;
+	}, []);
 
-    // if (specie === "") return temp;
-    // firuApi.get(`races/type?type=${specie}`).then((res) => {
-    //   console.log(res);
-    //   for (let i = 0; i < res.data.races.length; i++) {
-    //     temp.push({
-    //       label: res.data.races[i]["nameSpanish"],
-    //       value: res.data.races[i].value,
-    //     });
-    //   }
-    // });
+	const handleRaces = useCallback((type) => {
+		const races = [];
+		const racesFilter = racesData.filter((race) => race.animal === type);
+		try {
+			for (let i = 0; i < racesFilter?.length; i++) {
+				races.push({
+					label:
+						lang.locale === "es-Es"
+							? racesFilter[i]["nameSpanish"]
+							: racesFilter[i]["nameEnglish"],
+					value: racesFilter[i]["nameEnglish"],
+				});
+			}
+			return races;
+		} catch (error) {
+			console.log(error);
+			return races;
+		}
+	}, []);
 
-    return temp;
-  }, [lang.locale, specie]);
+	useEffect(() => {
+		setSpecies(handleSpecies());
+	}, [handleSpecies]);
 
-  useEffect(() => {
-    setSpecies(handleSpecies);
-  }, [lang.locale, handleSpecies]);
+	useEffect(() => {
+		setRaces(handleRaces(type));
+	}, [type, handleRaces]);
 
-  useEffect(() => {
-    setRaces(handleRaces);
-  }, [lang.locale, handleRaces]);
-
-  return {
-    species,
-    races,
-  };
+	return {
+		species,
+		races,
+	};
 };

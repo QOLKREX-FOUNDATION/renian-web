@@ -109,18 +109,6 @@ export const ContentMongoPet = ({ dataPet }) => {
 
 	console.log(species);
 
-	const { getRace, race } = useRaces();
-	// const { locale } = useRouter();
-
-	// console.log(locale)
-
-	useEffect(() => {
-		getRace({
-			type: dataPet.pet?.type,
-			race: dataPet.pet?.race,
-		});
-	}, []);
-
 	return (
 		<>
 			<div className={classes.content}>
@@ -310,11 +298,10 @@ export const ContentMongoPet = ({ dataPet }) => {
 												dataPet.pet?.race
 											) : (
 												<>
-													{" "}
-													{/* {races.map(
-                                                            (race) => race.value === dataPet.pet?.race && race.label
-                                                        )} */}
-													{race.nameSpanish}
+													{races.map(
+														(race) =>
+															race.value === dataPet.pet?.race && race.label
+													)}
 												</>
 											)}
 										</span>
