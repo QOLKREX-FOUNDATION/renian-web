@@ -561,10 +561,10 @@ export const ContentWeb3Pet = ({ pet, status }) => {
 								<div>
 									<h5>Raza:</h5>
 									<span>
-										{/* {races.map(
-                                            (race) => race.value === pet?.race && race.label
-                                        )} */}
-										{race.nameSpanish}
+										{races.map(
+											(race) => race.value === pet?.race && race.label
+										)}
+										{/* {race.nameSpanish} */}
 									</span>
 								</div>
 
