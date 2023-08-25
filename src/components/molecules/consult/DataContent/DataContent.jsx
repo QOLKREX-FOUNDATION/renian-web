@@ -312,7 +312,6 @@ export const ContentMongoPet = ({ dataPet }) => {
 												dataPet.pet?.race
 											) : (
 												<>
-													{" "}
 													{races.map(
 														(race) => {
 															// race.value === dataPet.pet?.race && race.label
@@ -323,7 +322,6 @@ export const ContentMongoPet = ({ dataPet }) => {
 															}
 														}
 													)}
-													{/* {race.nameSpanish} */}
 												</>
 											)}
 										</span>
