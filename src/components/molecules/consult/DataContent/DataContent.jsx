@@ -121,6 +121,9 @@ export const ContentMongoPet = ({ dataPet }) => {
 	// 	});
 	// }, []);
 
+	// console.log(dataPet.pet.type)
+	// console.log(races)
+
 	return (
 		<>
 			<div className={classes.content}>
@@ -311,7 +314,14 @@ export const ContentMongoPet = ({ dataPet }) => {
 												<>
 													{" "}
 													{races.map(
-														(race) => race.value === dataPet.pet?.race && race.label
+														(race) => {
+															// race.value === dataPet.pet?.race && race.label
+															// console.log(race.value)
+															// console.log(dataPet.pet?.race)
+															if (race.value === dataPet.pet?.race) {
+																return race.label
+															}
+														}
 													)}
 													{/* {race.nameSpanish} */}
 												</>
@@ -478,6 +488,8 @@ export const ContentWeb3Pet = ({ pet, status }) => {
 		});
 	}, []);
 
+	console.log(races)
+
 	return (
 		<>
 			<div className={classes.content}>
@@ -574,7 +586,14 @@ export const ContentWeb3Pet = ({ pet, status }) => {
 									<h5>Raza:</h5>
 									<span>
 										{races.map(
-											(race) => race.value === pet?.race && race.label
+											(race) => {
+												// race.value === dataPet.pet?.race && race.label
+												// console.log(race.value)
+												// console.log(pet)
+												if (race.value === pet.race) {
+													return race.label
+												}
+											}
 										)}
 										{/* {race.nameSpanish} */}
 									</span>
