@@ -39,7 +39,7 @@ export const useSpecie = (specie) => {
           lang.locale === "es-Es"
             ? racesData[i]["nameSpanish"]
             : racesData[i]["nameEnglish"],
-        value: racesData[i]["nameEnglish"],
+        value: racesData[i]["name"],
       });
     }
 
