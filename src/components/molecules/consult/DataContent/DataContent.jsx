@@ -13,6 +13,7 @@ import { DefaultButton } from "../../../atoms/buttons/DefaultButton/DefaultButto
 import { imageURI } from "../../../../config/constants/endpoints";
 import { useRaces } from "../../../../hook/useRaces";
 import { useRouter } from "next/router";
+import { formaterUserName } from "../../../../utils/formatedSearch";
 //import { URL_RENIAN } from "../../../../config/constants/endpoints";
 
 const marcas = {
@@ -107,7 +108,7 @@ export const ContentMongoPet = ({ dataPet }) => {
 			: `${ URL_RENIAN }/petimg/${ dataPet?.pet.usuario_foto }`
 	);
 
-	console.log(species);
+	// console.log(species);
 
 	// const { getRace, race } = useRaces();
 	// const { locale } = useRouter();
@@ -257,7 +258,7 @@ export const ContentMongoPet = ({ dataPet }) => {
 									{!dataPet.pet?.userAddress && <span>No definido</span>}
 									<br />
 									{dataPet.pet?.userName && (
-										<span>{`${ dataPet.pet?.userName.substring(
+										<span>{`${ formaterUserName(dataPet.pet?.userName).substring(
 											0,
 											20
 										) }...`}</span>
@@ -553,7 +554,7 @@ export const ContentWeb3Pet = ({ pet, status }) => {
 									<span>{`${ pet?.userAddress.substring(0, 10) }...`}</span>
 									<br />
 									{pet?.userName && (
-										<span>{`${ pet?.userName.substring(0, 20) }...`}</span>
+										<span>{`${ formaterUserName(pet?.userName).substring(0, 20) }...`}</span>
 									)}
 								</div>
 								<div className={classes.contentInfo__cardsImg}>

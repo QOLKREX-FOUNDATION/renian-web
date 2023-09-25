@@ -9,8 +9,8 @@ const lang = { locale: "es-Es" };
 
 export const useSpecie = (specie) => {
   const { speciesData, racesData } = useContext(WarContext);
-  console.log(speciesData);
-  console.log(specie);
+  // console.log(speciesData);
+  // console.log(specie);
   // const { lang } = useContext(LangContext);
   const [species, setSpecies] = useState([]);
   const [races, setRaces] = useState([]);
