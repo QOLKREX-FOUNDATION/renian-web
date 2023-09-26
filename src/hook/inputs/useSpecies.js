@@ -31,9 +31,9 @@ export const useSpecie = (specie) => {
 
   const handleRaces = useMemo(() => {
     const temp = [];
-    console.log(racesData);
+    // console.log(racesData);
     for (let i = 0; i < racesData.length; i++) {
-      console.log(racesData);
+      // console.log(racesData);
       temp.push({
         label:
           lang.locale === "es-Es"

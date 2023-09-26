@@ -124,6 +124,9 @@ export const ContentMongoPet = ({ dataPet }) => {
 
 	// console.log(dataPet.pet.type)
 	// console.log(races)
+	console.log(dataPet.pet?.type)
+	console.log(dataPet.pet.image)
+	console.log(dataPet.pet)
 
 	return (
 		<>
@@ -164,27 +167,51 @@ export const ContentMongoPet = ({ dataPet }) => {
                                             onError={() => setSrc("/img/img-nofound.png")}
                                         />
                                     )} */}
-									<img
-										src={`${ dataPet.type === "RENIAN" ? dataPet.pet.image : src
-											}`}
-										width={60}
-										height={70}
-										href="image-dog"
-										alt="image-dog"
-										onError={
-											dataPet?.pet
-												? () => {
-													console.log("error");
-													setSrc(
-														`https://ipfs.io/ipfs/${ dataPet?.pet.image }`
-													);
+									{
+										dataPet.type === "RENIAN" ?
+											<img
+												src={`${ dataPet.pet.image }`}
+												width={60}
+												height={70}
+												href="image-dog"
+												alt="image-dog"
+												onError={
+													dataPet?.pet
+														? () => {
+															console.log("error");
+															setSrc(
+																`${ dataPet?.pet.image }`
+															);
+														}
+														: () => {
+															console.log("error not found");
+															setSrc("/img/img-nofound.png");
+														}
 												}
-												: () => {
-													console.log("error not found");
-													setSrc("/img/img-nofound.png");
+											/>
+											:
+											<img
+												src={`${ src
+													}`}
+												width={60}
+												height={70}
+												href="image-dog"
+												alt="image-dog"
+												onError={
+													dataPet?.pet
+														? () => {
+															console.log("error");
+															setSrc(
+																`https://ipfs.io/ipfs/${ dataPet?.pet.image }`
+															);
+														}
+														: () => {
+															console.log("error not found");
+															setSrc("/img/img-nofound.png");
+														}
 												}
-										}
-									/>
+											/>
+									}
 								</div>
 								{petState && (
 									<div className={classes.contentImgStatus}>
@@ -216,6 +243,21 @@ export const ContentMongoPet = ({ dataPet }) => {
 									<p>Esta mascota debe actualizar sus datos.</p>
 								</div>
 							)}
+						</div>
+						<div className="flex items-center gap-3 py-3 px-2 text-orange-600 border-2 border-orange-600 rounded-2xl">
+							<div className="w-44">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16">
+									<path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+								</svg>
+							</div>
+							<div className="flex flex-col">
+								<span className="text-sm">
+									Si deseas cambiar el estado de tu mascota de activo a perdido o robado <b>¡Comunícate con RENIAN!</b> De inmediato modificaremos su estado y colocaremos tu número de contacto.
+								</span>
+								{/* <span className=" text-green-500 font-semibold">
+									Whatsapp: +51 923 683 933
+								</span> */}
+							</div>
 						</div>
 					</div>
 
@@ -257,12 +299,20 @@ export const ContentMongoPet = ({ dataPet }) => {
 									)}
 									{!dataPet.pet?.userAddress && <span>No definido</span>}
 									<br />
-									{dataPet.pet?.userName && (
-										<span>{`${ formaterUserName(dataPet.pet?.userName).substring(
-											0,
-											20
-										) }...`}</span>
-									)}
+									{
+										dataPet.type === "RENIAN" ?
+											<>
+											</>
+											:
+											<>
+												{dataPet.pet?.userName && (
+													<span>{`${ formaterUserName(dataPet.pet?.userName).substring(
+														0,
+														20
+													) }...`}</span>
+												)}
+											</>
+									}
 								</div>
 
 								<div className={classes.contentInfo__cardsImg}>
@@ -288,7 +338,9 @@ export const ContentMongoPet = ({ dataPet }) => {
 										dataPet.pet?.adopterLastName != undefined && (
 											<span>
 												{dataPet.type === "RENIAN" ? (
-													dataPet.pet?.adopterName
+													<>
+														{dataPet.pet?.adopterName} {dataPet.pet?.adopterLastName}
+													</>
 												) : (
 													<>
 														{dataPet.adopter?.name} {dataPet.adopter?.lastName}
@@ -345,7 +397,7 @@ export const ContentMongoPet = ({ dataPet }) => {
 								<div>
 									<h5>Nacimiento:</h5>
 									{dataPet.pet?.date != undefined && (
-										<span>{formatDate(dataPet.pet?.date)}</span>
+										<span>{dataPet.type === "RENIAN" ? dataPet.pet?.date : formatDate(dataPet.pet?.date)}</span>
 									)}
 									{dataPet.pet?.usuario_empresa_sector != undefined && (
 										<span>{dataPet.pet?.usuario_empresa_sector}</span>
@@ -355,7 +407,7 @@ export const ContentMongoPet = ({ dataPet }) => {
 								<div>
 									<h5>Fecha de adopcion:</h5>
 									{dataPet.pet?.date != undefined && (
-										<span>{formatDate(dataPet.pet?.dateAdoption)}</span>
+										<span>{dataPet.pet?.dateAdoption ? formatDate(dataPet.pet?.dateAdoption) : dataPet.pet?.dateAdoption}</span>
 									)}
 									{dataPet.pet?.usuario_registrado != undefined && (
 										<span>{dataPet.pet?.usuario_empresa_sector}</span>
@@ -487,7 +539,8 @@ export const ContentWeb3Pet = ({ pet, status }) => {
 		});
 	}, []);
 
-	console.log(races)
+	// console.log(races)
+	console.log(pet?.type)
 
 	return (
 		<>

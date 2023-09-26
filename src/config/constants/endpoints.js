@@ -19,6 +19,7 @@ export const API_MAINET = {
   firulaixPublic: "https://firuapi1.firulaixcoin.finance/",
   // war: "https://consultwar.renian.foundation/api/",
   war: "https://firulaix-api-nodejs.vercel.app/api/",
+  // war: "http://localhost:5000/api/",
 };
 
 export const API_TESNET = {

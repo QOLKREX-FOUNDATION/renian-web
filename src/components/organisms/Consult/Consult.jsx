@@ -41,8 +41,9 @@ export const Consult = () => {
 	const getInfo = async (value) => {
 		if (value) {
 			try {
-				const rsp = await fetch(`${API.war}renian/search?id=${value}`);
+				const rsp = await fetch(`${ API.war }renian/search?id=${ value }`);
 				const data = await rsp.json();
+				console.log(data)
 
 				setdataPet(data);
 				setOnLoad(false);

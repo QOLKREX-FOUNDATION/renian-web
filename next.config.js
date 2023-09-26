@@ -3,8 +3,9 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
-    loader: "akamai",
-    path: "",
+    domains: ["res.cloudinary.com", "consultwar.renian.foundation"],
+    // loader: "akamai",
+    // path: "",
   },
 };
 
