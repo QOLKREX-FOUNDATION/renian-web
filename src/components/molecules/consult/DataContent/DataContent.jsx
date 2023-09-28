@@ -245,21 +245,56 @@ export const ContentMongoPet = ({ dataPet }) => {
 								</div>
 							)}
 						</div>
-						<div className="flex items-center gap-3 py-3 px-2 text-orange-600 border-2 border-orange-600 rounded-2xl">
-							<div className="w-44">
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16">
-									<path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-								</svg>
+						{
+							(dataPet.pet.status === "ADOPTION" || dataPet.pet.status == "ACTIVE" || dataPet.pet.status == "GALLERY") &&
+							<div className="flex items-center gap-3 py-3 px-2 text-orange-600 border-2 border-orange-600 rounded-2xl">
+								<div className="w-44">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16">
+										<path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+									</svg>
+								</div>
+								<div className="flex flex-col">
+									<span className="text-sm">
+										Si deseas cambiar el estado de tu mascota de activo a perdido o robado <b>¡Comunícate con RENIAN!</b> De inmediato modificaremos su estado y colocaremos tu número de contacto.
+									</span>
+								</div>
 							</div>
-							<div className="flex flex-col">
-								<span className="text-sm">
-									Si deseas cambiar el estado de tu mascota de activo a perdido o robado <b>¡Comunícate con RENIAN!</b> De inmediato modificaremos su estado y colocaremos tu número de contacto.
-								</span>
-								{/* <span className=" text-green-500 font-semibold">
-									Whatsapp: +51 923 683 933
-								</span> */}
+						}
+						{
+							(dataPet.pet.status === "LOST" || dataPet.pet.status === "STOLEN") &&
+							<div className="flex items-center gap-3 py-3 px-2 text-orange-600 border-2 border-orange-600 rounded-2xl">
+								<div className="w-44">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16">
+										<path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+									</svg>
+								</div>
+								<div className="flex flex-col">
+									<span className="text-sm">
+										Si deseas cambiar el estado de tu mascota de activo a perdido o robado <b>¡Comunícate con RENIAN!</b> De inmediato modificaremos su estado y colocaremos tu número de contacto.
+									</span>
+									<span>
+										contactarce a : 996844856
+									</span>
+								</div>
 							</div>
-						</div>
+						}
+						{
+							dataPet.pet.status === "DEAD" &&
+							<div className="flex items-center gap-3 py-3 px-2 text-purple-600 border-2 border-purple-600 rounded-2xl">
+								<div className="w-44">
+									<svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<path d="M10 21h4v-9h5v-4h-5v-5h-4v5h-5v4h5z"></path>
+									</svg>
+								</div>
+								<div className="flex flex-col">
+									<span className="text-sm">
+										Lamento profundamente la pérdida de tu querida mascota. En estos momentos difíciles, recordemos con cariño los hermosos momentos que compartimos con ella. Su amor y compañía siempre permanecerán en nuestros corazones.
+									</span>
+								</div>
+							</div>
+						}
+
 					</div>
 
 					<div className={classes.contentInfo}>
