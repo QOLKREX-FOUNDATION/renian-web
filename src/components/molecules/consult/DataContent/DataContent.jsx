@@ -127,6 +127,7 @@ export const ContentMongoPet = ({ dataPet }) => {
 	console.log(dataPet.pet?.type)
 	console.log(dataPet.pet.image)
 	console.log(dataPet.pet)
+	console.log(dataPet)
 
 	return (
 		<>
@@ -508,6 +509,26 @@ export const ContentMongoPet = ({ dataPet }) => {
 										</>
 									)}
 								</div>
+
+								{
+									dataPet.pet.status === "LOST" &&
+									<div>
+										<h5>Teléfono:</h5>
+										{dataPet.type === "RENIAN" ? (
+											<>
+												{
+													<span>
+														{dataPet?.adopter.phone}
+													</span>
+												}
+											</>
+										) : (
+											<>
+												<span>{dataPet?.adopter.phone}</span>
+											</>
+										)}
+									</div>
+								}
 							</div>
 						</div>
 					</div>
