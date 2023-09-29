@@ -110,17 +110,18 @@ export const ContentMongoPet = ({ dataPet }) => {
 
 	// console.log(species);
 
-	// const { getRace, race } = useRaces();
+	const { getRace, race } = useRaces();
 	// const { locale } = useRouter();
 
 	// console.log(locale)
 
-	// useEffect(() => {
-	// 	getRace({
-	// 		type: dataPet.pet?.type,
-	// 		race: dataPet.pet?.race,
-	// 	});
-	// }, []);
+	useEffect(() => {
+		getRace({
+			type: dataPet.pet?.type,
+			race: dataPet.pet?.race,
+		});
+	}, []);
+	console.log(race)
 
 	// console.log(dataPet.pet.type)
 	// console.log(races)
@@ -415,7 +416,7 @@ export const ContentMongoPet = ({ dataPet }) => {
 												dataPet.pet?.race
 											) : (
 												<>
-													{races.map(
+													{/* {races.map(
 														(race) => {
 															// race.value === dataPet.pet?.race && race.label
 															// console.log(race.value)
@@ -424,7 +425,10 @@ export const ContentMongoPet = ({ dataPet }) => {
 																return race.label
 															}
 														}
-													)}
+													)} */}
+													{
+														race.nameSpanish
+													}
 												</>
 											)}
 										</span>
@@ -707,17 +711,17 @@ export const ContentWeb3Pet = ({ pet, status }) => {
 								<div>
 									<h5>Raza:</h5>
 									<span>
-										{races.map(
+										{/* {races.map(
 											(race) => {
 												// race.value === dataPet.pet?.race && race.label
-												// console.log(race.value)
+												console.log(race.value)
 												// console.log(pet)
 												if (race.value === pet.race) {
 													return race.label
 												}
 											}
-										)}
-										{/* {race.nameSpanish} */}
+										)} */}
+										{race.nameSpanish}
 									</span>
 								</div>
 
