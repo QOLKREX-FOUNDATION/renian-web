@@ -34,6 +34,8 @@ export const RequestView = () => {
 	const router = useRouter();
 	const query = router.query;
 
+	const baseUrl = "https://firulaix-api-nodejs.vercel.app"
+
 	// form data
 	const {
 		register,
@@ -124,7 +126,7 @@ export const RequestView = () => {
 			// 'http://localhost:5000/api/request/register-user'
 			// const res = await fetch('https://firulaix-api-test.vercel.app/api/request/register-user', {
 			const res = await fetch(
-				"https://firulaix-api-nodejs.vercel.app/api/request/register-user-renian",
+				`${ baseUrl }/api/request/register-user-renian`,
 				{
 					method: "POST",
 					body: formData,
@@ -287,29 +289,26 @@ export const RequestView = () => {
 									<div className="flex">
 										<button
 											type="button"
-											className={`text-white w-12 h-12 rounded-full font-bold ${
-												step === 1 ? "bg-[#b81c36]" : "bg-[#9c182e]"
-											}`}
+											className={`text-white w-12 h-12 rounded-full font-bold ${ step === 1 ? "bg-[#b81c36]" : "bg-[#9c182e]"
+												}`}
 										>
 											1
 										</button>
 										<div className="w-10 h-2 bg-white mt-4"></div>
 										<button
 											type="button"
-											className={`text-white w-12 h-12 rounded-full font-bold ${
-												step === 2 ? "bg-[#b81c36]" : "bg-[#9c182e]"
-											}`}
+											className={`text-white w-12 h-12 rounded-full font-bold ${ step === 2 ? "bg-[#b81c36]" : "bg-[#9c182e]"
+												}`}
 										>
 											2
 										</button>
 									</div>
 									{/* step 1 form */}
 									<div
-										className={`w-full flex flex-col py-3 gap-3 max-w-xl ${
-											step === 1
-												? "opacity-100 z-10"
-												: "opacity-0 -z-20 absolute overflow-hidden w-0"
-										}`}
+										className={`w-full flex flex-col py-3 gap-3 max-w-xl ${ step === 1
+											? "opacity-100 z-10"
+											: "opacity-0 -z-20 absolute overflow-hidden w-0"
+											}`}
 									>
 										<h2>Identificación</h2>
 										<ModalInputComponent
@@ -426,18 +425,17 @@ export const RequestView = () => {
 									</div>
 									{/* step 2 form */}
 									<div
-										className={`flex flex-col gap-3 w-full max-w-xl ${
-											step === 1
-												? "opacity-0 -z-20 absolute overflow-hidden w-0"
-												: "opacity-100 z-10"
-										}`}
+										className={`flex flex-col gap-3 w-full max-w-xl ${ step === 1
+											? "opacity-0 -z-20 absolute overflow-hidden w-0"
+											: "opacity-100 z-10"
+											}`}
 									>
 										<div className="flex flex-col">
 											<h2 className="text-lg font-semibold">
 												Información del Pago
 											</h2>
 											{/* transferncia */}
-											<div className="flex flex-col justify-between">
+											{/* <div className="flex flex-col justify-between">
 												<label htmlFor="tranferencia">
 													<input
 														type="radio"
@@ -458,17 +456,14 @@ export const RequestView = () => {
 													hasta que se haya recibido el importe a nuestra
 													cuenta.
 												</p>
-											</div>
+											</div> */}
 
-											{
-												// watch('paymentMethod') === 'transferencia' &&
-
+											{/* {
 												<div
-													className={`${
-														watch("paymentMethod") === "transferencia"
-															? "flex flex-col z-10"
-															: "hidden -z-10"
-													}`}
+													className={`${ watch("paymentMethod") === "transferencia"
+														? "flex flex-col z-10"
+														: "hidden -z-10"
+														}`}
 												>
 													<div className="mt-4"></div>
 													<ReCAPTCHA
@@ -543,7 +538,7 @@ export const RequestView = () => {
 														</div>
 													</div>
 												</div>
-											}
+											} */}
 
 											{/* tarjeta */}
 											<div className="flex flex-col justify-between pt-3 pb-3">
@@ -709,8 +704,8 @@ export const RequestView = () => {
 													setLoadingButton={setLoadingButton}
 													url={
 														watch("typeService") == "REGISTRO COMPLETO S/.60"
-															? "https://firulaix-api-nodejs.vercel.app/api/payment/create-order"
-															: "https://firulaix-api-nodejs.vercel.app/api/payment/create-order-2"
+															? `${ baseUrl }/api/payment/create-order`
+															: `${ baseUrl }/api/payment/create-order-2`
 													}
 												/>
 
