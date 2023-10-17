@@ -16,6 +16,8 @@ import {
 	useType,
 } from "../../../../hook/inputs";
 import { DefaultModal } from "../../../containers/modals/DefaultModal/DefaultModal";
+import { useContext } from "react";
+import { FormRenianContext } from "../../../../contexts/FormRenian";
 
 const requiredFields = [
 	"image",
@@ -28,13 +30,14 @@ const requiredFields = [
 ];
 
 export const RequestView = () => {
-	const [step, setStep] = useState(1);
+	// const [step, setStep] = useState(1);
 	// const { openModal,  setOpenModal } = useModal();
 	const [openModal, setOpenModal] = useState(false);
 	const router = useRouter();
 	const query = router.query;
 
 	const baseUrl = "https://firulaix-api-nodejs.vercel.app"
+	// const baseUrl = "http://localhost:5000"
 
 	// form data
 	const {
@@ -54,7 +57,7 @@ export const RequestView = () => {
 			type: "dni",
 			typeService: "",
 			image: "",
-			document: "",
+			document: "DNI",
 			documentNumber: "",
 			paymentMethod: "transferencia",
 			// department: "",
@@ -75,6 +78,9 @@ export const RequestView = () => {
 	const [disabledButton, setDisabledButton] = useState(true);
 	const [isLoadingButton, setLoadingButton] = useState(true);
 
+	const { setFormState, form } = useContext(FormRenianContext);
+	const { step } = form;
+
 	const handlePaymentMethod = async () => {
 		// const resp= await fetch('https://firulaix-api-nodejs.vercel.app/api/request/payment-methods');
 
@@ -83,11 +89,44 @@ export const RequestView = () => {
 
 	const handleNextStep = () => {
 		// if (errors) return;
-		setStep(step + 1);
+		// setStep(step + 1);
+
+		setFormState({
+			step: 2,
+			user: {
+				email: watch("email"),
+				phone: watch("phone"),
+				country: watch("country"),
+				person: watch("person"),
+				document: watch("document"),
+				documentNumber: watch("documentNumber"),
+				type: watch("type"),
+				typeService: watch("typeService"),
+			}
+		})
+
+		router.push({
+			pathname: "/solicitud-de-registro/step2",
+			// query: { status: "success" },
+		});
 	};
+
 	const handlePrevStep = () => {
 		// if (errors) return;
-		setStep(step - 1);
+		// setStep(step - 1);
+
+		setFormState({
+			step: 1,
+			user: {
+				...form.user
+			}
+		})
+
+		router.push({
+			pathname: "/solicitud-de-registro",
+			// query: { status: "success" },
+		});
+
 		// console.log(watch("image"), watch("country"), watch("person"), watch("type"), watch("document"), watch("typeService"), watch("documentNumber"))
 	};
 
@@ -166,6 +205,30 @@ export const RequestView = () => {
 		setValue("image", "");
 	};
 
+	useEffect(() => {
+		console.log(form.user)
+		if (form.user !== undefined) {
+			setValue("email", form.user?.email);
+			setValue("phone", form.user?.phone);
+			setValue("country", form.user?.country);
+			setValue("person", form.user?.person);
+			setValue("document", form.user?.document);
+			setValue("documentNumber", form.user?.documentNumber);
+			setValue("type", form.user?.type);
+			setValue("typeService", form.user?.typeService);
+			console.log({ form })
+			console.log(watch("image"), watch("country"), watch("person"), watch("type"), watch("document"), watch("typeService"), watch("documentNumber"))
+		}
+	}, [])
+
+	useEffect(() => {
+		if (form.user === undefined) {
+			router.push({
+				pathname: "/solicitud-de-registro",
+			});
+		}
+	}, [])
+
 	const {
 		departments,
 		provinces,
@@ -192,9 +255,9 @@ export const RequestView = () => {
 		handleDistricts(watch("province"));
 	}, [watch("province")]);
 
-	useEffect(() => {
-		handleDocuments(setValue, watch("country"), watch("person"));
-	}, [watch("country")]);
+	// useEffect(() => {
+	// 	handleDocuments(setValue, watch("country"), watch("person"));
+	// }, [watch("country")]);
 
 	useEffect(() => {
 		const allFieldsFilled = requiredFields.every((field) => !!watch(field));
@@ -209,6 +272,7 @@ export const RequestView = () => {
 		watch("typeService"),
 		watch("documentNumber"),
 	]);
+
 	return (
 		<>
 			{openModal && (
@@ -259,11 +323,48 @@ export const RequestView = () => {
 									height={150}
 									className="object-cover"
 								/>
-								<div className="flex flex-col text-white px-4 ">
+								{/* <div className="flex flex-col text-white px-4 ">
 									<h2 className="text-2xl font-bold">Incluye:</h2>
 									<p>-----------------------------</p>
 									<ul className="font-semibold">
 										<li className="list-disc">Microchip de identificación</li>
+										<li className="list-disc">
+											Registro en el sistema de W.A.R
+										</li>
+										<li className="list-disc">Certificación de adopción</li>
+										<li className="list-disc">
+											Consulta veterinaria
+											<br />
+											<span className="text-sm">
+												Sede principal Jesús María - Lima Perú
+											</span>
+										</li>
+									</ul>
+									<p>-----------------------------</p>
+								</div> */}
+								<div className="flex flex-col text-white px-4 ">
+									<h2 className="text-2xl font-bold">Registro Completo:</h2>
+									<p>-----------------------------</p>
+									<ul className="font-semibold">
+										<li className="list-disc">Microchip de identificación</li>
+										<li className="list-disc">
+											Registro en el sistema de W.A.R
+										</li>
+										<li className="list-disc">Certificación de adopción</li>
+										<li className="list-disc">
+											Consulta veterinaria
+											<br />
+											<span className="text-sm">
+												Sede principal Jesús María - Lima Perú
+											</span>
+										</li>
+									</ul>
+									<p>-----------------------------</p>
+								</div>
+								<div className="flex flex-col text-white px-4 ">
+									<h2 className="text-2xl font-bold">Solo Registro:</h2>
+									<p>-----------------------------</p>
+									<ul className="font-semibold">
 										<li className="list-disc">
 											Registro en el sistema de W.A.R
 										</li>
@@ -410,14 +511,14 @@ export const RequestView = () => {
 											className="bg-[#b81c36] text-white rounded-xl h-10 font-bold disabled:opacity-50"
 											onClick={handleNextStep}
 											disabled={
-												!watch("email") ||
-												!watch("phone") ||
-												!watch("country") ||
-												!watch("person") ||
-												!watch("document") ||
-												!watch("documentNumber") ||
-												!watch("type") ||
-												!watch("typeService")
+												watch("email") == '' ||
+												watch("phone") == '' ||
+												watch("country") == '' ||
+												watch("person") == '' ||
+												watch("document") == '' ||
+												watch("documentNumber") == '' ||
+												watch("type") == '' ||
+												watch("typeService") == ''
 											}
 										>
 											Continuar

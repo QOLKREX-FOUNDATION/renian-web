@@ -41,6 +41,7 @@ export default function Success() {
         }
         if (!data.ok) {
           setError(true);
+          router.push("/solicitud-de-registro/failure");
         }
       }
     } catch (error) {

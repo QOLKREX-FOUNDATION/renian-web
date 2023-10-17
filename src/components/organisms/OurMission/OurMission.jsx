@@ -3,7 +3,7 @@ import classes from "./our-mission.module.scss";
 import Zoom from "react-reveal/Zoom";
 import { MainContainer } from "../../";
 
-export const OurMission = () => {
+function OurMission() {
   return (
     <section className={classes.mission} id="mission">
       <MainContainer>
@@ -60,3 +60,5 @@ export const OurMission = () => {
     </section>
   );
 };
+
+export default OurMission;

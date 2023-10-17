@@ -10,6 +10,7 @@ export const NotFound = () => {
           layout="responsive"
           width={80}
           height={80}
+          alt="no-chip"
         />
       </div>
       <p>Número de chip no encontrado</p>

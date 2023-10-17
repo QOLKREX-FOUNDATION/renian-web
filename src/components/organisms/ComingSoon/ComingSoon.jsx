@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Lottie from "react-lottie";
-import circuits from "../../../../public/json/circuits.json";
+// import circuits from "../../../../public/json/circuits.json";
 import { MainContainer } from "../../";
 import classes from "./coming-soon.module.scss";
 
@@ -34,6 +34,7 @@ export const ComingSoon = () => {
                   layout="responsive"
                   width={50}
                   height={50}
+                  alt="blockchain-icon"
                 />
               </div>
             </div>
@@ -59,7 +60,7 @@ const Decorate = () => {
 
   return (
     <div className={classes.coming__decorate}>
-      <Lottie
+      {/* <Lottie
         isClickToPauseDisabled={true}
         style={{
           position: "absolute",
@@ -70,7 +71,7 @@ const Decorate = () => {
           animationData: circuits,
           defaultOptions,
         }}
-      />
+      /> */}
     </div>
   );
 };
@@ -80,7 +81,7 @@ const Banner = () => {
     <div className={classes.coming__banner}>
       <div className={classes.coming__bannerBg}>
         <div>
-          <Image src="/img/alert-frame.png" layout="fill" />
+          <Image src="/img/alert-frame.png" layout="fill" alt="banner" />
         </div>
       </div>
       <div className={classes.coming__bannerContent}>

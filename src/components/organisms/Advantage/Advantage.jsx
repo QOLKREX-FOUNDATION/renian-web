@@ -3,7 +3,7 @@ import classes from "./advantage.module.scss";
 import Bounce from "react-reveal/Bounce";
 import { MainContainer } from "../..";
 
-export const Advantage = () => {
+function Advantage() {
   return (
     <section className={classes.advantage} id="about">
       <MainContainer>
@@ -27,6 +27,7 @@ export const Advantage = () => {
             <ul>
               <li>
                 <lord-icon
+                  loading="lazy"
                   src="https://cdn.lordicon.com/euyxudqt.json"
                   trigger="loop"
                   colors="primary:#bf002a,secondary:#bf002a"
@@ -37,6 +38,7 @@ export const Advantage = () => {
 
               <li>
                 <lord-icon
+                  loading="lazy"
                   src="https://cdn.lordicon.com/euyxudqt.json"
                   trigger="loop"
                   colors="primary:#bf002a,secondary:#bf002a"
@@ -47,6 +49,7 @@ export const Advantage = () => {
 
               <li>
                 <lord-icon
+                  loading="lazy"
                   src="https://cdn.lordicon.com/euyxudqt.json"
                   trigger="loop"
                   colors="primary:#bf002a,secondary:#bf002a"
@@ -57,6 +60,7 @@ export const Advantage = () => {
 
               <li>
                 <lord-icon
+                  loading="lazy"
                   src="https://cdn.lordicon.com/euyxudqt.json"
                   trigger="loop"
                   colors="primary:#bf002a,secondary:#bf002a"
@@ -67,6 +71,7 @@ export const Advantage = () => {
 
               <li>
                 <lord-icon
+                  loading="lazy"
                   src="https://cdn.lordicon.com/euyxudqt.json"
                   trigger="loop"
                   colors="primary:#bf002a,secondary:#bf002a"
@@ -77,6 +82,7 @@ export const Advantage = () => {
 
               <li>
                 <lord-icon
+                  loading="lazy"
                   src="https://cdn.lordicon.com/euyxudqt.json"
                   trigger="loop"
                   colors="primary:#bf002a,secondary:#bf002a"
@@ -87,6 +93,7 @@ export const Advantage = () => {
 
               <li>
                 <lord-icon
+                  loading="lazy"
                   src="https://cdn.lordicon.com/euyxudqt.json"
                   trigger="loop"
                   colors="primary:#bf002a,secondary:#bf002a"
@@ -101,3 +108,5 @@ export const Advantage = () => {
     </section>
   );
 };
+
+export default Advantage;

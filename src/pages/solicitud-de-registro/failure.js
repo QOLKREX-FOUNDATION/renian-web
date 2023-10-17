@@ -46,7 +46,7 @@ export default function Failure() {
 
   return (
     <Layout>
-      <div className="flex w-full justify-center bg-red-500">
+      <div className="flex w-full justify-center bg-red-500 py-10 mt-20">
         <div className="flex flex-col font-fredoka py-10">
           <h1 className="text-3xl font-bold">
             Lo sentimos, tu solicitud no pudo ser procesada

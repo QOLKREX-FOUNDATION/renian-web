@@ -21,6 +21,7 @@ export const ContactHead = () => {
             <div ref={targetDir}>
               <a style={{ color: hoverDir ? "#bf002a" : "#000000" }}>
                 <lord-icon
+                  loading="lazy"
                   src="https://cdn.lordicon.com/gwklwoti.json"
                   trigger={hoverDir ? "loop" : "none"}
                   colors="primary:#bf002a,secondary:#bf002a"
@@ -31,6 +32,7 @@ export const ContactHead = () => {
             <div ref={targetHours}>
               <a style={{ color: hoverHours ? "#bf002a" : "#000000" }}>
                 <lord-icon
+                  loading="lazy"
                   src="https://cdn.lordicon.com/uutnmngi.json"
                   trigger={hoverHours ? "loop" : "none"}
                   colors="primary:#bf002a,secondary:#bf002a"
@@ -49,6 +51,7 @@ export const ContactHead = () => {
                 style={{ color: hoverNumb ? "#bf002a" : "#000000" }}
               >
                 <lord-icon
+                  loading="lazy"
                   src="https://cdn.lordicon.com/iguuenru.json"
                   trigger={hoverNumb ? "loop" : "none"}
                   colors="primary:#bf002a,secondary:#bf002a"

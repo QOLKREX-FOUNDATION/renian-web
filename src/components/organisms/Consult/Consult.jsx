@@ -79,6 +79,7 @@ export const Consult = () => {
 						<div className={classes.consult__header}>
 							<div onClick={() => router.push("/")}>
 								<lord-icon
+									loading="lazy"
 									src="https://cdn.lordicon.com/zfxxckbp.json"
 									trigger="loop"
 									colors="primary:#e0dfdf,secondary:#f5f5f5"
@@ -109,6 +110,7 @@ export const Consult = () => {
 								/>
 								<div onClick={toSearch}>
 									<lord-icon
+										loading="lazy"
 										src="https://cdn.lordicon.com/zniqnylq.json"
 										trigger="loop"
 										colors="primary:#bf002a,secondary:#bf002a"
@@ -164,6 +166,7 @@ export const Consult = () => {
 										}}
 									>
 										<lord-icon
+											loading="lazy"
 											src="https://cdn.lordicon.com/cqqydgge.json"
 											trigger="none"
 											colors="primary:#000000,secondary:#dd0000"

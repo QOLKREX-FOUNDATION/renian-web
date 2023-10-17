@@ -4,13 +4,43 @@ import Image from "next/image";
 import { Bounce } from "react-reveal";
 import { MainContainer } from "../../";
 import CountUp from "react-countup";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
-export const AboutSection = () => {
+// export const AboutSection = () => {
+function AboutSection() {
   const [loadVideo, setLoadVideo] = useState();
+  const videoContainerRef = useRef(null);
+
+  // useEffect(() => {
+  //   setLoadVideo(true);
+  // }, []);
 
   useEffect(() => {
-    setLoadVideo(true);
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1, // Ajusta el umbral según tus necesidades
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // El elemento está visible en la pantalla
+          setLoadVideo(true);
+          observer.disconnect();
+        }
+      });
+    }, options);
+
+    if (videoContainerRef.current) {
+      observer.observe(videoContainerRef.current);
+    }
+
+    return () => {
+      if (videoContainerRef.current) {
+        observer.unobserve(videoContainerRef.current);
+      }
+    };
   }, []);
 
   return (
@@ -67,6 +97,7 @@ export const AboutSection = () => {
                       layout="responsive"
                       width={50}
                       height={50}
+                      alt="about"
                     />
                   </div>
                   <span></span>
@@ -84,6 +115,7 @@ export const AboutSection = () => {
                       layout="responsive"
                       width={50}
                       height={50}
+                      alt="about"
                     />
                   </div>
                   <span></span>
@@ -100,6 +132,7 @@ export const AboutSection = () => {
                       layout="responsive"
                       width={50}
                       height={50}
+                      alt="about"
                     />
                   </div>
                   <span></span>
@@ -112,11 +145,14 @@ export const AboutSection = () => {
             </Bounce>
           </div>
 
-          <div className={classes.about__player}>
+          <div
+            ref={videoContainerRef}
+            className={classes.about__player}>
             <Bounce right>
               <div className={classes.about__playerVideo}>
                 {loadVideo && (
-                  <ReactPlayer url="https://www.youtube.com/watch?v=W-yP0CYFSaU&feature=emb_title" />
+                  <ReactPlayer
+                    url="https://www.youtube.com/watch?v=W-yP0CYFSaU&feature=emb_title" />
                 )}
               </div>
             </Bounce>
@@ -126,3 +162,5 @@ export const AboutSection = () => {
     </section>
   );
 };
+
+export default AboutSection;

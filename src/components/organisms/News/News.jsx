@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper";
 import { useMemo } from "react";
 
-export const News = ({ news }) => {
+function News({ news }) {
 	return (
 		<section className={classes.news} id="news">
 			<MainContainer>
@@ -35,7 +35,7 @@ const Carousel = ({ news }) => {
 
 	return (
 		<>
-			<div className={`${classes.carousel}`}>
+			<div className={`${ classes.carousel }`}>
 				{items?.length > 0 && (
 					<Swiper
 						slidesPerView="auto"
@@ -143,3 +143,5 @@ const Carousel = ({ news }) => {
 		</>
 	);
 };
+
+export default News;

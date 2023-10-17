@@ -15,25 +15,31 @@ $roboto10: "Roboto-Thin";
   @font-face {
     font-family: $roboto60;
     src: url("../fonts/Roboto/Roboto-Black.ttf");
+    font-display: swap;
   }
   font-family: $roboto50;
   src: url("../fonts/Roboto/Roboto-Bold.ttf");
+  font-display: swap;
 }
 @font-face {
   font-family: $roboto40;
   src: url("../fonts/Roboto/Roboto-Medium.ttf");
+  font-display: swap;
 }
 @font-face {
   font-family: $roboto30;
   src: url("../fonts/Roboto/Roboto-Regular.ttf");
+  font-display: swap;
 }
 @font-face {
   font-family: $roboto20;
   src: url("../fonts/Roboto/Roboto-Light.ttf");
+  font-display: swap;
 }
 @font-face {
   font-family: $roboto10;
   src: url("../fonts/Roboto/Roboto-Thin.ttf");
+  font-display: swap;
 }
 
 /* ============================================= */
@@ -48,22 +54,27 @@ $quicksand10: "Quicksand-Light";
 @font-face {
   font-family: $quicksand50;
   src: url("../fonts/Quicksand/Quicksand-Bold.ttf");
+  font-display: swap;
 }
 @font-face {
   font-family: $quicksand40;
   src: url("../fonts/Quicksand/Quicksand-SemiBold.ttf");
+  font-display: swap;
 }
 @font-face {
   font-family: $quicksand30;
   src: url("../fonts/Quicksand/Quicksand-Medium.ttf");
+  font-display: swap;
 }
 @font-face {
   font-family: $quicksand20;
   src: url("../fonts/Quicksand/Quicksand-Regular.ttf");
+  font-display: swap;
 }
 @font-face {
   font-family: $quicksand10;
   src: url("../fonts/Quicksand/Quicksand-Light.ttf");
+  font-display: swap;
 }
 
 /* ============================================= */
@@ -74,4 +85,5 @@ $indie: "IndieFlower";
 @font-face {
   font-family: $indie;
   src: url("../fonts/Indie_Flower/IndieFlower-Regular.ttf");
+  font-display: swap;
 }

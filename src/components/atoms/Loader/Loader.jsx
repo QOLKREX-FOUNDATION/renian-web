@@ -7,6 +7,7 @@ export const Loader = () => {
         <div className={classes.loader__container}>
           <div className={classes.loader__content}>
             <lord-icon
+              loading="lazy"
               src="https://cdn.lordicon.com/ridbdkcb.json"
               trigger="loop"
               colors="primary:#000000,secondary:#dd0000"

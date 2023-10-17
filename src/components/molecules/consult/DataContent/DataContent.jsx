@@ -238,6 +238,7 @@ export const ContentMongoPet = ({ dataPet }) => {
 							{dataPet.type == "RENIAN" && (
 								<div className={classes.contentImgUpdate}>
 									<lord-icon
+										loading="lazy"
 										src="https://cdn.lordicon.com/hgpfwhzk.json"
 										colors="primary:#ffae00,secondary:#ffae00"
 										trigger="loop"

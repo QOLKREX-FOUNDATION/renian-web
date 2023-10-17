@@ -11,6 +11,7 @@ export const Default = () => {
           width={120}
           height={80}
           href="renian-logo"
+          alt="renian-logo"
         />
       </div>
       <div>
@@ -20,6 +21,7 @@ export const Default = () => {
           width={80}
           height={80}
           href="war-logo"
+          alt="war-logo"
         />
       </div>
     </div>

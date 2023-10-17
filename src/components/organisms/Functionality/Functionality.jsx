@@ -3,7 +3,8 @@ import classes from "./functionality.module.scss";
 import { Bounce } from "react-reveal";
 import { MainContainer } from "../../";
 
-export const Functionality = () => {
+// export const Functionality = () => {
+function Functionality() {
   return (
     <>
       <section className={classes.functionality} id="microchip">
@@ -60,6 +61,7 @@ const Chip = () => {
               layout="responsive"
               width={150}
               height={65}
+              alt="chip-important"
             />
           </div>
         </Bounce>
@@ -78,3 +80,5 @@ const Chip = () => {
     </section>
   );
 };
+
+export default Functionality;

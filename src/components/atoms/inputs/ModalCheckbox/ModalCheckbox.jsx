@@ -11,6 +11,7 @@ export const ModalCheckbox = ({
 				<div onClick={onClick}>
 					<div>
 						<lord-icon
+							loading="lazy"
 							src="https://cdn.lordicon.com/lbsajkny.json"
 							trigger="click"
 							colors="primary:#bf002a,secondary:#bf002a"
@@ -24,10 +25,10 @@ export const ModalCheckbox = ({
 					</div>
 				</div>
 			</div>
-			<p 
+			<p
 				onClick={onClick}
-				style={{cursor:"pointer"}}
-			
+				style={{ cursor: "pointer" }}
+
 			>{label}</p>
 		</>
 	);

@@ -160,6 +160,7 @@ const MoreInformation = () => {
               <div>
                 <div>
                   <lord-icon
+                    loading="lazy"
                     src="https://cdn.lordicon.com/mjmrmyzg.json"
                     trigger="loop"
                     colors="primary:#ffffff,secondary:#ffffff"

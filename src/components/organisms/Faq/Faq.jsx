@@ -28,6 +28,7 @@ export const Faq = () => {
                     layout="responsive"
                     width={120}
                     height={90}
+                    alt="graphic"
                   />
                 </div>
               </div>

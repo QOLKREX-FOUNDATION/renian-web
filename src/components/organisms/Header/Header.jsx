@@ -103,11 +103,14 @@ export const Header = () => {
               </div>
             </a>
             {router.asPath == "/" && (
-              <div
+              <a
                 className={classes.header__burguer}
                 onClick={() => setShow(!show)}
+                title="menu"
+                id="menu"
+                role="button"
               >
-                <div>
+                <>
                   <Hamburger
                     direction="right"
                     color="#bf0303"
@@ -115,8 +118,8 @@ export const Header = () => {
                     toggled={isOpen}
                     toggle={setOpen}
                   />
-                </div>
-              </div>
+                </>
+              </a>
             )}
 
             {/* {(router.asPath == "/" || router.asPath == "/solicitud-de-registro" || router.asPath == "/solicitud-de-registro/success") && ( */}

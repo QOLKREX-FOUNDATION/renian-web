@@ -25,15 +25,15 @@
     }
   }
   &__first {
-    background: url("/img/slides/slide_bg01.jpg");
+    background: url("/img/slides/slide_bg01.webp");
     @include breakpoints.medium {
-      background: url("/img/slides/slide_bg01_mobile.jpg");
+      background: url("/img/slides/slide_bg01_mobile.webp");
     }
   }
   &__second {
-    background: url("/img/slides/slide_bg02.jpg");
+    background: url("/img/slides/slide_bg02.webp");
     @include breakpoints.medium {
-      background: url("/img/slides/slide_bg02_mobile.jpg");
+      background: url("/img/slides/slide_bg02_mobile.webp");
     }
   }
   &__background {

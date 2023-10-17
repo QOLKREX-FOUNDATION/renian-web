@@ -8,7 +8,7 @@ export const ModalFile = ({
 	required = false,
 	error,
 	message = "Campo requerido",
-	accept="image/*"
+	accept = "image/*"
 }) => {
 	return (
 		<>
@@ -24,6 +24,7 @@ export const ModalFile = ({
 					})}
 				/>
 				<lord-icon
+					loading="lazy"
 					src="https://cdn.lordicon.com/qierxeeb.json"
 					trigger="hover"
 					colors="primary:#3a3347,secondary:#646e78,quaternary:#bf002a,quinary:#bf002a,senary:#ebe6ef"
@@ -31,7 +32,7 @@ export const ModalFile = ({
 				{name}
 			</label>
 
-			{typeof watch(property) ==="object" &&  !!watch(property)[0]?.name && (
+			{typeof watch(property) === "object" && !!watch(property)[0]?.name && (
 				<p style={{ color: "green", textAlign: "center" }}>
 					<small>{watch(property)[0]?.name} - Imagen Cargada</small>
 				</p>
