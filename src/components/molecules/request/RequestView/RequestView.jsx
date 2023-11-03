@@ -151,7 +151,8 @@ export const RequestView = () => {
 
 		const formData = new FormData();
 		formData.append("country", data.country);
-		formData.append("person", data.person);
+		// formData.append("person", data.person);
+		formData.append("person", "NATURAL");
 		formData.append("email", data.email);
 		formData.append("phone", data.phone);
 		formData.append("type", data.type);
@@ -211,7 +212,8 @@ export const RequestView = () => {
 			setValue("email", form.user?.email);
 			setValue("phone", form.user?.phone);
 			setValue("country", form.user?.country);
-			setValue("person", form.user?.person);
+			// setValue("person", form.user?.person);
+			setValue("person", "NATURAL");
 			setValue("document", form.user?.document);
 			setValue("documentNumber", form.user?.documentNumber);
 			setValue("type", form.user?.type);
@@ -412,6 +414,17 @@ export const RequestView = () => {
 											}`}
 									>
 										<h2>Identificación</h2>
+										<ReactSelectComponent
+											name="País"
+											property="country"
+											options={countries}
+											values={register}
+											watch={watch}
+											setValue={setValue}
+											error={errors}
+											required
+										/>
+
 										<ModalInputComponent
 											name="Correo electrónico"
 											type="email"
@@ -430,18 +443,7 @@ export const RequestView = () => {
 											required
 										/>
 
-										<ReactSelectComponent
-											name="País"
-											property="country"
-											options={countries}
-											values={register}
-											watch={watch}
-											setValue={setValue}
-											error={errors}
-											required
-										/>
-
-										<ReactSelectComponent
+										{/* <ReactSelectComponent
 											name="Tipo de persona"
 											property="person"
 											options={persons}
@@ -450,7 +452,7 @@ export const RequestView = () => {
 											setValue={setValue}
 											error={errors}
 											required
-										/>
+										/> */}
 
 										<ReactSelectComponent
 											name="Tipo de documento"
@@ -486,6 +488,34 @@ export const RequestView = () => {
 											error={errors}
 											required
 										/>
+										{
+											<div className="relative -top-2 left-1">
+												{
+													watch("type") === "ADOPTER" &&
+													<span className="text-sm text-gray-600">
+														(Dueño de la mascota)
+													</span>
+												}
+												{
+													watch("type") === "SHELTER" &&
+													<span className="text-sm text-gray-600">
+														(Institución de muchas mascotas)
+													</span>
+												}
+												{
+													watch("type") === "RESCASTITE" &&
+													<span className="text-sm text-gray-600">
+														(Colaborador de rescate animal)
+													</span>
+												}
+												{
+													watch("type") === "BREEDER" &&
+													<span className="text-sm text-gray-600">
+														(Comerciante de mascotas pedigree)
+													</span>
+												}
+											</div>
+										}
 
 										<ReactSelectComponent
 											name="Tipo de servicio"
@@ -506,6 +536,24 @@ export const RequestView = () => {
 											error={errors}
 											required
 										/>
+
+										{
+											<div className="relative -top-2 left-1">
+												{
+													watch("typeService") === "REGISTRO COMPLETO S/.60" &&
+													<span className="text-sm text-gray-600">
+														(Incluye: Microchip de identificación, Registro en el sistema de W.A.R, Certificación de adopción, Consulta veterinaria)
+													</span>
+												}
+												{
+													watch("typeService") === "SOLO REGISTRO S/.25" &&
+													<span className="text-sm text-gray-600">
+														(Incluye: Registro en el sistema de W.A.R, Certificación de adopción, Consulta veterinaria)
+													</span>
+												}
+											</div>
+										}
+
 										<button
 											type="button"
 											className="bg-[#b81c36] text-white rounded-xl h-10 font-bold disabled:opacity-50"
@@ -536,7 +584,7 @@ export const RequestView = () => {
 												Información del Pago
 											</h2>
 											{/* transferncia */}
-											{/* <div className="flex flex-col justify-between">
+											<div className="flex flex-col justify-between">
 												<label htmlFor="tranferencia">
 													<input
 														type="radio"
@@ -557,38 +605,38 @@ export const RequestView = () => {
 													hasta que se haya recibido el importe a nuestra
 													cuenta.
 												</p>
-											</div> */}
+											</div>
 
-											{/* {
+											{
 												<div
 													className={`${ watch("paymentMethod") === "transferencia"
 														? "flex flex-col z-10"
 														: "hidden -z-10"
 														}`}
 												>
-													<div className="mt-4"></div>
-													<ReCAPTCHA
-														ref={recaptchaRef}
-														size="normal"
-														sitekey={"6LfbFwIkAAAAAFJwKupecuDU3y9eN4fcubnBiYUl"}
-														onChange={onReCAPTCHAChange}
-													/>
 													<div className="flex flex-col gap-2">
 														<h2 className="font-bold">
 															Pago por Transferencia
 														</h2>
 														<div className="flex gap-2">
-															<p>Número de cuenta:</p>
+															<p>Número de cuenta PET ID SAC:</p>
 															<p className="font-bold">
 																{" "}
-																0011-0153-4701000814-69
+																19379622037098
 															</p>
 														</div>
 														<div className="flex gap-2">
 															<p>CCI:</p>
 															<p className="font-bold">
 																{" "}
-																011-153-000100081469-47
+																00219317962203709817
+															</p>
+														</div>
+														<div className="flex gap-2">
+															<p>YAPE:</p>
+															<p className="font-bold">
+																{" "}
+																934487173
 															</p>
 														</div>
 														<div className="flex flex-col gap-3">
@@ -638,8 +686,46 @@ export const RequestView = () => {
 															)}
 														</div>
 													</div>
+													<div className="mt-4"></div>
+													<ReCAPTCHA
+														ref={recaptchaRef}
+														size="normal"
+														sitekey={"6LfbFwIkAAAAAFJwKupecuDU3y9eN4fcubnBiYUl"}
+														onChange={onReCAPTCHAChange}
+													/>
 												</div>
-											} */}
+											}
+
+											<div className="flex flex-col gap-2">
+												{watch("paymentMethod") === "transferencia" && (
+													<>
+														<div className="flex gap-2 mt-4">
+															<button
+																type="submit"
+																className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
+																disabled={disabledButton}
+																style={{
+																	opacity: disabledButton ? 0.5 : 1,
+																	cursor: disabledButton
+																		? "not-allowed"
+																		: "pointer",
+																}}
+															>
+																Enviar
+															</button>
+														</div>
+
+														<button
+															type="button"
+															className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
+															onClick={handlePrevStep}
+														>
+															regresar
+														</button>
+													</>
+												)}
+											</div>
+
 
 											{/* tarjeta */}
 											<div className="flex flex-col justify-between pt-3 pb-3">
@@ -659,10 +745,7 @@ export const RequestView = () => {
 													{/* (comisión de S/3.33) */}
 												</label>
 												<p className="bg-gray-200  p-3 rounded-lg">
-													Realiza tu pago directamente en nuestra cuenta
-													bancaria. Por favor usa el número de tu pedido como
-													referencia de pago. Tu pedido no se procesara hasta
-													que se haya recibido el importe a nuestra cuenta.
+													Nuestra pasarela de pago es intuitiva y fácil de usar. Simplemente selecciona {"Nueva Tarjeta"} como método de pago al realizar su solicitud de registro. Luego, ingresa los detalles de tu tarjeta, incluyendo el número, la fecha de vencimiento y el código de seguridad. Una vez que verifiques la información, podrás confirmar tu transacción y recibir una notificación de agradecimiento.
 												</p>
 											</div>
 										</div>
@@ -737,33 +820,6 @@ export const RequestView = () => {
                                                 </>
                                             )
                                         } */}
-										{watch("paymentMethod") === "transferencia" && (
-											<>
-												<div className="flex gap-2 mt-4">
-													<button
-														type="submit"
-														className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
-														disabled={disabledButton}
-														style={{
-															opacity: disabledButton ? 0.5 : 1,
-															cursor: disabledButton
-																? "not-allowed"
-																: "pointer",
-														}}
-													>
-														Enviar
-													</button>
-												</div>
-
-												<button
-													type="button"
-													className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
-													onClick={handlePrevStep}
-												>
-													regresar
-												</button>
-											</>
-										)}
 									</div>
 								</form>
 								<div className="flex justify-center border flex-col">
