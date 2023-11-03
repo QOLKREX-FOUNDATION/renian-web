@@ -6,12 +6,16 @@ export const useCountry = () => {
 
   const handleCountries = useMemo(() => {
     const temp = [];
-    for (let i = 0; i < countriesJson.countries.length; i++) {
-      temp.push({
-        label: countriesJson.countries[i].esEs,
-        value: countriesJson.countries[i].code,
-      });
-    }
+    // for (let i = 0; i < countriesJson.countries.length; i++) {
+    // temp.push({
+    //   label: countriesJson.countries[i].esEs,
+    //   value: countriesJson.countries[i].code,
+    // });
+    temp.push({
+      label: "PERU",
+      value: "PE",
+    });
+    // }
     return temp;
   }, []);
 
