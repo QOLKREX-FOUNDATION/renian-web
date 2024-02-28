@@ -9,323 +9,330 @@ import { useRouter } from "next/router";
 import { ModalInputComponent } from "../../ModalInputComponent/ModalInputComponent";
 import { ReactSelectComponent } from "../../ReactSelectComponent/ReactSelectComponent";
 import { useUbigeo } from "../../../../hook/useUbigeo";
+import { ExpandPanel } from "../../../";
+
 import {
-	useCountry,
-	useDocuments,
-	usePerson,
-	useType,
+  useCountry,
+  useDocuments,
+  usePerson,
+  useType,
 } from "../../../../hook/inputs";
 import { DefaultModal } from "../../../containers/modals/DefaultModal/DefaultModal";
 import { useContext } from "react";
 import { FormRenianContext } from "../../../../contexts/FormRenian";
 
 const requiredFields = [
-	"image",
-	"country",
-	"person",
-	"type",
-	"document",
-	"typeService",
-	"documentNumber",
+  "image",
+  "country",
+  "person",
+  "type",
+  "document",
+  "typeService",
+  "documentNumber",
 ];
 
 export const RequestView = () => {
-	// const [step, setStep] = useState(1);
-	// const { openModal,  setOpenModal } = useModal();
-	const [openModal, setOpenModal] = useState(false);
-	const router = useRouter();
-	const query = router.query;
+  // const [step, setStep] = useState(1);
+  // const { openModal,  setOpenModal } = useModal();
+  const [openModal, setOpenModal] = useState(false);
+  const router = useRouter();
+  const query = router.query;
 
-	const baseUrl = "https://firulaix-api-nodejs.vercel.app"
-	// const baseUrl = "http://localhost:5000"
+  const baseUrl = "https://firulaix-api-nodejs.vercel.app";
+  // const baseUrl = "http://localhost:5000"
 
-	// form data
-	const {
-		register,
-		handleSubmit,
-		watch,
-		formState: { errors, isDirty },
-		setValue,
-		getValues,
-		reset,
-	} = useForm({
-		defaultValues: {
-			country: "PE",
-			person: "natural",
-			email: "",
-			phone: "",
-			type: "dni",
-			typeService: "",
-			image: "",
-			document: "DNI",
-			documentNumber: "",
-			paymentMethod: "transferencia",
-			// department: "",
-			// province: "",
-			// district: "",
-			// address: "",
-		},
-		mode: "onBlur",
-	});
+  // form data
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, isDirty },
+    setValue,
+    getValues,
+    reset,
+  } = useForm({
+    defaultValues: {
+      country: "PE",
+      person: "natural",
+      email: "",
+      phone: "",
+      type: "dni",
+      typeService: "",
+      image: "",
+      document: "DNI",
+      documentNumber: "",
+      paymentMethod: "transferencia",
+      // department: "",
+      // province: "",
+      // district: "",
+      // address: "",
+    },
+    mode: "onBlur",
+  });
 
-	const { countries } = useCountry();
-	const { persons } = usePerson();
-	const { types } = useType();
-	const { documents, handleDocuments } = useDocuments();
-	const recaptchaRef = useRef(null);
-	const refForm = useRef(null);
-	const [showForm, setshowForm] = useState(false);
-	const [disabledButton, setDisabledButton] = useState(true);
-	const [isLoadingButton, setLoadingButton] = useState(true);
+  const { countries } = useCountry();
+  const { persons } = usePerson();
+  const { types } = useType();
+  const { documents, handleDocuments } = useDocuments();
+  const recaptchaRef = useRef(null);
+  const refForm = useRef(null);
+  const [showForm, setshowForm] = useState(false);
+  const [disabledButton, setDisabledButton] = useState(true);
+  const [isLoadingButton, setLoadingButton] = useState(true);
 
-	const { setFormState, form } = useContext(FormRenianContext);
-	const { step } = form;
+  const { setFormState, form } = useContext(FormRenianContext);
+  const { step } = form;
 
-	const handlePaymentMethod = async () => {
-		// const resp= await fetch('https://firulaix-api-nodejs.vercel.app/api/request/payment-methods');
+  const handlePaymentMethod = async () => {
+    // const resp= await fetch('https://firulaix-api-nodejs.vercel.app/api/request/payment-methods');
 
-		setshowForm(true);
-	};
+    setshowForm(true);
+  };
 
-	const handleNextStep = () => {
-		// if (errors) return;
-		// setStep(step + 1);
+  const handleNextStep = () => {
+    // if (errors) return;
+    // setStep(step + 1);
 
-		setFormState({
-			step: 2,
-			user: {
-				email: watch("email"),
-				phone: watch("phone"),
-				country: watch("country"),
-				person: watch("person"),
-				document: watch("document"),
-				documentNumber: watch("documentNumber"),
-				type: watch("type"),
-				typeService: watch("typeService"),
-			}
-		})
+    setFormState({
+      step: 2,
+      user: {
+        email: watch("email"),
+        phone: watch("phone"),
+        country: watch("country"),
+        person: watch("person"),
+        document: watch("document"),
+        documentNumber: watch("documentNumber"),
+        type: watch("type"),
+        typeService: watch("typeService"),
+      },
+    });
 
-		router.push({
-			pathname: "/solicitud-de-registro/step2",
-			// query: { status: "success" },
-		});
-	};
+    router.push({
+      pathname: "/solicitud-de-registro/step2",
+      // query: { status: "success" },
+    });
+  };
 
-	const handlePrevStep = () => {
-		// if (errors) return;
-		// setStep(step - 1);
+  const handlePrevStep = () => {
+    // if (errors) return;
+    // setStep(step - 1);
 
-		setFormState({
-			step: 1,
-			user: {
-				...form.user
-			}
-		})
+    setFormState({
+      step: 1,
+      user: {
+        ...form.user,
+      },
+    });
 
-		router.push({
-			pathname: "/solicitud-de-registro",
-			// query: { status: "success" },
-		});
+    router.push({
+      pathname: "/solicitud-de-registro",
+      // query: { status: "success" },
+    });
 
-		// console.log(watch("image"), watch("country"), watch("person"), watch("type"), watch("document"), watch("typeService"), watch("documentNumber"))
-	};
+    // console.log(watch("image"), watch("country"), watch("person"), watch("type"), watch("document"), watch("typeService"), watch("documentNumber"))
+  };
 
-	const onSubmit = async (data) => {
-		const recaptchaValue = recaptchaRef.current.getValue();
-		console.log("verify", recaptchaValue);
-		if (watch("paymentMethod") === "transferencia") {
-			if (!recaptchaValue) {
-				toast.error("Por favor complete el captcha", {
-					theme: "colored",
-				});
-				return;
-			}
-		}
+  const onSubmit = async (data) => {
+    const recaptchaValue = recaptchaRef.current.getValue();
+    console.log("verify", recaptchaValue);
+    if (watch("paymentMethod") === "transferencia") {
+      if (!recaptchaValue) {
+        toast.error("Por favor complete el captcha", {
+          theme: "colored",
+        });
+        return;
+      }
+    }
 
-		if (!data.image) {
-			toast.error("Se debe agregar el comprobante", {
-				theme: "colored",
-			});
-			return;
-		}
+    if (!data.image) {
+      toast.error("Se debe agregar el comprobante", {
+        theme: "colored",
+      });
+      return;
+    }
 
-		const formData = new FormData();
-		formData.append("country", data.country);
-		// formData.append("person", data.person);
-		formData.append("person", "NATURAL");
-		formData.append("email", data.email);
-		formData.append("phone", data.phone);
-		formData.append("type", data.type);
-		formData.append("document", data.document);
-		formData.append("document_number", data.documentNumber);
-		formData.append("type_service", data.typeService);
-		formData.append("image", data.image);
+    const formData = new FormData();
+    formData.append("country", data.country);
+    // formData.append("person", data.person);
+    formData.append("person", "NATURAL");
+    formData.append("email", data.email);
+    formData.append("phone", data.phone);
+    formData.append("type", data.type);
+    formData.append("document", data.document);
+    formData.append("document_number", data.documentNumber);
+    formData.append("type_service", data.typeService);
+    formData.append("image", data.image);
 
-		console.log(data);
-		try {
-			// 'http://localhost:5000/api/request/register-user'
-			// const res = await fetch('https://firulaix-api-test.vercel.app/api/request/register-user', {
-			const res = await fetch(
-				`${ baseUrl }/api/request/register-user-renian`,
-				{
-					method: "POST",
-					body: formData,
-				}
-			);
-			const response = await res.json();
-			console.log(response);
-			if (response.ok) {
-				setOpenModal(true);
-				reset();
-				recaptchaRef.current.reset();
-				setStep(1);
-			}
-		} catch (error) {
-			console.log(error);
-		}
-	};
+    console.log(data);
+    try {
+      // 'http://localhost:5000/api/request/register-user'
+      // const res = await fetch('https://firulaix-api-test.vercel.app/api/request/register-user', {
+      const res = await fetch(`${baseUrl}/api/request/register-user-renian`, {
+        method: "POST",
+        body: formData,
+      });
+      const response = await res.json();
+      console.log(response);
+      if (response.ok) {
+        setOpenModal(true);
+        reset();
+        recaptchaRef.current.reset();
+        setStep(1);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-	const onReCAPTCHAChange = (captchaCode) => {
-		if (!captchaCode) {
-			return;
-		}
-		// alert(`Hey, ${ email }`);
-		// recaptchaRef.current.reset();
-	};
+  const onReCAPTCHAChange = (captchaCode) => {
+    if (!captchaCode) {
+      return;
+    }
+    // alert(`Hey, ${ email }`);
+    // recaptchaRef.current.reset();
+  };
 
-	const handleImage = (e) => {
-		const file = e.target.files[0];
-		const reader = new FileReader();
-		reader.onload = (e) => {
-			setValue("image", e.target.result);
-		};
-		reader.readAsDataURL(file);
-	};
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setValue("image", e.target.result);
+    };
+    reader.readAsDataURL(file);
+  };
 
-	const handleDeleteImage = () => {
-		setValue("image", "");
-	};
+  const handleDeleteImage = () => {
+    setValue("image", "");
+  };
 
-	useEffect(() => {
-		console.log(form.user)
-		if (form.user !== undefined) {
-			setValue("email", form.user?.email);
-			setValue("phone", form.user?.phone);
-			setValue("country", form.user?.country);
-			// setValue("person", form.user?.person);
-			setValue("person", "NATURAL");
-			setValue("document", form.user?.document);
-			setValue("documentNumber", form.user?.documentNumber);
-			setValue("type", form.user?.type);
-			setValue("typeService", form.user?.typeService);
-			console.log({ form })
-			console.log(watch("image"), watch("country"), watch("person"), watch("type"), watch("document"), watch("typeService"), watch("documentNumber"))
-		}
-	}, [])
+  useEffect(() => {
+    console.log(form.user);
+    if (form.user !== undefined) {
+      setValue("email", form.user?.email);
+      setValue("phone", form.user?.phone);
+      setValue("country", form.user?.country);
+      // setValue("person", form.user?.person);
+      setValue("person", "NATURAL");
+      setValue("document", form.user?.document);
+      setValue("documentNumber", form.user?.documentNumber);
+      setValue("type", form.user?.type);
+      setValue("typeService", form.user?.typeService);
+      console.log({ form });
+      console.log(
+        watch("image"),
+        watch("country"),
+        watch("person"),
+        watch("type"),
+        watch("document"),
+        watch("typeService"),
+        watch("documentNumber")
+      );
+    }
+  }, []);
 
-	useEffect(() => {
-		if (form.user === undefined) {
-			router.push({
-				pathname: "/solicitud-de-registro",
-			});
-		}
-	}, [])
+  useEffect(() => {
+    if (form.user === undefined) {
+      router.push({
+        pathname: "/solicitud-de-registro",
+      });
+    }
+  }, []);
 
-	const {
-		departments,
-		provinces,
-		districts,
-		handleDepartaments,
-		handleProvinces,
-		handleDistricts,
-	} = useUbigeo();
+  const {
+    departments,
+    provinces,
+    districts,
+    handleDepartaments,
+    handleProvinces,
+    handleDistricts,
+  } = useUbigeo();
 
-	useEffect(() => {
-		if (watch("country") == "")
-			setValue("country", localStorage.getItem("countryCode") ?? "PE");
-	}, [countries]);
+  useEffect(() => {
+    if (watch("country") == "")
+      setValue("country", localStorage.getItem("countryCode") ?? "PE");
+  }, [countries]);
 
-	useEffect(() => {
-		handleDepartaments();
-	}, []);
+  useEffect(() => {
+    handleDepartaments();
+  }, []);
 
-	useEffect(() => {
-		handleProvinces(watch("department"));
-	}, [watch("department")]);
+  useEffect(() => {
+    handleProvinces(watch("department"));
+  }, [watch("department")]);
 
-	useEffect(() => {
-		handleDistricts(watch("province"));
-	}, [watch("province")]);
+  useEffect(() => {
+    handleDistricts(watch("province"));
+  }, [watch("province")]);
 
-	// useEffect(() => {
-	// 	handleDocuments(setValue, watch("country"), watch("person"));
-	// }, [watch("country")]);
+  // useEffect(() => {
+  // 	handleDocuments(setValue, watch("country"), watch("person"));
+  // }, [watch("country")]);
 
-	useEffect(() => {
-		const allFieldsFilled = requiredFields.every((field) => !!watch(field));
-		console.log("allFieldsFilled:", allFieldsFilled);
-		setDisabledButton(!allFieldsFilled);
-	}, [
-		watch("image"),
-		watch("country"),
-		watch("person"),
-		watch("type"),
-		watch("document"),
-		watch("typeService"),
-		watch("documentNumber"),
-	]);
+  useEffect(() => {
+    const allFieldsFilled = requiredFields.every((field) => !!watch(field));
+    console.log("allFieldsFilled:", allFieldsFilled);
+    setDisabledButton(!allFieldsFilled);
+  }, [
+    watch("image"),
+    watch("country"),
+    watch("person"),
+    watch("type"),
+    watch("document"),
+    watch("typeService"),
+    watch("documentNumber"),
+  ]);
 
-	return (
-		<>
-			{openModal && (
-				<DefaultModal setOpenDefaultModal={setOpenModal}>
-					<h1>Email enviado satisfactoriamente!</h1>
-				</DefaultModal>
-			)}
-			{/* {
+  return (
+    <>
+      {openModal && (
+        <DefaultModal setOpenDefaultModal={setOpenModal}>
+          <h1>Email enviado satisfactoriamente!</h1>
+        </DefaultModal>
+      )}
+      {/* {
                 query.status !== "" &&
                 <MessageStatus />
             } */}
-			<>
-				<div className="flex items-center w-full min-h-[72vh] pt-20">
-					<div className="w-full flex flex-col items-center lg:flex-row justify-center px-14 gap-20 relative">
-						<div className="flex relative max-w-2xl h-full">
-							<img
-								src="/img/request/recurso-159.webp"
-								alt="Picture of the author"
-								width={500}
-								height={500}
-								className="object-cover"
-							/>
-							<img
-								src="/img/request/recurso-157.webp"
-								alt="Picture of the author"
-								width={500}
-								height={500}
-								className="object-cover absolute top-0 left-0"
-							/>
-						</div>
+      <>
+        <div className="flex items-center w-full min-h-[72vh] pt-20">
+          <div className="w-full flex flex-col items-center lg:flex-row justify-center px-14 gap-20 relative">
+            <div className="flex relative max-w-2xl h-full">
+              <img
+                src="/img/request/recurso-159.webp"
+                alt="Picture of the author"
+                width={500}
+                height={500}
+                className="object-cover"
+              />
+              <img
+                src="/img/request/recurso-157.webp"
+                alt="Picture of the author"
+                width={500}
+                height={500}
+                className="object-cover absolute top-0 left-0"
+              />
+            </div>
 
-						<div className="flex flex-col lg:flex-row justify-start items-start lg:pb-0 max-w-xl lg:max-w-3xl w-full rounded-2xl min-h-[700px] mb-10">
-							<div className="flex flex-col items-center py-5 px-4 lg:w-1/3 bg-[#b81c36] min-h-[790px] rounded-l-2xl">
-								<Image
-									src="/img/request/image-02.webp"
-									alt="Picture of the author"
-									width={50}
-									height={50}
-									className="object-cover"
-								/>
-								<h2 className="text-xl font-bold text-white text-center lg:text-left pb-4">
-									EL REGISTRO DE ANIMALES SILVESTRES Y DOMÉSTICOS
-								</h2>
-								<img
-									src="/img/renian-img.png"
-									alt="Picture of the author"
-									width={100}
-									height={150}
-									className="object-cover"
-								/>
-								{/* <div className="flex flex-col text-white px-4 ">
+            <div className="flex flex-col lg:flex-row justify-start items-start lg:pb-0 max-w-xl lg:max-w-3xl w-full rounded-2xl min-h-[700px] mb-10">
+              <div className="flex flex-col items-center py-5 px-4 lg:w-1/3 bg-[#b81c36] min-h-[790px] rounded-l-2xl">
+                <Image
+                  src="/img/request/image-02.webp"
+                  alt="Picture of the author"
+                  width={50}
+                  height={50}
+                  className="object-cover"
+                />
+                <h2 className="text-xl font-bold text-white text-center lg:text-left pb-4">
+                  EL REGISTRO DE ANIMALES SILVESTRES Y DOMÉSTICOS
+                </h2>
+                <img
+                  src="/img/renian-img.png"
+                  alt="Picture of the author"
+                  width={100}
+                  height={150}
+                  className="object-cover"
+                />
+                {/* <div className="flex flex-col text-white px-4 ">
 									<h2 className="text-2xl font-bold">Incluye:</h2>
 									<p>-----------------------------</p>
 									<ul className="font-semibold">
@@ -344,106 +351,122 @@ export const RequestView = () => {
 									</ul>
 									<p>-----------------------------</p>
 								</div> */}
-								<div className="flex flex-col text-white px-4 ">
-									<h2 className="text-2xl font-bold">Registro Completo:</h2>
-									<p>-----------------------------</p>
-									<ul className="font-semibold">
-										<li className="list-disc">Microchip de identificación</li>
-										<li className="list-disc">
-											Registro en el sistema de W.A.R
-										</li>
-										<li className="list-disc">Certificación de adopción</li>
-										<li className="list-disc">
-											Consulta veterinaria
-											<br />
-											<span className="text-sm">
-												Sede principal Jesús María - Lima Perú
-											</span>
-										</li>
-									</ul>
-									<p>-----------------------------</p>
-								</div>
-								<div className="flex flex-col text-white px-4 ">
-									<h2 className="text-2xl font-bold">Solo Registro:</h2>
-									<p>-----------------------------</p>
-									<ul className="font-semibold">
-										<li className="list-disc">
-											Registro en el sistema de W.A.R
-										</li>
-										<li className="list-disc">Certificación de adopción</li>
-										<li className="list-disc">
-											Consulta veterinaria
-											<br />
-											<span className="text-sm">
-												Sede principal Jesús María - Lima Perú
-											</span>
-										</li>
-									</ul>
-									<p>-----------------------------</p>
-								</div>
-							</div>
-							{/* form */}
-							<div className="flex flex-col w-full lg:w-2/3 border">
-								<form
-									ref={refForm}
-									onSubmit={handleSubmit(onSubmit)}
-									className=" flex flex-col items-center gap-3 w-full h-full py-10 px-5 rounded-r-2xl"
-								>
-									<div className="flex">
-										<button
-											type="button"
-											className={`text-white w-12 h-12 rounded-full font-bold ${ step === 1 ? "bg-[#b81c36]" : "bg-[#9c182e]"
-												}`}
-										>
-											1
-										</button>
-										<div className="w-10 h-2 bg-white mt-4"></div>
-										<button
-											type="button"
-											className={`text-white w-12 h-12 rounded-full font-bold ${ step === 2 ? "bg-[#b81c36]" : "bg-[#9c182e]"
-												}`}
-										>
-											2
-										</button>
-									</div>
-									{/* step 1 form */}
-									<div
-										className={`w-full flex flex-col py-3 gap-3 max-w-xl ${ step === 1
-											? "opacity-100 z-10"
-											: "opacity-0 -z-20 absolute overflow-hidden w-0"
-											}`}
-									>
-										<h2>Identificación</h2>
-										<ReactSelectComponent
-											name="País"
-											property="country"
-											options={countries}
-											values={register}
-											watch={watch}
-											setValue={setValue}
-											error={errors}
-											required
-										/>
+                <div className="flex flex-col text-white px-4 ">
+                  <h2 className="text-2xl font-bold">Registro Completo:</h2>
+                  <span className="font-light text-sm">
+                    Registro animal (no tiene chip) + beneficios: s/.60
+                  </span>
+                  <p>-----------------------------</p>
+                  <ul className="font-semibold">
+                    <li className="list-disc">Microchip de identificación</li>
+                    <li className="list-disc">
+                      Registro en el sistema de W.A.R
+                    </li>
+                    <li className="list-disc">Certificación de adopción</li>
+                    <li className="list-disc">
+                      Consulta veterinaria
+                      <br />
+                      <span className="text-sm">
+                        Sede principal Jesús María - Lima Perú
+                      </span>
+                    </li>
+                  </ul>
+                  <p>-----------------------------</p>
+                </div>
+                <div className="flex flex-col text-white px-4 ">
+                  <h2 className="text-2xl font-bold">Solo Registro:</h2>
+                  <span className="font-light text-sm">
+                    Registro animal (ya tiene chip) + beneficios: s/.25
+                  </span>
+                  <p>-----------------------------</p>
+                  <ul className="font-semibold">
+                    <li className="list-disc">
+                      Registro en el sistema de W.A.R
+                    </li>
+                    <li className="list-disc">Certificación de adopción</li>
+                    <li className="list-disc">
+                      Consulta veterinaria
+                      <br />
+                      <span className="text-sm">
+                        Sede principal Jesús María - Lima Perú
+                      </span>
+                    </li>
+                  </ul>
+                  <p>-----------------------------</p>
 
-										<ModalInputComponent
-											name="Correo electrónico"
-											type="email"
-											property="email"
-											values={register}
-											error={errors}
-											required
-										/>
+                  <div>
+                    <ExpandPanel
+                      question={"Precios por sedes básicas"}
+                      response={"- Lista de sedes"}
+                    />
+                  </div>
+                </div>
+              </div>
+              {/* form */}
+              <div className="flex flex-col w-full lg:w-2/3 border">
+                <form
+                  ref={refForm}
+                  onSubmit={handleSubmit(onSubmit)}
+                  className=" flex flex-col items-center gap-3 w-full h-full py-10 px-5 rounded-r-2xl"
+                >
+                  <div className="flex">
+                    <button
+                      type="button"
+                      className={`text-white w-12 h-12 rounded-full font-bold ${
+                        step === 1 ? "bg-[#b81c36]" : "bg-[#9c182e]"
+                      }`}
+                    >
+                      1
+                    </button>
+                    <div className="w-10 h-2 bg-white mt-4"></div>
+                    <button
+                      type="button"
+                      className={`text-white w-12 h-12 rounded-full font-bold ${
+                        step === 2 ? "bg-[#b81c36]" : "bg-[#9c182e]"
+                      }`}
+                    >
+                      2
+                    </button>
+                  </div>
+                  {/* step 1 form */}
+                  <div
+                    className={`w-full flex flex-col py-3 gap-3 max-w-xl ${
+                      step === 1
+                        ? "opacity-100 z-10"
+                        : "opacity-0 -z-20 absolute overflow-hidden w-0"
+                    }`}
+                  >
+                    <h2>Identificación</h2>
+                    <ReactSelectComponent
+                      name="País"
+                      property="country"
+                      options={countries}
+                      values={register}
+                      watch={watch}
+                      setValue={setValue}
+                      error={errors}
+                      required
+                    />
 
-										<ModalInputComponent
-											name="Número de celular"
-											type="number"
-											property="phone"
-											values={register}
-											error={errors}
-											required
-										/>
+                    <ModalInputComponent
+                      name="Correo electrónico"
+                      type="email"
+                      property="email"
+                      values={register}
+                      error={errors}
+                      required
+                    />
 
-										{/* <ReactSelectComponent
+                    <ModalInputComponent
+                      name="Número de celular"
+                      type="number"
+                      property="phone"
+                      values={register}
+                      error={errors}
+                      required
+                    />
+
+                    {/* <ReactSelectComponent
 											name="Tipo de persona"
 											property="person"
 											options={persons}
@@ -454,313 +477,309 @@ export const RequestView = () => {
 											required
 										/> */}
 
-										<ReactSelectComponent
-											name="Tipo de documento"
-											property="document"
-											options={[
-												{ label: "DNI", value: "DNI" },
-												{ label: "CE", value: "CE" },
-												{ label: "PASAPORTE", value: "PASAPORTE" },
-											]}
-											values={register}
-											watch={watch}
-											setValue={setValue}
-											error={errors}
-											required
-										/>
+                    <ReactSelectComponent
+                      name="Tipo de documento"
+                      property="document"
+                      options={[
+                        { label: "DNI", value: "DNI" },
+                        { label: "CE", value: "CE" },
+                        { label: "PASAPORTE", value: "PASAPORTE" },
+                      ]}
+                      values={register}
+                      watch={watch}
+                      setValue={setValue}
+                      error={errors}
+                      required
+                    />
 
-										<ModalInputComponent
-											name="Número de documento"
-											type="number"
-											property="documentNumber"
-											values={register}
-											error={errors}
-											required
-										/>
+                    <ModalInputComponent
+                      name="Número de documento"
+                      type="number"
+                      property="documentNumber"
+                      values={register}
+                      error={errors}
+                      required
+                    />
 
-										<ReactSelectComponent
-											name="Tipo de registro"
-											property="type"
-											options={types}
-											values={register}
-											watch={watch}
-											setValue={setValue}
-											error={errors}
-											required
-										/>
-										{
-											<div className="relative -top-2 left-1">
-												{
-													watch("type") === "ADOPTER" &&
-													<span className="text-sm text-gray-600">
-														(Dueño de la mascota)
-													</span>
-												}
-												{
-													watch("type") === "SHELTER" &&
-													<span className="text-sm text-gray-600">
-														(Institución de muchas mascotas)
-													</span>
-												}
-												{
-													watch("type") === "RESCASTITE" &&
-													<span className="text-sm text-gray-600">
-														(Colaborador de rescate animal)
-													</span>
-												}
-												{
-													watch("type") === "BREEDER" &&
-													<span className="text-sm text-gray-600">
-														(Comerciante de mascotas pedigree)
-													</span>
-												}
-											</div>
-										}
+                    <ReactSelectComponent
+                      name="Tipo de registro"
+                      property="type"
+                      options={types}
+                      values={register}
+                      watch={watch}
+                      setValue={setValue}
+                      error={errors}
+                      required
+                    />
+                    {
+                      <div className="relative -top-2 left-1">
+                        {watch("type") === "ADOPTER" && (
+                          <span className="text-sm text-gray-600">
+                            (Dueño de la mascota)
+                          </span>
+                        )}
+                        {watch("type") === "SHELTER" && (
+                          <span className="text-sm text-gray-600">
+                            (Institución de muchas mascotas)
+                          </span>
+                        )}
+                        {watch("type") === "RESCASTITE" && (
+                          <span className="text-sm text-gray-600">
+                            (Colaborador de rescate animal)
+                          </span>
+                        )}
+                        {watch("type") === "BREEDER" && (
+                          <span className="text-sm text-gray-600">
+                            (Comerciante de mascotas pedigree)
+                          </span>
+                        )}
+                      </div>
+                    }
 
-										<ReactSelectComponent
-											name="Tipo de servicio"
-											property="typeService"
-											options={[
-												{
-													label: "REGISTRO COMPLETO S/.60",
-													value: "REGISTRO COMPLETO S/.60",
-												},
-												{
-													label: "SOLO REGISTRO S/.25",
-													value: "SOLO REGISTRO S/.25",
-												},
-											]}
-											values={register}
-											watch={watch}
-											setValue={setValue}
-											error={errors}
-											required
-										/>
+                    <ReactSelectComponent
+                      name="Tipo de servicio"
+                      property="typeService"
+                      options={[
+                        {
+                          label: "REGISTRO COMPLETO S/.60",
+                          value: "REGISTRO COMPLETO S/.60",
+                        },
+                        {
+                          label: "SOLO REGISTRO S/.25",
+                          value: "SOLO REGISTRO S/.25",
+                        },
+                      ]}
+                      values={register}
+                      watch={watch}
+                      setValue={setValue}
+                      error={errors}
+                      required
+                    />
 
-										{
-											<div className="relative -top-2 left-1">
-												{
-													watch("typeService") === "REGISTRO COMPLETO S/.60" &&
-													<span className="text-sm text-gray-600">
-														(Incluye: Microchip de identificación, Registro en el sistema de W.A.R, Certificación de adopción, Consulta veterinaria)
-													</span>
-												}
-												{
-													watch("typeService") === "SOLO REGISTRO S/.25" &&
-													<span className="text-sm text-gray-600">
-														(Incluye: Registro en el sistema de W.A.R, Certificación de adopción, Consulta veterinaria)
-													</span>
-												}
-											</div>
-										}
+                    {
+                      <div className="relative -top-2 left-1">
+                        {watch("typeService") === "REGISTRO COMPLETO S/.60" && (
+                          <span className="text-sm text-gray-600">
+                            (Incluye: Microchip de identificación, Registro en
+                            el sistema de W.A.R, Certificación de adopción,
+                            Consulta veterinaria)
+                          </span>
+                        )}
+                        {watch("typeService") === "SOLO REGISTRO S/.25" && (
+                          <span className="text-sm text-gray-600">
+                            (Incluye: Registro en el sistema de W.A.R,
+                            Certificación de adopción, Consulta veterinaria)
+                          </span>
+                        )}
+                      </div>
+                    }
 
-										<button
-											type="button"
-											className="bg-[#b81c36] text-white rounded-xl h-10 font-bold disabled:opacity-50"
-											onClick={handleNextStep}
-											disabled={
-												watch("email") == '' ||
-												watch("phone") == '' ||
-												watch("country") == '' ||
-												watch("person") == '' ||
-												watch("document") == '' ||
-												watch("documentNumber") == '' ||
-												watch("type") == '' ||
-												watch("typeService") == ''
-											}
-										>
-											Continuar
-										</button>
-									</div>
-									{/* step 2 form */}
-									<div
-										className={`flex flex-col gap-3 w-full max-w-xl ${ step === 1
-											? "opacity-0 -z-20 absolute overflow-hidden w-0"
-											: "opacity-100 z-10"
-											}`}
-									>
-										<div className="flex flex-col">
-											<h2 className="text-lg font-semibold">
-												Información del Pago
-											</h2>
-											{/* transferncia */}
-											<div className="flex flex-col justify-between">
-												<label htmlFor="tranferencia">
-													<input
-														type="radio"
-														id="tranferencia"
-														value="transferencia"
-														className="mr-2"
-														defaultChecked
-														{...register("paymentMethod", {
-															required: "Este campo es requerido",
-														})}
-													/>
-													Transferencia (Banco BBVA)
-												</label>
-												<p className="bg-gray-200 p-3 rounded-lg">
-													Realiza tu pago directamente en nuestra cuenta
-													bancaria. Por favor usa el número de la transacción
-													como referencia de pago. Tu pedido no se procesara
-													hasta que se haya recibido el importe a nuestra
-													cuenta.
-												</p>
-											</div>
+                    <button
+                      type="button"
+                      className="bg-[#b81c36] text-white rounded-xl h-10 font-bold disabled:opacity-50"
+                      onClick={handleNextStep}
+                      disabled={
+                        watch("email") == "" ||
+                        watch("phone") == "" ||
+                        watch("country") == "" ||
+                        watch("person") == "" ||
+                        watch("document") == "" ||
+                        watch("documentNumber") == "" ||
+                        watch("type") == "" ||
+                        watch("typeService") == ""
+                      }
+                    >
+                      Continuar
+                    </button>
+                  </div>
+                  {/* step 2 form */}
+                  <div
+                    className={`flex flex-col gap-3 w-full max-w-xl ${
+                      step === 1
+                        ? "opacity-0 -z-20 absolute overflow-hidden w-0"
+                        : "opacity-100 z-10"
+                    }`}
+                  >
+                    <div className="flex flex-col">
+                      <h2 className="text-lg font-semibold">
+                        Información del Pago
+                      </h2>
+                      {/* transferncia */}
+                      <div className="flex flex-col justify-between">
+                        <label htmlFor="tranferencia">
+                          <input
+                            type="radio"
+                            id="tranferencia"
+                            value="transferencia"
+                            className="mr-2"
+                            defaultChecked
+                            {...register("paymentMethod", {
+                              required: "Este campo es requerido",
+                            })}
+                          />
+                          Transferencia (Banco BBVA)
+                        </label>
+                        <p className="bg-gray-200 p-3 rounded-lg">
+                          Realiza tu pago directamente en nuestra cuenta
+                          bancaria. Por favor usa el número de la transacción
+                          como referencia de pago. Tu pedido no se procesara
+                          hasta que se haya recibido el importe a nuestra
+                          cuenta.
+                        </p>
+                      </div>
 
-											{
-												<div
-													className={`${ watch("paymentMethod") === "transferencia"
-														? "flex flex-col z-10"
-														: "hidden -z-10"
-														}`}
-												>
-													<div className="flex flex-col gap-2">
-														<h2 className="font-bold">
-															Pago por Transferencia
-														</h2>
-														<div className="flex gap-2">
-															<p>Número de cuenta PET ID SAC:</p>
-															<p className="font-bold">
-																{" "}
-																19379622037098
-															</p>
-														</div>
-														<div className="flex gap-2">
-															<p>CCI:</p>
-															<p className="font-bold">
-																{" "}
-																00219317962203709817
-															</p>
-														</div>
-														<div className="flex gap-2">
-															<p>YAPE:</p>
-															<p className="font-bold">
-																{" "}
-																934487173
-															</p>
-														</div>
-														<div className="flex flex-col gap-3">
-															<label
-																htmlFor="photo"
-																className="bg-gray-400 px-5 py-2 flex justify-center items-center gap-2 rounded-xl hover:cursor-pointer max-w-xs text-white"
-															>
-																<span>Ingrese foto de la transferencia</span>
-																<svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	fill="none"
-																	viewBox="0 0 24 24"
-																	strokeWidth={1.5}
-																	stroke="currentColor"
-																	className="w-6 h-6"
-																>
-																	<path
-																		strokeLinecap="round"
-																		strokeLinejoin="round"
-																		d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
-																	/>
-																</svg>
-															</label>
-															<input
-																id="photo"
-																type="file"
-																accept="image/*"
-																className="bg-gray-400 px-5 py-2 flex justify-center items-center gap-2 rounded-xl hover:cursor-pointer max-w-xs"
-																onChange={handleImage}
-															></input>
-															{watch("image") && (
-																<div className="flex gap-2">
-																	<p>{watch("image").name}</p>
-																	<img
-																		src={watch("image")}
-																		alt=""
-																		className="w-28 h-28 rounded-xl"
-																	/>
-																	<button
-																		type="button"
-																		className="bg-red-600 px-4 text-white rounded-xl font-bold h-10"
-																		onClick={handleDeleteImage}
-																	>
-																		x
-																	</button>
-																</div>
-															)}
-														</div>
-													</div>
-													<div className="mt-4"></div>
-													<ReCAPTCHA
-														ref={recaptchaRef}
-														size="normal"
-														sitekey={"6LfbFwIkAAAAAFJwKupecuDU3y9eN4fcubnBiYUl"}
-														onChange={onReCAPTCHAChange}
-													/>
-												</div>
-											}
+                      {
+                        <div
+                          className={`${
+                            watch("paymentMethod") === "transferencia"
+                              ? "flex flex-col z-10"
+                              : "hidden -z-10"
+                          }`}
+                        >
+                          <div className="flex flex-col gap-2">
+                            <h2 className="font-bold">
+                              Pago por Transferencia
+                            </h2>
+                            <div className="flex gap-2">
+                              <p>Número de cuenta PET ID SAC:</p>
+                              <p className="font-bold"> 19379622037098</p>
+                            </div>
+                            <div className="flex gap-2">
+                              <p>CCI:</p>
+                              <p className="font-bold"> 00219317962203709817</p>
+                            </div>
+                            <div className="flex gap-2">
+                              <p>YAPE:</p>
+                              <p className="font-bold"> 934487173</p>
+                            </div>
+                            <div className="flex flex-col gap-3">
+                              <label
+                                htmlFor="photo"
+                                className="bg-gray-400 px-5 py-2 flex justify-center items-center gap-2 rounded-xl hover:cursor-pointer max-w-xs text-white"
+                              >
+                                <span>Ingrese foto de la transferencia</span>
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  strokeWidth={1.5}
+                                  stroke="currentColor"
+                                  className="w-6 h-6"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
+                                  />
+                                </svg>
+                              </label>
+                              <input
+                                id="photo"
+                                type="file"
+                                accept="image/*"
+                                className="bg-gray-400 px-5 py-2 flex justify-center items-center gap-2 rounded-xl hover:cursor-pointer max-w-xs"
+                                onChange={handleImage}
+                              ></input>
+                              {watch("image") && (
+                                <div className="flex gap-2">
+                                  <p>{watch("image").name}</p>
+                                  <img
+                                    src={watch("image")}
+                                    alt=""
+                                    className="w-28 h-28 rounded-xl"
+                                  />
+                                  <button
+                                    type="button"
+                                    className="bg-red-600 px-4 text-white rounded-xl font-bold h-10"
+                                    onClick={handleDeleteImage}
+                                  >
+                                    x
+                                  </button>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          <div className="mt-4"></div>
+                          <ReCAPTCHA
+                            ref={recaptchaRef}
+                            size="normal"
+                            sitekey={"6LfbFwIkAAAAAFJwKupecuDU3y9eN4fcubnBiYUl"}
+                            onChange={onReCAPTCHAChange}
+                          />
+                        </div>
+                      }
 
-											<div className="flex flex-col gap-2">
-												{watch("paymentMethod") === "transferencia" && (
-													<>
-														<div className="flex gap-2 mt-4">
-															<button
-																type="submit"
-																className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
-																disabled={disabledButton}
-																style={{
-																	opacity: disabledButton ? 0.5 : 1,
-																	cursor: disabledButton
-																		? "not-allowed"
-																		: "pointer",
-																}}
-															>
-																Enviar
-															</button>
-														</div>
+                      <div className="flex flex-col gap-2">
+                        {watch("paymentMethod") === "transferencia" && (
+                          <>
+                            <div className="flex gap-2 mt-4">
+                              <button
+                                type="submit"
+                                className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
+                                disabled={disabledButton}
+                                style={{
+                                  opacity: disabledButton ? 0.5 : 1,
+                                  cursor: disabledButton
+                                    ? "not-allowed"
+                                    : "pointer",
+                                }}
+                              >
+                                Enviar
+                              </button>
+                            </div>
 
-														<button
-															type="button"
-															className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
-															onClick={handlePrevStep}
-														>
-															regresar
-														</button>
-													</>
-												)}
-											</div>
+                            <button
+                              type="button"
+                              className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
+                              onClick={handlePrevStep}
+                            >
+                              regresar
+                            </button>
+                          </>
+                        )}
+                      </div>
 
+                      {/* tarjeta */}
+                      <div className="flex flex-col justify-between pt-3 pb-3">
+                        <label htmlFor="tarjeta">
+                          <input
+                            type="radio"
+                            id="tarjeta"
+                            value="tarjeta"
+                            className="mr-2"
+                            {...register("paymentMethod", {
+                              required: "Este campo es requerido",
+                            })}
+                            onClick={handlePaymentMethod}
+                          />
+                          Tarjeta de Crédito Visa, Master Card, American
+                          Express, Diners
+                          {/* (comisión de S/3.33) */}
+                        </label>
+                        <p className="bg-gray-200  p-3 rounded-lg">
+                          Nuestra pasarela de pago es intuitiva y fácil de usar.
+                          Simplemente selecciona {"Nueva Tarjeta"} como método
+                          de pago al realizar su solicitud de registro. Luego,
+                          ingresa los detalles de tu tarjeta, incluyendo el
+                          número, la fecha de vencimiento y el código de
+                          seguridad. Una vez que verifiques la información,
+                          podrás confirmar tu transacción y recibir una
+                          notificación de agradecimiento.
+                        </p>
+                      </div>
+                    </div>
 
-											{/* tarjeta */}
-											<div className="flex flex-col justify-between pt-3 pb-3">
-												<label htmlFor="tarjeta">
-													<input
-														type="radio"
-														id="tarjeta"
-														value="tarjeta"
-														className="mr-2"
-														{...register("paymentMethod", {
-															required: "Este campo es requerido",
-														})}
-														onClick={handlePaymentMethod}
-													/>
-													Tarjeta de Crédito Visa, Master Card, American
-													Express, Diners
-													{/* (comisión de S/3.33) */}
-												</label>
-												<p className="bg-gray-200  p-3 rounded-lg">
-													Nuestra pasarela de pago es intuitiva y fácil de usar. Simplemente selecciona {"Nueva Tarjeta"} como método de pago al realizar su solicitud de registro. Luego, ingresa los detalles de tu tarjeta, incluyendo el número, la fecha de vencimiento y el código de seguridad. Una vez que verifiques la información, podrás confirmar tu transacción y recibir una notificación de agradecimiento.
-												</p>
-											</div>
-										</div>
-
-										{watch("paymentMethod") === "tarjeta" && (
-											<div className="flex flex-col gap-2">
-												<h2 className="font-bold">Pagar con Tarjeta</h2>
-												{/* <button
+                    {watch("paymentMethod") === "tarjeta" && (
+                      <div className="flex flex-col gap-2">
+                        <h2 className="font-bold">Pagar con Tarjeta</h2>
+                        {/* <button
                                                     type='button'
                                                     className="bg-[#b81c36] text-white rounded-xl h-10 font-bold"
                                                     onClick={handlePaymentMethod}
                                                 >
                                                     {t("Go to Cash Payment")}
                                                 </button> */}
-												{/* <div className="flex flex-col gap-3">
+                        {/* <div className="flex flex-col gap-3">
                                                 <label htmlFor="photo" className='bg-gray-400 px-5 py-2 flex justify-center items-center gap-2 rounded-xl hover:cursor-pointer max-w-xs text-white'>
                                                     <span>
                                                         {t("Enter photo of the transfer")}
@@ -791,12 +810,12 @@ export const RequestView = () => {
                                                     )
                                                 }
                                             </div> */}
-											</div>
-										)}
+                      </div>
+                    )}
 
-										{/* pago con tarjeta */}
+                    {/* pago con tarjeta */}
 
-										{/* {
+                    {/* {
                                             watch('paymentMethod') === 'tarjeta' &&
                                             (
                                                 <>
@@ -820,74 +839,74 @@ export const RequestView = () => {
                                                 </>
                                             )
                                         } */}
-									</div>
-								</form>
-								<div className="flex justify-center border flex-col">
-									{watch("paymentMethod") === "tarjeta" &&
-										watch("country") !== "" &&
-										watch("person") !== "" &&
-										watch("type") !== "" &&
-										watch("document") !== "" &&
-										watch("typeService") !== "" &&
-										watch("documentNumber") !== "" &&
-										showForm && (
-											<>
-												{isLoadingButton && (
-													<button
-														type="submit"
-														className="bg-[#b81c36] text-white rounded-xl h-10 font-bold capitalize mx-5"
-														disabled={true}
-														style={{
-															opacity: 0.5,
-															cursor: "not-allowed",
-														}}
-													>
-														Pagar
-													</button>
-												)}
-												<ModalForm
-													info={{
-														country: watch("country"),
-														person: watch("person"),
-														email: watch("email"),
-														phone: watch("phone"),
-														type: watch("type"),
-														typeService: watch("typeService"),
-														image: watch("image"),
-														document: watch("document"),
-														documentNumber: watch("documentNumber"),
-														paymentMethod: watch("paymentMethod"),
-													}}
-													setLoadingButton={setLoadingButton}
-													url={
-														watch("typeService") == "REGISTRO COMPLETO S/.60"
-															? `${ baseUrl }/api/payment/create-order`
-															: `${ baseUrl }/api/payment/create-order-2`
-													}
-												/>
+                  </div>
+                </form>
+                <div className="flex justify-center border flex-col">
+                  {watch("paymentMethod") === "tarjeta" &&
+                    watch("country") !== "" &&
+                    watch("person") !== "" &&
+                    watch("type") !== "" &&
+                    watch("document") !== "" &&
+                    watch("typeService") !== "" &&
+                    watch("documentNumber") !== "" &&
+                    showForm && (
+                      <>
+                        {isLoadingButton && (
+                          <button
+                            type="submit"
+                            className="bg-[#b81c36] text-white rounded-xl h-10 font-bold capitalize mx-5"
+                            disabled={true}
+                            style={{
+                              opacity: 0.5,
+                              cursor: "not-allowed",
+                            }}
+                          >
+                            Pagar
+                          </button>
+                        )}
+                        <ModalForm
+                          info={{
+                            country: watch("country"),
+                            person: watch("person"),
+                            email: watch("email"),
+                            phone: watch("phone"),
+                            type: watch("type"),
+                            typeService: watch("typeService"),
+                            image: watch("image"),
+                            document: watch("document"),
+                            documentNumber: watch("documentNumber"),
+                            paymentMethod: watch("paymentMethod"),
+                          }}
+                          setLoadingButton={setLoadingButton}
+                          url={
+                            watch("typeService") == "REGISTRO COMPLETO S/.60"
+                              ? `${baseUrl}/api/payment/create-order`
+                              : `${baseUrl}/api/payment/create-order-2`
+                          }
+                        />
 
-												<button
-													type="button"
-													className="bg-[#b81c36] text-white rounded-xl h-10 font-bold capitalize mx-5"
-													onClick={handlePrevStep}
-												>
-													regresar
-												</button>
-											</>
-										)}
-								</div>
-								{/* <button
+                        <button
+                          type="button"
+                          className="bg-[#b81c36] text-white rounded-xl h-10 font-bold capitalize mx-5"
+                          onClick={handlePrevStep}
+                        >
+                          regresar
+                        </button>
+                      </>
+                    )}
+                </div>
+                {/* <button
                                     type='button'
                                     className="bg-[#b81c36] text-white rounded-xl h-10 font-bold w-full capitalize"
                                     onClick={handlePrevStep}
                                 >
                                     regresar
                                 </button> */}
-							</div>
-						</div>
-					</div>
-				</div>
-			</>
-		</>
-	);
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    </>
+  );
 };
