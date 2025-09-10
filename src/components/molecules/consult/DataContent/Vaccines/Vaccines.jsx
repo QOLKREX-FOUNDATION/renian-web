@@ -6,11 +6,13 @@ import { useRaceVaccines } from "../../../../../hook/consult/useVaccinesRaces";
 import { useView } from "../../../../../hook/consult/useView";
 import { formatDate } from "../../../../../utils/date";
 import classes from "./view.module.css";
+import { useTranslation } from "react-i18next";
 
 export const Vaccines = ({ pets, type = "WAR" }) => {
   const { listVaccines, handleListVaccines } = useRaceVaccines();
   const { colours, values, handleView } = useView();
   const URL_RENIAN = "https://consultwar.renian.foundation/public/images";
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     handleView(pets);
