@@ -10,12 +10,12 @@ export const useRaces = () => {
   });
 
   const getRace = (pet) => {
-    console.log(pet);
+    // console.log(pet);
     try {
       firuApi
         .get(`races/type-search?type=${pet.type}&search=${pet.race}`)
         .then((res) => {
-          console.log(res);
+          //console.log(res);
           setRace(res.data.race);
         });
     } catch (error) {

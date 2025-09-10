@@ -125,14 +125,14 @@ export const ContentMongoPet = ({ dataPet }) => {
       race: dataPet.pet?.race,
     });
   }, []);
-  console.log(race);
+  //console.log(race);
 
   // console.log(dataPet.pet.type)
   // console.log(races)
-  console.log(dataPet.pet?.type);
-  console.log(dataPet.pet.image);
-  console.log(dataPet.pet);
-  console.log(dataPet);
+  //console.log(dataPet.pet?.type);
+  //console.log(dataPet.pet.image);
+  //console.log(dataPet.pet);
+  //console.log(dataPet);
 
   return (
     <>
