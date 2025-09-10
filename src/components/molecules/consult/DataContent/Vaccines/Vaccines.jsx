@@ -140,7 +140,6 @@ export const Vaccines = ({ pets, type = "WAR" }) => {
                 <div className={classes.illnessDiv}>
                   {listVaccines.map((illness, index) => (
                     <>
-                      {console.log("Procesando vacuna del JSON:", illness)}
                       {value.illness[illness.value] && (
                         <div
                           key={index}
@@ -151,10 +150,6 @@ export const Vaccines = ({ pets, type = "WAR" }) => {
                             boxShadow: "1px 1 px 3px #555",
                           }}
                         >
-                          {console.log(
-                            "Vacuna encontrada en value.illness:",
-                            illness["es-Es"]
-                          )}
                           {illness["es-Es"]}
                         </div>
                       )}
