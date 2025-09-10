@@ -78,7 +78,7 @@ export const ContentMongoPet = ({ dataPet }) => {
           // illness.push(marcas[vaccine.calicivirus]);
           illness.push("Calicivirus");
         }
-        if (vaccine.calicivirus > 0) {
+        if (vaccine.KC > 0) {
           // illness.push(marcas[vaccine.calicivirus]);
           illness.push("KC");
         }
