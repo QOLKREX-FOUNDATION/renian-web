@@ -5,8 +5,8 @@ export const useRaces = () => {
   const [race, setRace] = useState({
     animal: "",
     name: "",
-    nameEnglish: "",
     nameSpanish: "",
+    nameEnglish: "",
   });
 
   const getRace = (pet) => {

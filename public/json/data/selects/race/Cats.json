@@ -542,6 +542,11 @@
   {
     "en-Us": "DOMESTIC SHORTHAIR CAT",
     "es-Es": "GATO DOMESTICO DE PELAJE CORTO",
-    "value": "GATO DOMESTICO DE PELAJE CORTO"
+    "value": "DOMESTIC SHORTHAIR CAT"
+  },
+  {
+    "en-Us": "DOMESTIC LONGHAIR CAT",
+    "es-Es": "GATO DOMESTICO DE PELAJE LARGO",
+    "value": "DOMESTIC LONGHAIR CAT"
   }
 ]
