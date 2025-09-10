@@ -78,9 +78,9 @@ export const ContentMongoPet = ({ dataPet }) => {
           // illness.push(marcas[vaccine.calicivirus]);
           illness.push("Calicivirus");
         }
-        if (vaccine.KC > 0) {
+        if (vaccine.Kc > 0) {
           // illness.push(marcas[vaccine.calicivirus]);
-          illness.push("KC");
+          illness.push("Kc");
         }
         temp.push({
           type: vaccine.tipo_visita === "vacuna" ? "VACCINES" : "DEWORMING",
